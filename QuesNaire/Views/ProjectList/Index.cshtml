@@ -42,14 +42,56 @@
     </nav>
 
     <!--    我的项目-->
-    <div class="section_project">
+    <div class="section_project" id="section_project">
 
     </div>
 
     <!--    我的信息-->
-    <div class="section_info">
+    <div class="section_info hidden" id="section_info">
         <div class="info_wrap">
+            <div class="base_info">
+                <div class="base_info_title">账号信息<span class="base_info_change" id="base_info_change">修改</span></div>
+                <div class="base_info_item" style="margin-top:40px;">
+                    <span class="item_name">账号：</span><span>793523185@qq.com</span>
+                </div>
+                <!--    正常状态-->
+                <div class="item_wrap_normal" id="item_wrap_normal">
 
+                    <div class="base_info_item">
+                        <span class="item_name">用户昵称：</span><span>odd</span>
+                    </div>
+                    <div class="base_info_item">
+                        <span class="item_name">密码：</span><span>123456</span><span class="display">显示密码</span>
+                    </div>
+                </div>
+
+                <!--    修改状态-->
+                <div class="item_wrap_edit base_info_hidden" id="item_wrap_edit">
+                    <div class="base_info_item">
+                        <span class="item_name">用户昵称：</span>
+                        <span>
+                            <input type="text" class="form-control input_edit"/>
+                        </span>
+                    </div>
+                    <div class="base_info_item">
+                        <span class="item_name">密码：</span>
+                        <span>
+                            <input type="password" class="form-control input_edit"/>
+                        </span>
+                    </div>
+                    
+                    <button class="btn_change_info btn-primary btn" id="btn_change_info">完成修改</button>
+                </div>
+
+                
+            </div>
+
+            <div class="avatar_info">
+                <div class="avatar_img">
+                    <img src="~/Images/132.png"/>
+                </div>
+                <button class="btn_change_avatar btn-primary btn">更换头像</button>
+            </div>
         </div>
     </div>
 

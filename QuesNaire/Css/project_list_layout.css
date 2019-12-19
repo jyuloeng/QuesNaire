@@ -102,12 +102,12 @@
     margin: 20px 30px;
 }
 
-    .nav_avatar img {
-        height: 24px;
-        width: 24px;
-        background-size: 100%;
-        border-radius: 50%;
-    }
+.nav_avatar img {
+    height: 24px;
+    width: 24px;
+    background-size: 100%;
+    border-radius: 50%;
+}
 
 .footer_wrap {
     margin-top: 100px;
@@ -118,9 +118,9 @@
     box-sizing: content-box;
 }
 
-    .footer_wrap img {
-        width: 94px !important;
-    }
+.footer_wrap img {
+    width: 94px !important;
+}
 
 .section_info {
     width: 100%;
@@ -132,6 +132,93 @@
     margin: 0 auto;
     min-height: 550px;
     background: #fff;
-    padding: 20px 30px;
+    padding: 40px 40px;
     position: relative;
+}
+
+.base_info {
+    width: 50%;
+    height: 470px;
+    float: left;
+    border-right: 2px solid #434a5d;
+}
+
+.base_info_title{
+    font-size:32px;
+}
+
+.base_info_change {
+    float: right;
+    margin-right: 40px;
+    margin-top: 21px;
+    font-size: 15px;
+    color: #2672ff;
+    cursor:pointer;
+}
+
+.base_info_change:hover,
+.display:hover{
+    color: #2e6da4;
+}
+
+
+.base_info_item {
+    font-size: 18px;
+    margin-top: 12px;
+    margin-left:10px;
+}
+
+.item_name {
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+
+.input_edit{
+    width:200px;
+    display:inline-block;
+}
+
+.btn_change_info {
+    margin-top: 115px;
+    margin-left: 147px;
+    background: #2672ff;
+    width: 95px;
+}
+
+.display {
+    float: right;
+    margin-right: 40px;
+    font-size: 15px;
+    color: #2672ff;
+    cursor: pointer;
+}
+
+.avatar_info {
+    width: 50%;
+    height: 470px;
+    float: right;
+    padding: 30px;
+    text-align: center;
+}
+
+.avatar_img {
+    width: 180px;
+    height: 180px;
+    margin: 60px auto 50px;
+}
+
+.avatar_img img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.btn_change_avatar {
+    background: #2672ff;
+    width: 95px;
+}
+
+.base_info_hidden {
+    display: none;
 }

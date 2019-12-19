@@ -90,11 +90,11 @@
 
 .btn_login_rr {
     background-position: -150px 0px;
-}
+}       
 
-    .btn_login_rr:hover {
-        background-position: -150px -92px;
-    }
+.btn_login_rr:hover {
+    background-position: -150px -92px;
+}
 
 .form_wrap {
     width: 100%;

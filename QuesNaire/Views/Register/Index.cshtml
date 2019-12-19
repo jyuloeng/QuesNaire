@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_login_register_layout.cshtml";
+}
+
+<div class="tab_btn_wrap">
+    <span class="active" id="tab_phone">手机注册</span>
+    <span id="tab_email">邮箱注册</span>
+</div>
+<span class="line_blue"></span>
+
+
+
+<div class="form_wrap">
+
+    <div class="reg_list">
+        <div class="form-group">
+            <label for="reg_input_name">用户名</label>
+            <input type="tel" class="form-control" id="reg_input_name">
+        </div>
+        <!--    手机注册-->
+        <div class="form-group" id="form_phone">
+            <label for="reg_input_phone">手机号</label>
+            <input type="tel" class="form-control" id="reg_input_phone">
+        </div>
+        <!--    邮箱注册-->
+        <div class="form-group form_hidden" id="form_email">
+            <label for="reg_input_email">邮箱</label>
+            <input type="email" class="form-control" id="reg_input_email">
+        </div>
+        <div class="form-group">
+            <label for="reg_input_password">
+                密码
+                <span>（请设置包含数字、字母和符号的8~20位密码）</span>
+            </label>
+            <input type="tel" class="form-control" id="reg_input_password">
+        </div>
+        <div class="form-group">
+            <label for="reg_input_password_ag">确认密码</label>
+            <input type="tel" class="form-control" id="reg_input_password_ag">
+        </div>
+        <div class="checkbox">
+            <i></i>
+            <span>我接受</span>
+            <a href="#">问卷网服务协议</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn_register">立即注册</button>
+    </div>
+</div>
+
+<div class="link_choose">
+    <span>第三方登录&nbsp;或</span>
+    <a href="#" class="link_register">问卷网账号登录</a>
+</div>

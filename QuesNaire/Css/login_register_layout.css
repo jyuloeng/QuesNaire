@@ -1,0 +1,191 @@
+﻿.body_container {
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    width: 125px;
+    height: 48px;
+    left: 75px;
+    top: 33px;
+}
+
+.logo_img {
+    width: 100%;
+    height: 100%;
+}
+
+.body_content {
+    padding-top: 120px;
+    margin: 0 auto;
+    width: 400px;
+}
+
+.link_choose {
+    margin: 26px auto;
+    width: 400px;
+    height: 12px;
+    text-align: center;
+}
+
+    .link_choose span {
+        color: #aaaaaa;
+    }
+
+    .link_choose a {
+        text-decoration: none;
+    }
+
+.link_moreLogin {
+    width: 400px;
+    height: 38px;
+    margin: 0 auto;
+}
+
+.third_login {
+    width: 38px;
+    height: 38px;
+    display: inline-block;
+    background-image: url(../../Images/logo_icon_v2.png);
+    background-size: 288px auto;
+    cursor: pointer;
+    margin-right: 18px;
+}
+
+    .third_login:nth-child(1) {
+        margin-left: 60px;
+    }
+
+    .third_login:nth-last-child(1) {
+        margin-right: 60px;
+    }
+
+.btn_login_qq:hover {
+    background-position: 0px -92px;
+}
+
+.btn_login_wx {
+    background-position: -50px 0px;
+}
+
+    .btn_login_wx:hover {
+        background-position: -50px -92px;
+    }
+
+.btn_login_wb {
+    background-position: -100px 0px;
+}
+
+    .btn_login_wb:hover {
+        background-position: -100px -92px;
+    }
+
+.btn_login_bd {
+    background-position: -100px -46px;
+}
+
+    .btn_login_bd:hover {
+        background-position: -150px -46px;
+    }
+
+.btn_login_rr {
+    background-position: -150px 0px;
+}
+
+    .btn_login_rr:hover {
+        background-position: -150px -92px;
+    }
+
+.form_wrap {
+    width: 100%;
+    height: 100%;
+}
+
+label {
+    font-weight: 400;
+    color: #616161;
+    font-size: 14px;
+}
+
+.tab_btn_wrap {
+    width: 400px;
+    margin: 0 auto;
+    font-size: 34px;
+    overflow: hidden;
+    font-weight: 100;
+}
+
+    .tab_btn_wrap span {
+        display: block;
+        float: left;
+        width: 159px;
+        color: #707070;
+        cursor: pointer;
+    }
+
+        .tab_btn_wrap span:hover {
+            color: black;
+        }
+
+    .tab_btn_wrap .active {
+        color: black;
+    }
+
+    .tab_btn_wrap span:first-child {
+        margin-left: 48px;
+        border-right: 1px solid #cacaca;
+        margin-right: 22px;
+    }
+
+.line_blue {
+    display: block;
+    float: left;
+    margin-left: 62px;
+    margin-top: 9px;
+    width: 110px;
+    height: 2px;
+    background-color: #006ff2;
+    transition: all 0.3s;
+}
+
+.form_wrap {
+    margin-top: 50px;
+}
+
+.form_hidden {
+    display: none;
+}
+
+.form-control {
+    max-width: 100%;
+    height: 38px;
+    margin-top: 7px
+}
+
+.form-group span {
+    font-size: 13px;
+}
+
+.btn_register {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.checkbox i {
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    background: url("../Images/checkbox1.png") no-repeat center;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.checkbox a {
+    text-decoration: none;
+}
+
+.forget_password {
+    margin-left: 175px;
+}

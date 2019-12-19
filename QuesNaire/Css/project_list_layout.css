@@ -1,0 +1,137 @@
+﻿body {
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.5;
+    background: #EFEFEF;
+}
+
+.nav_wrap {
+    position: static;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    background: #fff;
+    font-size: 16px;
+    z-index: 99;
+    transition: all .4s ease;
+    height: 64px;
+    font-weight: 400;
+    color: #fff;
+    width: 100%;
+}
+
+.nav_container {
+    width: 1306px;
+    margin: 0 auto;
+    line-height: 24px;
+}
+
+.nav_logo {
+    float: left;
+    width: 36px !important;
+    margin: 14px 30px 0 30px;
+}
+
+    .nav_logo a {
+        outline: none;
+        text-decoration: none;
+        color: #434a5d;
+        display: block;
+        cursor: pointer;
+    }
+
+        .nav_logo a img {
+            background-size: 100%;
+            height: 36px;
+            width: 36px;
+        }
+
+.nav_list {
+    padding-top: 22px;
+}
+
+.nav_list_item {
+    float: left;
+    margin-right: 24px;
+    font-size: 14px;
+    list-style-type: none;
+    font-size: 14px;
+    color: #707070;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav_list .active {
+    color: #2672ff !important;
+}
+
+.nav_list_wrap {
+    position: relative;
+    height: 100%;
+    float: left;
+}
+
+
+.line_blue {
+    bottom: -18px;
+    background: #2672ff;
+    height: 2px;
+    width: 56px;
+    float: left;
+    position: absolute;
+    transition: all 0.3s;
+}
+
+.nav_user {
+    cursor: pointer;
+    height: 64px;
+    width: 36px;
+    float: right;
+    background: #fff;
+    position: relative;
+}
+
+.nav_about {
+    position: absolute;
+    color: #aaa;
+    left: -48px;
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+.nav_avatar {
+    position: absolute;
+    margin: 20px 30px;
+}
+
+    .nav_avatar img {
+        height: 24px;
+        width: 24px;
+        background-size: 100%;
+        border-radius: 50%;
+    }
+
+.footer_wrap {
+    margin-top: 100px;
+    padding: 30px 0px !important;
+    text-align: center !important;
+    line-height: 13px !important;
+    height: 32px !important;
+    box-sizing: content-box;
+}
+
+    .footer_wrap img {
+        width: 94px !important;
+    }
+
+.section_info {
+    width: 100%;
+    padding-top: 70px;
+}
+
+.info_wrap {
+    width: 990px;
+    margin: 0 auto;
+    min-height: 550px;
+    background: #fff;
+    padding: 20px 30px;
+    position: relative;
+}

@@ -88,19 +88,94 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Css\base.css" />
+    <Content Include="Css\homes_layout.css" />
+    <Content Include="Css\login_register_layout.css" />
+    <Content Include="Css\project_list_layout.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\132.png" />
+    <Content Include="Images\bq_logo.png" />
+    <Content Include="Images\check.png" />
+    <Content Include="Images\checkbox1.png" />
+    <Content Include="Images\home-page-background-all.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo_blue.png" />
+    <Content Include="Images\logo_dog.png" />
+    <Content Include="Images\logo_icon_v2.png" />
+    <Content Include="Images\new-slogan-tablet.png" />
+    <Content Include="Images\section-scene-bg.png" />
+    <Content Include="Images\v201911-customs.png" />
+    <Content Include="Images\v201911-feature-01.png" />
+    <Content Include="Images\v201911-feature-02.png" />
+    <Content Include="Images\v201911-feature-03.png" />
+    <Content Include="Images\v201911-reason-01.png" />
+    <Content Include="Images\v201911-reason-02.png" />
+    <Content Include="Images\v201911-reason-03.png" />
+    <Content Include="Images\v201911-scene-01.png" />
+    <Content Include="Images\v201911-scene-02.png" />
+    <Content Include="Images\v201911-scene-03.png" />
+    <Content Include="Images\v201911-scene-04.png" />
+    <Content Include="Images\v201911-scene-05.png" />
+    <Content Include="Images\v201911-scene-06.png" />
+    <Content Include="Images\v201911-start-01.png" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Js\project_list_layout.js" />
+    <Content Include="Js\register_layout.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EditProjectController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ManagerController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ProjectListController.cs" />
+    <Compile Include="Controllers\PublishProjectController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\StatisticProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_login_register_layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Manager\Index.cshtml" />
+    <Content Include="Views\ProjectList\Index.cshtml" />
+    <Content Include="Views\EditProject\Index.cshtml" />
+    <Content Include="Views\PublishProject\Index.cshtml" />
+    <Content Include="Views\StatisticProject\Index.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,8 +185,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

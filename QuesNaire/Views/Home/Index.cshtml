@@ -1,0 +1,346 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Css/base.css" rel="stylesheet" type="text/css" />
+    <link href="~/Css/homes_layout.css" rel="stylesheet" type="text/css" charset="utf-8" />
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <!--    导航栏-->
+    <nav class="nav_wrap">
+        <div class="nav_container">
+            <div class="nav_logo">
+                <a href="#">
+                    <img src="~/Images/logo_blue.png" />
+                </a>
+            </div>
+            <ul class="nav_list">
+                <li class="nav_item">
+                    产品介绍<i></i>
+                    @*<ul class="nav_second_list">
+                            <li class="nav_second_item">问卷调研</li>
+                            <li class="nav_second_item">问卷调研</li>
+                            <li class="nav_second_item">问卷调研</li>
+                            <li class="nav_second_item">问卷调研</li>
+                            <li class="nav_second_item">问卷调研</li>
+                            <li class="nav_second_item">问卷调研</li>
+                            <li class="nav_second_item">问卷调研</li>
+                            <li class="nav_second_item">问卷调研</li>
+                            <li class="nav_second_item">问卷调研</li>
+                        </ul>*@
+                </li>
+                <li class="nav_item">免费模板</li>
+                <li class="nav_item">样本收集</li>
+                <li class="nav_item">
+                    我要答题<i></i>
+                    @*<ul class="nav_second_list">
+                            <li class="nav_second_item">经典测试</li>
+                            <li class="nav_second_item">答题广场</li>
+                        </ul>*@
+                </li>
+                <li class="nav_item">
+                    企业服务<i></i>
+                    @*<ul class="nav_second_list">
+                            <li class="nav_second_item">客户体验管理系统</li>
+                            <li class="nav_second_item">专业调研服务</li>
+                            <li class="nav_second_item">开放平台</li>
+                        </ul>*@
+                </li>
+                <li class="nav_item">商务合作</li>
+            </ul>
+            <div class="nav_btn_list">
+                <span class="btn_item">
+                    <a href="#">登录</a>
+                </span>
+                <span style="font-size: 17px;">|</span>
+                <span class="btn_item">
+                    <a href="#">注册</a>
+                </span>
+            </div>
+        </div>
+
+    </nav>
+
+    <!--    背景巨幕图-->
+    <header class="header_wrap">
+        <img src="~/Images/home-page-background-all.jpg" class="header_bg" />
+        <div class="header_container">
+            <img src="~/Images/new-slogan-tablet.png" />
+            <p>问卷网已帮助<span>936万</span>用户收集超过<span>7.6亿</span>份数据</p>
+            <button type="button" class="btn btn-primary btn_header_start">免费使用</button>
+        </div>
+    </header>
+
+    <!--    第一栏 description-->
+    <div class="section_description">
+        <div class="description_wrap">
+            <div class="description_item">
+                <p>40+题型</p>
+                <span>基础提醒按需使用</span>
+            </div>
+            <div class="description_item">
+                <p>26W+模板</p>
+                <span>问卷模板免费引用</span>
+            </div>
+            <div class="description_item">
+                <p>SSL/TLS协议</p>
+                <span>多重服务保障数据安全</span>
+            </div>
+            <div class="description_item">
+                <p>不限答卷数</p>
+                <span>不限答题收集数量</span>
+            </div>
+        </div>
+    </div>
+
+    <!--    第二栏 reason-->
+    <div class="section_reason">
+        <div class="reason_wrap">
+            <div class="reason_title">为什么选择问卷网</div>
+            <div class="reason_context">
+                <div class="reason_item">
+                    <img src="~/Images/v201911-reason-01.png" />
+                    <p>各行各业都在用</p>
+                    <span>无论是职场白领、HR，还是高校的老师、学生，他们都在使用问卷网</span>
+                </div>
+                <div class="reason_item">
+                    <img src="~/Images/v201911-reason-02.png" />
+                    <p>简单三步，即可获得数据</p>
+                    <span>不限答卷收集数量、数据图表化展示、权威级数据安全保障、永久保存并支持免费下载</span>
+                </div>
+                <div class="reason_item">
+                    <img src="~/Images/v201911-reason-03.png" />
+                    <p>多端支持，所有功能均免费</p>
+                    <span>PC电脑、手机APP、小程序无缝发布，让你可以随时随地创建、编辑、浏览项目</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--    第三栏 scene-->
+    <div class="section_scene">
+        <div class="scene_title">满足你更多的业务场景</div>
+        <div class="scene_context">
+            <div class="scene_item">
+                <img src="~/Images/v201911-scene-01.png" />
+                <p>问卷调查</p>
+                <span>消费者调研 · 市场调研 · 产品调查</span>
+            </div>
+            <div class="scene_item">
+                <img src="~/Images/v201911-scene-02.png" />
+                <p>满意度调查</p>
+                <span>服务质量 · 教学质量 · 物业后勤</span>
+            </div>
+            <div class="scene_item">
+                <img src="~/Images/v201911-scene-03.png" />
+                <p>报名登记表</p>
+                <span>活动报名 · 人员登记 · 加盟申请</span>
+            </div>
+        </div>
+        <div class="scene_context">
+            <div class="scene_item">
+                <img src="~/Images/v201911-scene-04.png" />
+                <p>投票评选</p>
+                <span>才艺比赛 · 优秀员工 · 最佳人气</span>
+            </div>
+            <div class="scene_item">
+                <img src="~/Images/v201911-scene-05.png" />
+                <p>考试测评</p>
+                <span>学术考试 · 员工测评 · 民意测评</span>
+            </div>
+            <div class="scene_item">
+                <img src="~/Images/v201911-scene-06.png" />
+                <p>学术调研</p>
+                <span>毕业论文 · 学术课题 · 教学调查</span>
+            </div>
+        </div>
+    </div>
+
+    <!--    第四栏 user-->
+    <div class="section_user">
+
+    </div>
+
+    <!--    第五栏 feature-->
+    <div class="section_feature">
+        <div class="feature_title">编辑、收集、报表，一切都轻而易举</div>
+        <div class="feature_wrap">
+            <div class="feature_item">
+                <div class="feature_item_description">
+                    <div class="feature_item_title">多方式创建编辑问卷</div>
+                    <div class="feature_item_content">支持自由创建、导入问卷、引用模板三种方式随意选择</div>
+                    <ul class="feature_item_list">
+                        <li class="feature_item_list_item">提供40+题型</li>
+                        <li class="feature_item_list_item">自定义主题和背景</li>
+                        <li class="feature_item_list_item">260000+精品模板</li>
+                        <li class="feature_item_list_item">公共题库抽题</li>
+                        <li class="feature_item_list_item">轻松设置问卷逻辑</li>
+                        <li class="feature_item_list_item">支持红包、抽奖功能</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary btn_feature_item">免费使用</button>
+                </div>
+
+                <img src="~/Images/v201911-feature-01.png" />
+            </div>
+            <div class="feature_item">
+                <div class="feature_item_description" style="float:right;">
+                    <div class="feature_item_title">多种渠道收集、分享</div>
+                    <div class="feature_item_content">链接分享、二维码分享、精美海报分享等高效收集方式</div>
+                    <ul class="feature_item_list">
+                        <li class="feature_item_list_item">多渠道分发问卷</li>
+                        <li class="feature_item_list_item">自定义分享外观</li>
+                        <li class="feature_item_list_item">完美适配移动端</li>
+                        <li class="feature_item_list_item">支持短信&邮件、网站嵌入</li>
+                        <li class="feature_item_list_item">不限答卷收集数量</li>
+                        <li class="feature_item_list_item">专业的样本收集服务</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary btn_feature_item">免费使用</button>
+                </div>
+                <img src="~/Images/v201911-feature-02.png" />
+            </div>
+            <div class="feature_item">
+                <div class="feature_item_description">
+                    <div class="feature_item_title">数据和报表</div>
+                    <div class="feature_item_content">回收数据实时在线统计，图表化展示直观呈现数据结果</div>
+                    <ul class="feature_item_list">
+                        <li class="feature_item_list_item">可视化图表</li>
+                        <li class="feature_item_list_item">问卷数据长期保存和免费下载</li>
+                        <li class="feature_item_list_item">交叉图表分析</li>
+                        <li class="feature_item_list_item">可直接导入SPSS分析</li>
+                        <li class="feature_item_list_item">数据导出和打印</li>
+                        <li class="feature_item_list_item">对外查询和结果分享</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary btn_feature_item">免费使用</button>
+                </div>
+                <img src="~/Images/v201911-feature-03.png" />
+            </div>
+        </div>
+    </div>
+
+    <!--    第六栏 customs-->
+    <div class="section_customs">
+        <div class="customs_wrap">
+            <div class="customs_title">众多用户的不信赖之选</div>
+            <div class="customs_context">覆盖互联网、教育、媒体、金融、房地产、新零售、电商等多个行业</div>
+            <div class="customs_img">
+                <img src="~/Images/v201911-customs.png" />
+            </div>
+        </div>
+    </div>
+
+    <!--    赶快创建第一个项目-->
+    <div class="section_start">
+        <div class="start_wrap">
+            <div class="start_bg">
+                <img src="~/Images/v201911-start-01.png" />
+            </div>
+            <div class="start_title">赶快创建您的第一个项目</div>
+            <div class="start_context">
+                问卷网已帮助<span> 936 万</span>用户 收集超过<span> 7.6 亿</span>数据
+            </div>
+            <button type="button" class="btn btn-primary btn_start_start">免费使用</button>
+        </div>
+    </div>
+
+    <footer class="footer_bg">
+        <div class="footer_wrap">
+            <div class="footer_item">
+                <div class="footer_item_title">
+                    产品介绍
+                </div>
+                <div class="footer_item_context">
+                    <a href="#">问卷调研</a>
+                    <a href="#">投票评选</a>
+                    <a href="#">满意度调查</a>
+                    <a href="#">报名登记表</a>
+                    <a href="#">考试测评</a>
+                    <a href="#">学术调研</a>
+                    <a href="#">师生专区</a>
+                    <a href="#">高级版</a>
+                </div>
+            </div>
+            <div class="footer_item">
+                <div class="footer_item_title">
+                    企业服务
+                </div>
+                <div class="footer_item_context">
+                    <a href="#">客户体验管理系统</a>
+                    <a href="#">专业调研服务</a>
+                    <a href="#">开放平台</a>
+                    <a href="#">样本收集</a>
+                </div>
+            </div>
+            <div class="footer_item">
+                <div class="footer_item_title">
+                    支持
+                </div>
+                <div class="footer_item_context">
+                    <a href="#">答题广场</a>
+                    <a href="#">免费模板</a>
+                    <a href="#">案例中心</a>
+                    <a href="#">帮助中心</a>
+                    <a href="#">咨询反馈</a>
+                    <a href="#">人工服务</a>
+                    <a href="#">论坛</a>
+                </div>
+            </div>
+            <div class="footer_item">
+                <div class="footer_item_title">
+                    公司
+                </div>
+                <div class="footer_item_context">
+                    <a href="#">关于我们</a>
+                    <a href="#">合作伙伴</a>
+                    <a href="#">资讯中心</a>
+                    <a href="#">商务合作</a>
+                </div>
+            </div>
+            <div class="footer_item">
+                <div class="footer_item_title">
+                    其他
+                </div>
+                <div class="footer_item_context">
+                    <a href="#">爱调研社区</a>
+                    <a href="#">心测评</a>
+                </div>
+            </div>
+            <div class="footer_item" style="float:right;margin: 0;float: right;">
+                <div class="footer_item_title">
+                    联系我们
+                </div>
+                <div class="footer_item_context">
+                    <a href="#">
+                        <span>客服专线</span><span>4006-700-778</span>
+                    </a>
+                    <a href="#">
+                        <span>其他咨询</span><span>4006-188-166</span>
+                    </a>
+                </div>
+                <div class="footer_custom_service">
+                    <span>客服邮箱</span><span>wenjuan@idiaoyan.com</span>
+                </div>
+            </div>
+
+            <div class="footer_title">
+                <a href="#">CopyRight TeamAlbm 2019</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

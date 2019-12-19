@@ -103,7 +103,9 @@
     <Content Include="Images\bq_logo.png" />
     <Content Include="Images\check.png" />
     <Content Include="Images\checkbox1.png" />
+    <Content Include="Images\checkbox2.png" />
     <Content Include="Images\home-page-background-all.jpg" />
+    <Content Include="Images\icon-ducument.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo_blue.png" />
     <Content Include="Images\logo_dog.png" />
@@ -142,6 +144,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Images\ducument.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

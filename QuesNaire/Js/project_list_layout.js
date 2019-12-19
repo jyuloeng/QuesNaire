@@ -65,8 +65,35 @@ function sumbitEdit() {
         base_info_change.addEventListener("click", editInfo, false);
     }
 
+
     //  获得input的值进行验证（待做）
 
     //  移除监听事件
     btn_change_info.removeEventListener("click", sumbitEdit, false);
+}
+
+
+var tab_card_view = document.getElementById("tab_card_view");
+var tab_list_view = document.getElementById("tab_list_view");
+
+var card_wrap = document.getElementById("card_wrap");
+var list_wrap = document.getElementById("list_wrap");
+
+tab_card_view.addEventListener("click", toCardView, false);
+tab_list_view.addEventListener("click", toListView, false);
+
+function toCardView() {
+    tab_card_view.classList.add("nav_tab_active");
+    tab_list_view.classList.remove("nav_tab_active");
+
+    card_wrap.classList.remove("project_list_hidden");
+    list_wrap.classList.add("project_list_hidden");
+}
+
+function toListView() {
+    tab_list_view.classList.add("nav_tab_active");
+    tab_card_view.classList.remove("nav_tab_active");
+
+    list_wrap.classList.remove("project_list_hidden");
+    card_wrap.classList.add("project_list_hidden");
 }

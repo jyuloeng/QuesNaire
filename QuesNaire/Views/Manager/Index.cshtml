@@ -11,6 +11,8 @@
     <title>Index</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css"/>
+
     <link href="~/Css/base.css" rel="stylesheet" type="text/css" />
     <link type="text/css" href="~/Css/manager_layout.css" rel="stylesheet"/>
 
@@ -32,16 +34,16 @@
             <span>最新问卷</span>
         </div>
         <div class="nav_item">
-            <i class="glyphicon glyphicon-floppy-disk"></i>
+            <i class="glyphicon glyphicon-floppy-remove"></i>
             <span>待发布问卷</span>
         </div>
         <div class="nav_item">
-            <i class="glyphicon glyphicon-floppy-saved"></i>
+            <i class="glyphicon glyphicon-floppy-open"></i>
             <span>已发布问卷</span>
         </div>
         <div class="nav_item">
-            <i class="glyphicon glyphicon-search"></i>
-            <span>问卷查询</span>
+            <i class="glyphicon glyphicon-floppy-disk"></i>
+            <span>全部问卷</span>
         </div>
 
         <div class="nav_context">系统管理</div>
@@ -198,7 +200,7 @@
 
         <!--    最新问卷-->
         <div class="all_project_layout layout_item">
-            all_project_layout
+            <table id="table" class="table table-hover table-borderless"></table>
         </div>
 
         <!--    待发布问卷-->
@@ -267,5 +269,39 @@
     </script>
 
     <script src="~/Js/manager_layout.js"></script>
+    <script src="~/Content/dist/bootstrap-table.min.js"></script>
+    <script src="~/Content/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <script>
+        $('#table').bootstrapTable({
+            url: '/json/data.json',        // 表格数据来源
+            pagination: true,   //  分页
+            search: true,       //  搜索
+            sorting: true,       //  排序
+            height:"500",
+            columns: [{
+                field: 'id',
+                title: 'Item ID'
+            }, {
+                field: 'name',
+                title: 'Item Name'
+            }, {
+                field: 'price',
+                title: 'Item Price'
+            }, {
+                field: 'column1',
+                title: '列1'
+            }, {
+                field: 'column2',
+                title: '列2'
+            }, {
+                field: 'column3',
+                title: '列3'
+            }, {
+                field: 'column4',
+                title: '列4'
+            }]
+        });
+    </script>
 </body>
 </html>

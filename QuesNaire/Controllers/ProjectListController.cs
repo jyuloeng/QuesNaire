@@ -11,9 +11,18 @@ namespace QuesNaire.Controllers
     /// </summary>
     public class ProjectListController : Controller
     {
+        public string id ="0";
         // GET: Project
         public ActionResult Index()
         {
+            id =  Request.QueryString["id"];
+            if(id!="0")
+            {
+                HttpCookie cookie = new HttpCookie("user_id");
+                cookie.Value = id;
+                Response.Cookies.Add(cookie);
+            }
+            
             return View();
         }
     }

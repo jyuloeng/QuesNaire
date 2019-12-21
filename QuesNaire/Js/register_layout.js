@@ -47,7 +47,7 @@ tab_phone.addEventListener("click", usePhone, false);
 
 checkbox.addEventListener("click", function () {
     if (!isCheck) {
-        checkbox.style.background = "url('../Images/check.png') no-repeat center"
+        checkbox.style.background = "url('../Images/checkbox2.png') no-repeat center"
     } else {
         checkbox.style.background = "url('../Images/checkbox1.png') no-repeat center"
     }

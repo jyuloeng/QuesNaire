@@ -9,9 +9,299 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="~/Css/base.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="~/Css/manager_layout.css" rel="stylesheet"/>
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div> 
+    <!--    左边导航栏-->
+    <nav class="nav_wrap">
+        <div class="nav_title">
+            TeamAlbm 问卷网后台管理系统
+        </div>
+        <div class="nav_item nav_item_active">
+            <i class="glyphicon glyphicon-home"></i>
+            <span>后台首页</span>
+        </div>
+        <div class="nav_context">问卷管理</div>
+        <div class="nav_item">
+            <i class="glyphicon glyphicon-time"></i>
+            <span>最新问卷</span>
+        </div>
+        <div class="nav_item">
+            <i class="glyphicon glyphicon-floppy-remove"></i>
+            <span>待发布问卷</span>
+        </div>
+        <div class="nav_item">
+            <i class="glyphicon glyphicon-floppy-open"></i>
+            <span>已发布问卷</span>
+        </div>
+        <div class="nav_item">
+            <i class="glyphicon glyphicon-floppy-disk"></i>
+            <span>全部问卷</span>
+        </div>
+
+        <div class="nav_context">系统管理</div>
+        <div class="nav_item">
+            <i class="glyphicon glyphicon-user"></i>
+            <span>用户管理</span>
+        </div>
+    </nav>
+
+    <!--    头部，留个空好了-->
+    <div class="top_wrap">
+        <div class="user_wrap">
+            <span>管理员：</span><span class="user_name">odd</span>
+            <div class="exit">退出</div>
+        </div>
     </div>
+
+    <!--    内容-->
+    <div class="container_wrap">
+
+        <!--    首页布局-->
+        <div class="index_layout layout_item layout_item_active">
+
+            <div class="index_top">
+                <div class="index_top_item">
+                    <img src="~/Images/v201911-scene-05.png" />
+                    <div class="context_wrap">
+                        <span class="context_title">问卷总数</span>
+                        <span class="context_number">1999</span>
+                    </div>
+
+                </div>
+                <div class="index_top_item">
+                    <img src="~/Images/v201911-scene-02.png" />
+                    <div class="context_wrap">
+                        <span class="context_title">用户总数</span>
+                        <span class="context_number">999</span>
+                    </div>
+                </div>
+                <div class="index_top_item">
+                    <img src="~/Images/v201911-scene-01.png" />
+                    <div class="context_wrap">
+                        <span class="context_title">问卷总数</span>
+                        <span class="context_number">1999</span>
+                    </div>
+                </div>
+                <div class="index_top_item">
+                    <img src="~/Images/v201911-scene-06.png" />
+                    <div class="context_wrap">
+                        <span class="context_title">团队人数</span>
+                        <span class="context_number">4</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="index_left">
+                <div class="event_title">最新问卷</div>
+                <canvas id="myChart" width="600" height="400"></canvas>
+            </div>
+
+            <div class="index_right">
+                <!--    天气信息-->
+                <div class="date_info">
+                    <div class="event_title">天气信息</div>
+                    <div id="he-plugin-standard"></div>
+                </div>
+                <!--    最近事件-->
+                <div class="event_info">
+                    <div class="event_title">最近事件</div>
+                    <ul class="event_list">
+                        <li class="event_list_item">
+                            <p class="item_context">我的项目布局已完成</p>
+                            <p class="item_time">oddii 提交于 2019-12-19 16:28</p>
+                        </li>
+                        <li class="event_list_item">
+                            <p class="item_context">我的信息页静态页面完成</p>
+                            <p class="item_time">oddii 提交于 2019-12-19 12:18</p>
+                        </li>
+                        <li class="event_list_item">
+                            <p class="item_context">新增十个控制器与视图</p>
+                            <p class="item_time">oddii 提交于 2019-12-19 10:38</p>
+                        </li>
+                        <li class="event_list_item">
+                            <p class="item_context">添加项目文件</p>
+                            <p class="item_time">oddii 提交于 2019-12-19 09:55</p>
+                        </li>
+                        <li class="event_list_item">
+                            <p class="item_context">添加 .gitignore 和 .gitattributes。</p>
+                            <p class="item_time">oddii 提交于 2019-12-19 09:55</p>
+                        </li>
+                    </ul>
+                </div>
+                <!--    版本信息-->
+                <div class="version_info">
+                    <div class="event_title">版本信息</div>
+                    <div class="verison_item">
+                        <div class="version_item_img">
+                            <img src="~/Images/icon_bootstrap.png" />
+                        </div>
+                        <div class="version_item_context">
+                            <p class="version_item_title">Bootstarp</p>
+                            <p class="version_item_number">3.3.7</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <hr />
+                    <div class="verison_item">
+                        <div class="version_item_img">
+                            <img src="~/Images/icon_jQuery.png" />
+                        </div>
+                        <div class="version_item_context">
+                            <p class="version_item_title">JQuery</p>
+                            <p class="version_item_number">3.4.1</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <hr />
+                    <div class="verison_item">
+                        <div class="version_item_img">
+                            <img src="~/Images/icon_framework.png" />
+                        </div>
+                        <div class="version_item_context">
+                            <p class="version_item_title">.net Framework</p>
+                            <p class="version_item_number">4.6.1</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <hr />
+                    <div class="verison_item">
+                        <div class="version_item_img">
+                            <img src="~/Images/icon_shujuku.png" />
+                        </div>
+                        <div class="version_item_context">
+                            <p class="version_item_title">数据库</p>
+                            <p class="version_item_number">sql s</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <hr />
+                    <div class="verison_item">
+                        <div class="version_item_img">
+                            <img src="~/Images/icon_banbenhao.png" />
+                        </div>
+                        <div class="version_item_context">
+                            <p class="version_item_title">版本号</p>
+                            <p class="version_item_number">0.1</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--    最新问卷-->
+        <div class="all_project_layout layout_item">
+            <table id="table" class="table table-hover table-borderless"></table>
+        </div>
+
+        <!--    待发布问卷-->
+        <div class="unpublish_layout layout_item">
+            unpublish_layout
+        </div>
+
+        <!--    已发布问卷-->
+        <div class="published_layout layout_item">
+            published_layout
+        </div>
+
+        <!--    问卷查询-->
+        <div class="query_layout layout_item">
+            query_layout
+        </div>
+
+        <!--    用户管理-->
+        <div class="user_manager_layout layout_item">
+            user_manager_layout
+        </div>
+    </div>
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="https://widget.heweather.net/standard/static/js/he-standard-common.js?v=1.1"></script>
+    <script>
+        WIDGET = {
+            CONFIG: {
+                "layout": 1,
+                "width": "723",
+                "height": "186",
+                "background": 5,
+                "dataColor": "4A4A4A",
+                "aqiColor": "FFFFFF",
+                "borderRadius": 5,
+                "key": "ba2973bce2d24f76878776a8105a2f9f"
+            }
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script type="text/javascript">
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ['00：00', '03：00', '06：00', '9：00', '12：00', '15：00', '18：00','21：00'],
+                datasets: [{
+                    label: '24小时内问卷数',
+                    backgroundColor: '#e4ecef',
+                    borderColor: '#2672ff',
+                    data: [0, 10, 5, 2, 20, 10, 25,13   ]
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    </script>
+
+    <script src="~/Js/manager_layout.js"></script>
+    <script src="~/Content/dist/bootstrap-table.min.js"></script>
+    <script src="~/Content/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <script>
+        $('#table').bootstrapTable({
+            url: '/json/data.json',        // 表格数据来源
+            pagination: true,   //  分页
+            search: true,       //  搜索
+            sorting: true,       //  排序
+            height:"500",
+            columns: [{
+                field: 'id',
+                title: 'Item ID'
+            }, {
+                field: 'name',
+                title: 'Item Name'
+            }, {
+                field: 'price',
+                title: 'Item Price'
+            }, {
+                field: 'column1',
+                title: '列1'
+            }, {
+                field: 'column2',
+                title: '列2'
+            }, {
+                field: 'column3',
+                title: '列3'
+            }, {
+                field: 'column4',
+                title: '列4'
+            }]
+        });
+    </script>
 </body>
 </html>

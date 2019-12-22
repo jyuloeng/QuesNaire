@@ -184,7 +184,6 @@ function Select_question(obj) {
             occupation_select_num++;
             question_num++;
             Item_num = occupation_select_num;
-
             break;
 
 
@@ -193,6 +192,8 @@ function Select_question(obj) {
     question.style.display = "block";
     var question_order = question.getElementsByClassName("question_order")[0];
     question_order.innerHTML = question_num;
+    
+    question.setAttribute("order_index", question_num);
     var clonedDiv = question.cloneNode(true);
     question.style.display = "none";
 
@@ -306,12 +307,79 @@ function Delect_Itrm(obj) {
 
 //刪除當前問題
 function Delete_select(obj) {
+    var index = 0;
     //當前問我問題DIV的id
     var question_id = obj.parentNode.parentNode.id;
-    
+
     var question_div = document.getElementById(question_id);
-    //問題内容
+
+    //当前是第几个问题
+    index = question_div.getAttribute("order_index");
+    //修改题目删除后的序号
+    var n = Number(15) + Number(index);
+    for (var i = n; i <= question_Box.children.length; i++) {
+        var child_div = question_Box.children[i - 1];
+
+        //修改自定义标签
+        var order_index = child_div.getAttribute("order_index");
+        order_index--;
+        child_div.setAttribute("order_index", order_index);
+
+
+        var question_order = child_div.getElementsByClassName("question_order")[0];
+        question_order.innerHTML = order_index;
+
+    }
+
     var questionType = question_div.getAttribute("questionType");
+
+    //删除题目数量
+    switch (questionType) {
+        case "danxuan":
+            single_num--;
+            break;
+        case "duoxuan":
+            multiple_select_num--;
+            break;
+        case "tiankong":
+            blank_select_num--;
+            break;
+        case "duotiankong":
+            multiple_blank_select_num--;
+            break;
+        case "name":
+            name_select_num--;
+            break;
+        case "mobile":
+            mobile_select_num--;
+            break;
+        case "email":
+            email_select_num--;
+            break;
+        case "sex":
+            sex_select_num--;
+            break;
+        case "date":
+            date_select_num--;
+            break;
+        case "time":
+            time_select_num--;
+            break;
+        case "age":
+            age_select_num--;
+            break;
+        case "ducation":
+            education_select_num--;
+            break;
+        case "major":
+            major_select_num--;
+            break;
+        case "occupation":
+            occupation_select_num--;
+            break;
+    }
+
+
     question_num--;
     question_Box.removeChild(question_div);
 }

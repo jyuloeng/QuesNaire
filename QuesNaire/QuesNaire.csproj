@@ -44,7 +44,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -292,7 +291,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Css\base.css" />
     <Content Include="Css\edit_project_layout.css" />
-    <Content Include="Css\edit_publish_static_project_top_layout.css" />
     <Content Include="Css\homes_layout.css" />
     <Content Include="Css\login_register_layout.css" />
     <Content Include="Css\manager_layout.css" />
@@ -300,13 +298,13 @@
     <Content Include="Css\project.css" />
     <Content Include="Css\project_list_layout.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\materialdesignicons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\132.png" />
-    <Content Include="Images\arrow_left.jpg" />
-    <Content Include="Images\banbenhao.png" />
     <Content Include="Images\add.png" />
     <Content Include="Images\age.png" />
     <Content Include="Images\age_select.png" />
+    <Content Include="Images\banbenhao.png" />
     <Content Include="Images\bq_logo.png" />
     <Content Include="Images\check.png" />
     <Content Include="Images\checkbox1.png" />
@@ -322,9 +320,7 @@
     <Content Include="Images\exit_icon.png" />
     <Content Include="Images\fill_selection.png" />
     <Content Include="Images\fill_selection_select.png" />
-    <Content Include="Images\checkbox2.png" />
     <Content Include="Images\home-page-background-all.jpg" />
-    <Content Include="Images\ic-arrow-back-24px.png" />
     <Content Include="Images\icon-ducument.png" />
     <Content Include="Images\icon_banbenhao.png" />
     <Content Include="Images\icon_bootstrap.png" />
@@ -386,22 +382,18 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Js\manager_layout.js" />
-    <Content Include="Js\project.js" />
     <Content Include="Images\women.png" />
     <Content Include="Js\edit_project_layout.js" />
+    <Content Include="Js\manager_layout.js" />
+    <Content Include="Js\project.js" />
     <Content Include="Js\project_list_layout.js" />
     <Content Include="Js\register_layout.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="App_Code\user_info.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>user_info.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="App_Code\user_info.dbml.layout">
-      <DependentUpon>user_info.dbml</DependentUpon>
-    </None>
+    <Content Include="fonts\materialdesignicons.eot" />
+    <Content Include="fonts\materialdesignicons.ttf" />
+    <Content Include="fonts\materialdesignicons.woff" />
+    <Content Include="fonts\materialdesignicons.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -412,11 +404,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\user_info.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>user_info.dbml</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EditProjectController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -444,7 +431,6 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\ProjectList\Index.cshtml" />
-    <Content Include="Views\EditProject\Index.cshtml" />
     <Content Include="Views\PublishProject\Index.cshtml" />
     <Content Include="Views\StatisticProject\Index.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
@@ -460,9 +446,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

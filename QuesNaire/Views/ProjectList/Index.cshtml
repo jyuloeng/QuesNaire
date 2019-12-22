@@ -15,11 +15,6 @@
     <link href="~/Css/project_list_layout.css" rel="stylesheet" type="text/css" />
 
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <script>
-        window.onload=function(){
-    alert(document.cookie)
-    }
-    </script>
 </head>
 <body>
     <!--    导航栏-->
@@ -64,7 +59,7 @@
                 <!--    搜索栏-->
                 <div class="nav_search">
                     <i class="glyphicon glyphicon-search"></i>
-                    <input type="text" class="search_input"/>
+                    <input type="text" class="search_input" />
                 </div>
                 <!--    回收站-->
                 <div class="nav_recycle">
@@ -158,9 +153,9 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-            
+
         </div>
-        
+
     </div>
 
     <!--    我的信息-->
@@ -169,13 +164,13 @@
             <div class="base_info">
                 <div class="base_info_title">账号信息<span class="base_info_change" id="base_info_change">修改</span></div>
                 <div class="base_info_item" style="margin-top:40px;">
-                    <span class="item_name">账号：</span><span>793523185@qq.com</span>
+                    <span class="item_name">账号：</span><span id="user_account">793523185@qq.com</span>
                 </div>
                 <!--    正常状态-->
                 <div class="item_wrap_normal" id="item_wrap_normal">
 
                     <div class="base_info_item">
-                        <span class="item_name">用户昵称：</span><span>odd</span>
+                        <span class="item_name">用户昵称：</span><span id="user_name">odd</span>
                     </div>
                     <div class="base_info_item">
                         <span class="item_name">密码：</span><span>123456</span><span class="display">显示密码</span>
@@ -187,25 +182,25 @@
                     <div class="base_info_item">
                         <span class="item_name">用户昵称：</span>
                         <span>
-                            <input type="text" class="form-control input_edit"/>
+                            <input type="text" class="form-control input_edit" />
                         </span>
                     </div>
                     <div class="base_info_item">
                         <span class="item_name">密码：</span>
                         <span>
-                            <input type="password" class="form-control input_edit"/>
+                            <input type="password" class="form-control input_edit" />
                         </span>
                     </div>
-                    
+
                     <button class="btn_change_info btn-primary btn" id="btn_change_info">完成修改</button>
                 </div>
 
-                
+
             </div>
 
             <div class="avatar_info">
                 <div class="avatar_img">
-                    <img src="~/Images/132.png"/>
+                    <img src="~/Images/132.png" id="user_avatar"/>
                 </div>
                 <button class="btn_change_avatar btn-primary btn">更换头像</button>
             </div>
@@ -220,5 +215,19 @@
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Js/project_list_layout.js"></script>
+    <script>
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg))
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+        document.getElementById('user_account').innerText = getCookie("user_account")
+        document.getElementById('user_name').innerText = getCookie("user_name")
+        if (getCookie('user_avatar') != "") {
+             document.getElementById('user_avatar').src = getCookie("user_avatar")
+        }
+    </script>
 </body>
 </html>

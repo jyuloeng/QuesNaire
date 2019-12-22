@@ -16,5 +16,14 @@ namespace QuesNaire.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// 后台登录页
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ManagerLogin()
+        {
+            return View();
+        }
     }
 }

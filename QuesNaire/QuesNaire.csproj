@@ -293,6 +293,8 @@
     <Content Include="Css\homes_layout.css" />
     <Content Include="Css\login_register_layout.css" />
     <Content Include="Css\manager_layout.css" />
+    <Content Include="Css\manager_login_layout.css" />
+    <Content Include="Css\project.css" />
     <Content Include="Css\project_list_layout.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\materialdesignicons.svg" />
@@ -339,6 +341,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Js\manager_layout.js" />
+    <Content Include="Js\project.js" />
     <Content Include="Js\project_list_layout.js" />
     <Content Include="Js\register_layout.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -388,6 +391,7 @@
     <Content Include="Views\PublishProject\Index.cshtml" />
     <Content Include="Views\StatisticProject\Index.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Manager\ManagerLogin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

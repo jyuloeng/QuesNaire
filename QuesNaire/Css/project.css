@@ -1,0 +1,96 @@
+﻿body {
+    background: #f5f5f5;
+    font-size: 14px;
+    color: #666666;
+}
+
+
+.naire {
+    background-color: rgba(255,255,255,1);
+    width: 814px;
+    margin: 60px auto 10px auto;
+    min-height: 200px;
+    padding: 10px 40px 66px;
+    padding-top:30px;
+}
+
+#question_box{
+    min-height:10px;
+}
+
+.naire_title {
+    font-size: 18px;
+    color: #4C4C4C;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.naire_hint {
+    font-size: 16px;
+    margin-top: 20px;
+    color: #666666;
+}
+
+.naire_hr {
+    height: 3px;
+    background: #53a4f4;
+    margin-top:20px;
+}
+
+.naire_item {
+   margin-top:30px;
+}
+
+.naire_item_title {
+    font-size: 16px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+
+.naire_must {
+    color: #ff6d56;
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.naire_item_input,
+.naire_item_items {
+    padding-left: 15px;
+}
+
+.naire_item_input input {
+    border: 1px solid #dbdbdb;
+    width: 300px;
+    padding: 2px 5px;
+    font-size:14px;
+}
+
+.naire_item_items input {
+    height: 17px;
+    width: 18px;
+    position: relative;
+    display: inline-block;
+    top: 3px;
+    margin-right: 5px;
+    cursor:pointer;
+}
+
+.radio_item {
+    padding-bottom: 5px;
+}
+
+.checkbox_item{
+    padding-bottom:5px;
+}
+
+.btn_submit{
+    width:104px;
+    margin-left:20px;
+    margin-top:30px;
+}
+
+.naire_support{
+    width:300px;
+    text-align:center;
+    margin:30px auto;
+}

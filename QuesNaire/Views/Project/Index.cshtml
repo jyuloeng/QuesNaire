@@ -9,9 +9,77 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Css/base.css" rel="stylesheet" type="text/css" />
+    <link href="~/Css/project.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div> 
+    <div id="naire" class="naire">
+        <!--    问卷标题-->
+        <div id="naire_title" class="naire_title"></div>
+        <!--    问卷示意-->
+        <div id="naire_hint" class="naire_hint"></div>
+        <hr class="naire_hr" />
+
+        <!--    题目-->
+        <div id="question_box">
+
+        </div>
+
+        <!--    填空题-->
+        @*<div class="naire_item" data-item="question" data-type="input">
+
+            <div class="naire_item_title">1.这是题目<span class="naire_must">*</span></div>
+
+            <div class="naire_item_input">
+                <input type="text" data-question-item="input" class="input_item" />
+            </div>
+        </div>*@
+
+        <!--    单选题-->
+        @*<div class="naire_item" data-item="question" data-type="radio">
+
+            <div class="naire_item_title">2.这是题目<span class="naire_must">*</span></div>
+
+            <div class="naire_item_items" id="naire_item_items">
+                <div class="radio_item">
+                    <input type="radio" name="" data-question-item="radio" /><span class="item_value">111</span>
+                </div>
+
+                <div class="radio_item">
+                    <input type="radio" name="" data-question-item="radio" /><span class="item_value">111</span>
+                </div>
+            </div>
+        </div>*@
+
+        <!--    多选题-->
+        @*<div class="naire_item" data-item="question" data-type="checkbox">
+
+            <div class="naire_item_title">3.这是题目<span class="naire_must">*</span></div>
+
+            <div class="naire_item_items" id="naire_item_items">
+                <div class="checkbox_item">
+                    <input type="checkbox" name="" data-question-item="duoxann" /><span class="item_value">111</span>
+                </div>
+
+            </div>
+            <div class="naire_item_items" id="naire_item_items">
+                <div class="checkbox_item">
+                    <input type="checkbox" name="" data-question-item="duoxann" /><span class="item_value">111</span>
+                </div>
+
+            </div>
+        </div>*@
+
+        <button type="submit" class="btn btn-info btn_submit" id="btn_submit">提交</button>
     </div>
+    <div class="naire_support">TeamAlbm提供技术支持</div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Js/project.js"></script>
 </body>
 </html>

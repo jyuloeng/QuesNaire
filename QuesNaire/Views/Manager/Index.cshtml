@@ -232,45 +232,35 @@
             <!--    个人信息修改-->
             <div class="edit_admin_info">
 
-                <!--    头像修改-->
-                <div class="admin_avatar">
-                    <img src="~/Images/132.png"/>
-                    <button class="btn btn-primary btn_change_admin_avatar" id="btn_change_admin_avatar">更换头像</button>
-                </div>
                 <!--    账号信息修改-->
                 <div class="admin_info">
                     <div class="admin_info_title">
                         账号信息
-                        <span>修改</span>
+                        <span id="btn_admin_info_change">修改</span>
                     </div>
-                    <div class="admin_info_item">
-                        <span>账号：</span><span>793523185@qq.com</span>
+                    <div class="admin_info_item" style="margin-top:40px;">
+                        <span class="item_name">账号：</span><span>793523185@qq.com</span>
                     </div>
                     <!--    正常状态-->
-                    <div class="item_wrap_normal">
+                    <div class="item_wrap_normal" id="item_wrap_normal">
                         <div class="admin_info_item">
-                            <span>用户昵称：</span><span>odd</span>
+                            <span  class="item_name">用户昵称：</span><span>odd</span>
                         </div>
                         <div class="admin_info_item">
-                            <span>密码：</span><span>123456</span><span>显示密码</span>
+                            <span class="item_name">密码：</span><span>123456</span><span class="display">显示密码</span>
                         </div>
                     </div>
                     <!--    编辑状态-->
-                    <div class="item_wrap_edit">
+                    <div class="item_wrap_edit admin_info_hidden" id="item_wrap_edit">
                         <div class="admin_info_item">
-                            <span>用户昵称：</span><input/>
+                            <span class="item_name">用户昵称：</span><input type="text" class="form-control input_edit"/>
                         </div>
                         <div class="admin_info_item">
-                            <span>密码：</span><input />
+                            <span class="item_name">密码：</span><input type="password" class="form-control input_edit" />
                         </div>
-                        <button type="button" class="btn btn-primary btn_edit_info">完成修改</button>
+                        <button type="button" class="btn btn-primary btn_edit_info" id="btn_finish_edit">完成修改</button>
                     </div>
                 </div>
-
-            </div>
-
-            <!--    添加管理员-->
-            <div class="add_admin_info">
 
             </div>
         </div>
@@ -325,7 +315,7 @@
     <script src="~/Content/dist/locale/bootstrap-table-zh-CN.min.js"></script>
 
     <script>
-        //$('#table').bootstrapTable({
+        //$('#table2').bootstrapTable({
         //    url: '/json/data.json',        // 表格数据来源
         //    pagination: true,   //  分页
         //    search: true,       //  搜索

@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -299,7 +300,6 @@
     <Content Include="Css\project.css" />
     <Content Include="Css\project_list_layout.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\materialdesignicons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\132.png" />
     <Content Include="Images\arrow_left.jpg" />
@@ -394,10 +394,14 @@
     <Content Include="Js\register_layout.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="fonts\materialdesignicons.eot" />
-    <Content Include="fonts\materialdesignicons.ttf" />
-    <Content Include="fonts\materialdesignicons.woff" />
-    <Content Include="fonts\materialdesignicons.woff2" />
+    <Content Include="App_Code\user_info.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>user_info.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="App_Code\user_info.dbml.layout">
+      <DependentUpon>user_info.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -408,6 +412,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\user_info.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>user_info.dbml</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EditProjectController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -451,6 +460,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

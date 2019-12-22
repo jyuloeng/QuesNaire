@@ -41,11 +41,11 @@
             <input type="tel" class="form-control" id="reg_input_password_ag">
         </div>
         <div class="checkbox">
-            <i></i>
+            <i onclick="accept()"></i>
             <span>我接受</span>
             <a href="#">问卷网服务协议</a>
         </div>
-        <button type="submit" class="btn btn-primary btn_register">立即注册</button>
+        <button id="register" type="submit" class="btn btn-primary btn_register" onclick="register()" disabled="disabled">立即注册</button>
     </div>
 </div>
 
@@ -53,3 +53,50 @@
     <span>第三方登录&nbsp;或</span>
     <a href="#" class="link_register">问卷网账号登录</a>
 </div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function accept() {
+        if (document.getElementById("register").disabled == true)
+            document.getElementById("register").disabled = false;
+        else
+            document.getElementById("register").disabled = true;
+    }
+    function register() {
+        if (document.getElementById("reg_input_password").value != document.getElementById("reg_input_password_ag").value) {
+            console.log("密码不一致");
+            return;
+        }
+        var account;
+        var password;
+        var name;
+        var x = document.getElementById("tab_phone");
+        if (x.className == "active") {
+            account = document.getElementById("reg_input_phone").value;
+        }
+        else {
+            account = document.getElementById("reg_input_email").value;
+        }
+        name = document.getElementById("reg_input_name").value;
+        password = document.getElementById("reg_input_password_ag").value
+        if (account == "" || password == "" || name == "") {
+            return;
+        }axios.post('../Register/register_info', {
+            account: account,
+            password: password,
+            name: name
+             })
+            .then(function (response) {
+                console.log(response.data);
+                var id = response.data
+                if (id != "0") {
+                    window.location.href = "../ProjectList/Index?id="+id;
+                }
+                    
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+       
+        
+    }
+</script>

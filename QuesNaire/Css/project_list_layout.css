@@ -2,7 +2,7 @@
     color: #666666;
     font-size: 14px;
     line-height: 1.5;
-    background: #EFEFEF;
+    background: #f7f8fa;
 }
 
 .nav_wrap {
@@ -71,7 +71,7 @@
 
 
 .line_blue {
-    bottom: -18px;
+    bottom: -19px;
     background: #2672ff;
     height: 2px;
     width: 56px;
@@ -140,7 +140,7 @@
     width: 50%;
     height: 470px;
     float: left;
-    border-right: 2px solid #434a5d;
+    border-right: 1px solid #434a5d;
 }
 
 .base_info_title{
@@ -221,4 +221,319 @@
 
 .base_info_hidden {
     display: none;
+}
+
+.project_nav {
+    height: 28px;
+    line-height: 28px;
+    margin: 54px 0 4px 0;
+}
+
+.project_wrap{
+    width:1188px;
+    margin:0 auto;
+}
+
+.nav_tab {
+    float: left;
+    width: 73px;
+    height: 30px;
+    line-height: 30px;
+    background: #FFFFFF;
+    border-radius: 2px;
+    border: 1px solid #EAEAEA;
+    color: #707070;
+}
+
+.tab_card_view,
+.tab_list_view {
+    display: inline-block;
+    width: 46%;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    padding-left: 2px;
+}
+
+.tab_card_view:hover,
+.tab_list_view:hover,
+.nav_tab_active {
+    color: #2672ff;
+}
+
+.nav_search {
+    float: left;
+    margin-left: 6px;
+    width: 160px;
+    height: 30px;
+    line-height: 30px;
+    background: #FFFFFF;
+    border-radius: 2px;
+    position:relative;
+}
+
+.nav_search i {
+    position: absolute;
+    top: 30%;
+    left: 11px;
+    cursor: pointer;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-position: left top;
+    background-size: 36px auto;
+}
+
+
+.nav_search i:hover {
+    color: #2672ff;
+}
+
+.search_input {
+    padding-right: 34px;
+    padding-left: 34px;
+    width: 160px;
+    height: 30px;
+    font-size: 12px;
+    color: #484848;
+    outline: 0;
+    border: 1px solid #EAEAEA;
+}
+
+.nav_recycle {
+    float: right;
+    margin-right: 16px;
+    width: 82px;
+    height: 30px;
+    line-height: 30px;
+    background: #FFFFFF;
+    border-radius: 2px;
+    border: 1px solid #EAEAEA;
+    font-size: 12px;
+    color: #707070;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.nav_recycle i{
+    margin-right:3px;
+}
+
+.nav_recycle:hover {
+    color: #2672ff;
+}
+
+.project_list{
+    min-height:380px;
+}
+.card_li:first-child {
+    padding: 0;
+}
+.card_li {
+    position: relative;
+    width: 279px;
+    height: 176px;
+    background: rgba(255,255,255,1);
+    box-shadow: -2px 4px 5px 0px rgba(0,0,0,0.06);
+    float: left;
+    border-radius: 4px;
+    margin-top: 18px;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin-right: 18px;
+    padding: 18px;
+}
+
+.create_project {
+    display: block;
+    color: #2672ff;
+    font-size: 15px;
+    position: relative;
+    top: 50%;
+    height: 30px;
+    line-height: 30px;
+    transform: translateY(-15px);
+}
+
+.list_title {
+    max-height: 45px;
+    width: 185px;
+    text-align: left;
+    color: #484848;
+    font-size: 14px;
+}
+
+.list_title_icon {
+    background: #eef4ff;
+    color: #83ADFF;
+    height: 20px;
+    border-radius: 2px;
+    line-height: 20px;
+    text-align: center;
+    padding: 0 6px;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+}
+
+.project_state {
+    text-align: left;
+    margin-top: 6px;
+}
+
+.state_unpublished {
+    color: #FFBE3A;
+}
+
+.state_published {
+    color: #00BF6F;
+}
+
+.project_details {
+    position: absolute;
+    height: 46px;
+    line-height: 46px;
+    left: 0px;
+    bottom: 0px;
+    width: 279px;
+    padding: 0 18px;
+    box-sizing: border-box;
+    text-align: left;
+    color: #AAAAAA;
+}
+
+.total_collection {
+    display: inline-block;
+    width: 184px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.edit_time {
+    float: right;
+}
+
+.operate_bar {
+    position: absolute;
+    height: 46px;
+    line-height: 46px;
+    left: 0px;
+    bottom: 0px;
+    width: 279px;
+    padding: 0 18px;
+    box-sizing: border-box;
+    text-align: left;
+    background: rgba(247,248,250,1);
+    border-radius: 0px 0px 2px 2px;
+    display:none;
+}
+
+.operate_type {
+    display: inline-block;
+    margin-right: 10px;
+    cursor:pointer;
+}
+
+.operate_type:hover {
+    color: #2672ff;
+}
+
+.operate_type:nth-child(3) {
+    margin-right: 44px;
+}
+
+.card_li:hover .operate_bar{
+    display:block;
+}
+
+.project_list_hidden{
+    display:none;
+}
+
+.list_wrap {
+    padding: 0px;
+    background: #FEFEFE;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.05);
+    border-radius: 4px;
+    margin-top:18px;
+}
+
+.list_table_list {
+    border-collapse: collapse;
+    border-radius: 4px;
+    width:100%;
+}
+
+.list_table_list tr {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #F3F3F3;
+    font-size: 14px;
+    color: #707070;
+}
+
+.table_header {
+    background-color: #ffffff;
+    font-weight: 500;
+}
+
+.table_list_title {
+    padding: 0 10px 0 36px;
+    box-sizing: border-box;
+    text-align: left;
+    width: 22%;
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 30px;
+    vertical-align: middle;
+}
+
+.table_list_state {
+    width: 8%;
+    text-align: center;
+}
+
+.table_list_collection {
+    width: 8%;
+    text-align:center;
+}
+
+.table_list_create_time {
+    width: 12%;
+    text-align: center;
+}
+
+.table_list_edit_time {
+    width: 12%;
+    text-align: center;
+}
+
+.table_list_operate {
+    width: 18%;
+}
+
+.table_tab .table_list_title{
+    cursor:pointer;
+}
+
+.table_tab:hover {
+    background: #f7f8fa;
+}
+
+.table_list_operate .operate_type {
+    color: #2672ff;
+}
+
+.table_list_operate .operate_type:last-child{
+    color:#707070;
+}
+
+.table_list_operate .operate_type:last-child:hover {
+    color: #2672ff;
 }

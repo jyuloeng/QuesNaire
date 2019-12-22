@@ -44,6 +44,118 @@
     <!--    我的项目-->
     <div class="section_project" id="section_project">
 
+        <div class="project_wrap">
+            <div class="project_nav">
+                <!--    切换布局-->
+                <div class="nav_tab">
+                    <div class="tab_card_view nav_tab_active" id="tab_card_view">
+                        <i class="glyphicon glyphicon-th-large"></i>
+                    </div>
+                    <span style="display:inline-block;float:left;line-height: 27px;padding-left: 1px;">|</span>
+                    <div class="tab_list_view" id="tab_list_view">
+                        <i class="glyphicon glyphicon-list"></i>
+                    </div>
+                </div>
+                <!--    搜索栏-->
+                <div class="nav_search">
+                    <i class="glyphicon glyphicon-search"></i>
+                    <input type="text" class="search_input"/>
+                </div>
+                <!--    回收站-->
+                <div class="nav_recycle">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>回收站</span>
+                </div>
+            </div>
+
+            <div class="project_list">
+                <!--    网格布局-->
+                <div class="card_wrap" id="card_wrap">
+                    <ul class="card_ul_list">
+                        <li class="card_li">
+                            <a href="#" style="height: 100%;display: block;text-align: center;">
+                                <div class="create_project">
+                                    <i class="glyphicon glyphicon-plus" style="margin-right: 5px;"></i>
+                                    <span>新建项目</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!--     网格li布局-->
+                        <li class="card_li">
+                            <div class="project_title">
+                                <div class="list_title_wrap">
+                                    <span class="list_title">问卷标题</span>
+                                    <span class="list_title_icon">问卷</span>
+                                </div>
+                                <div class="project_state state_unpublished">未发布</div>
+                            </div>
+                            <div class="project_details">
+                                <span class="total_collection">0份数据</span>
+                                <span class="edit_time">6分钟前</span>
+                            </div>
+                            <!--    操作按钮-->
+                            <div class="operate_bar">
+                                <div class="operate_type">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                    <span>编辑</span>
+                                </div>
+                                <div class="operate_type">
+                                    <i class="glyphicon glyphicon-send"></i>
+                                    <span>发布</span>
+                                </div>
+                                <div class="operate_type">
+                                    <i class="glyphicon glyphicon-stats"></i>
+                                    <span>数据</span>
+                                </div>
+                                <div class="operate_type">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                    <span>回收</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--    列表布局-->
+                <div class="list_wrap project_list_hidden" id="list_wrap">
+                    <table class="list_table_list">
+                        <tbody>
+                            <tr class="table_header">
+                                <td class="table_list_title">标题</td>
+                                <td class="table_list_state">收集状态</td>
+                                <td class="table_list_collection">收到数据</td>
+                                <td class="table_list_create_time">创建时间</td>
+                                <td class="table_list_edit_time">更新时间</td>
+                                <td class="table_list_operate">操作</td>
+                            </tr>
+
+                            <!--    列表li布局-->
+                            <tr class="table_tab">
+                                <td class="table_list_title">问卷标题</td>
+                                <td class="table_list_state state_unpublished">未发布</td>
+                                <td class="table_list_collection">0</td>
+                                <td class="table_list_create_time">2019-12-19</td>
+                                <td class="table_list_edit_time">1小时前</td>
+                                <td class="table_list_operate">
+                                    <div class="operate_type">编辑</div>
+                                    <div class="operate_type">发布</div>
+                                    <div class="operate_type">数据</div>
+
+                                    <div class="operate_type">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            
+        </div>
+        
     </div>
 
     <!--    我的信息-->

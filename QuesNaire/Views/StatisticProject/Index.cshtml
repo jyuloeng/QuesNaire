@@ -13,6 +13,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Css/base.css" rel="stylesheet" type="text/css" />
     <link href="~/Css/edit_publish_static_project_top_layout.css" rel="stylesheet" type="text/css" />
+    <link href="~/Css/statistic_layout.css" rel="stylesheet" type="text/css"/>
 
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
@@ -50,8 +51,96 @@
         <div class="clearfix"></div>
     </div>
 
+    <!--    问卷头部-->
+    <div class="naire_header">
+        <div class="naire_header_top">
+            <div class="naire_title">🍓23号爱心义卖满意度调查问卷</div>
+
+            <button class="btn btn-info btn_stop" id="btn_stop">停止收集</button>
+            <div class="naire_number_wrap">
+                当前已收集问卷<span class="naire_number">43份</span>
+            </div>
+
+        </div>
+        <div class="naire_header_bottom">
+            <div class="naire_edit_time_wrap">
+                最后更新时间：<span class="naire_edit_time">2019-12-22 22:36:21</span>
+            </div>
+            <div class="default_chat">基本图表</div>
+        </div>
+    </div>
+
+    <!--    问卷体-->
+    <div class="naire_body">
+        <div class="naire_item">
+            <div class="naire_title_wrap">
+                <!--    问卷标题-->
+                <span class="naire_item_title">Q1:活动举办日期选择方面(单选题)</span>
+                <!--    问卷类型-->
+                <div class="naire_chart_type">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            图表类型 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">饼图</a></li>
+                            <li><a href="#">圆环图</a></li>
+                            <li><a href="#">柱形图</a></li>
+                            <li><a href="#">折线图</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            显示设置 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">隐藏图表</a></li>
+                            <li><a href="#">隐藏数据</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+            </div>
+
+            <div class="naire_chart">
+                <canvas id="myChart" width="400" height="300"></canvas>
+            </div>
+
+            <div class="naire_data">
+
+            </div>
+        </div>
+    </div>
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script type="text/javascript">
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'pie',
+
+            // The data for our dataset
+            data: {
+                labels: ['00：00', '03：00', '06：00', '9：00', '12：00', '15：00', '18：00', '21：00'],
+                datasets: [{
+                    label: '24小时内问卷数',
+                    backgroundColor: '#016886',
+                    borderColor: '#016886',
+                    data: [0, 10, 5, 2, 20, 10, 25, 13]
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    </script>
 </body>
 </html>

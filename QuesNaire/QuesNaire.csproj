@@ -299,6 +299,8 @@
     <Content Include="Css\manager_login_layout.css" />
     <Content Include="Css\project.css" />
     <Content Include="Css\project_list_layout.css" />
+    <Content Include="Css\publish_project_layout.css" />
+    <Content Include="Css\statistic_layout.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\132.png" />
@@ -391,6 +393,7 @@
     <Content Include="Images\women.png" />
     <Content Include="Js\edit_project_layout.js" />
     <Content Include="Js\project_list_layout.js" />
+    <Content Include="Js\publish_project.js" />
     <Content Include="Js\register_layout.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

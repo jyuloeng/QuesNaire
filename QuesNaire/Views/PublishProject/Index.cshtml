@@ -13,7 +13,8 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Css/base.css" rel="stylesheet" type="text/css" />
     <link href="~/Css/edit_publish_static_project_top_layout.css" rel="stylesheet" type="text/css" />
-
+    <link href="~/Css/publish_project_layout.css" rel="stylesheet" type="text/css"/>
+    
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
@@ -50,8 +51,30 @@
         <div class="clearfix"></div>
     </div>
 
+    <div class="share_wrap">
+        <div class="share_title">项目分享</div>
+        <div class="share_info">
+            <div class="info_left">
+                <div class="info_title">分享链接</div>
+                <div class="info_wrap">
+                    <div class="share_link">https://www.wenjuan.com/s/aQzIFn/</div>
+                    <button class="share_copy btn btn-primary">复制</button>
+                    <button class="share_open btn btn-default">打开</button>
+                </div>
+            </div>
+            <div class="info_right" id="btn_state">
+                <div class="btn_state" id="state_bg">
+                    <i id="state_icon" class="icon_state glyphicon glyphicon-play"></i>
+                </div>
+                <div class="state_title" id="state_title">开始发布</div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Js/publish_project.js"></script>
 </body>
 </html>

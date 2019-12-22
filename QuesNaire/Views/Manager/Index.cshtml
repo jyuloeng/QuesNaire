@@ -22,7 +22,7 @@
     <!--    左边导航栏-->
     <nav class="nav_wrap">
         <div class="nav_title">
-            TeamAlbm 问卷网后台管理系统
+            <img src="~/Images/logo_blue.png" style="height:70%;margin-top:10px;"/>
         </div>
         <div class="nav_item nav_item_active">
             <i class="glyphicon glyphicon-home"></i>
@@ -50,6 +50,10 @@
         <div class="nav_item">
             <i class="glyphicon glyphicon-user"></i>
             <span>用户管理</span>
+        </div>
+        <div class="nav_item">
+            <i class="glyphicon glyphicon-wrench"></i>
+            <span>个人信息管理</span>
         </div>
     </nav>
 
@@ -86,8 +90,8 @@
                 <div class="index_top_item">
                     <img src="~/Images/v201911-scene-01.png" />
                     <div class="context_wrap">
-                        <span class="context_title">问卷总数</span>
-                        <span class="context_number">1999</span>
+                        <span class="context_title">提交总数</span>
+                        <span class="context_number">888</span>
                     </div>
                 </div>
                 <div class="index_top_item">
@@ -222,6 +226,44 @@
         <div class="user_manager_layout layout_item">
             user_manager_layout
         </div>
+
+        <!--    个人信息管理-->
+        <div class="admin_manager_layout layout_item">
+            <!--    个人信息修改-->
+            <div class="edit_admin_info">
+
+                <!--    账号信息修改-->
+                <div class="admin_info">
+                    <div class="admin_info_title">
+                        账号信息
+                        <span id="btn_admin_info_change">修改</span>
+                    </div>
+                    <div class="admin_info_item" style="margin-top:40px;">
+                        <span class="item_name">账号：</span><span>793523185@qq.com</span>
+                    </div>
+                    <!--    正常状态-->
+                    <div class="item_wrap_normal" id="item_wrap_normal">
+                        <div class="admin_info_item">
+                            <span  class="item_name">用户昵称：</span><span>odd</span>
+                        </div>
+                        <div class="admin_info_item">
+                            <span class="item_name">密码：</span><span>123456</span><span class="display">显示密码</span>
+                        </div>
+                    </div>
+                    <!--    编辑状态-->
+                    <div class="item_wrap_edit admin_info_hidden" id="item_wrap_edit">
+                        <div class="admin_info_item">
+                            <span class="item_name">用户昵称：</span><input type="text" class="form-control input_edit"/>
+                        </div>
+                        <div class="admin_info_item">
+                            <span class="item_name">密码：</span><input type="password" class="form-control input_edit" />
+                        </div>
+                        <button type="button" class="btn btn-primary btn_edit_info" id="btn_finish_edit">完成修改</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 
@@ -273,35 +315,35 @@
     <script src="~/Content/dist/locale/bootstrap-table-zh-CN.min.js"></script>
 
     <script>
-        $('#table').bootstrapTable({
-            url: '/json/data.json',        // 表格数据来源
-            pagination: true,   //  分页
-            search: true,       //  搜索
-            sorting: true,       //  排序
-            height:"500",
-            columns: [{
-                field: 'id',
-                title: 'Item ID'
-            }, {
-                field: 'name',
-                title: 'Item Name'
-            }, {
-                field: 'price',
-                title: 'Item Price'
-            }, {
-                field: 'column1',
-                title: '列1'
-            }, {
-                field: 'column2',
-                title: '列2'
-            }, {
-                field: 'column3',
-                title: '列3'
-            }, {
-                field: 'column4',
-                title: '列4'
-            }]
-        });
+        //$('#table2').bootstrapTable({
+        //    url: '/json/data.json',        // 表格数据来源
+        //    pagination: true,   //  分页
+        //    search: true,       //  搜索
+        //    sorting: true,       //  排序
+        //    height:"500",
+        //    columns: [{
+        //        field: 'id',
+        //        title: 'Item ID'
+        //    }, {
+        //        field: 'name',
+        //        title: 'Item Name'
+        //    }, {
+        //        field: 'price',
+        //        title: 'Item Price'
+        //    }, {
+        //        field: 'column1',
+        //        title: '列1'
+        //    }, {
+        //        field: 'column2',
+        //        title: '列2'
+        //    }, {
+        //        field: 'column3',
+        //        title: '列3'
+        //    }, {
+        //        field: 'column4',
+        //        title: '列4'
+        //    }]
+        //});
     </script>
 </body>
 </html>

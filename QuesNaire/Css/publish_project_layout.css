@@ -1,0 +1,118 @@
+﻿body {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #484848;
+    text-align: left;
+    background-color: #f3f5f6;
+}
+
+.share_wrap {
+    width: 800px;
+    margin: 100px auto;
+    padding-top:150px;
+    margin-top: 10px;
+}
+
+.share_info {
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+    border-radius: 4px;
+    padding: 30px 0 30px 36px;
+    margin-top: 15px;
+}
+
+.share_title {
+    line-height: 24px;
+    height: 24px;
+    font-size: 17px;
+    color: rgba(72,72,72,1);
+}
+
+.info_left{
+    float:left;
+}
+
+.info_title {
+    font-size: 14px;
+    color: rgba(72,72,72,1);
+    line-height: 21px;
+    height: 21px;
+}
+
+.info_wrap {
+    padding: 10px 0;
+    position: relative;
+}
+
+.share_link {
+    width: 300px;
+    font-size: 12px;
+    color: rgba(72,72,72,1);
+    height: 35px;
+    line-height: 35px;
+    background: rgba(247,248,250,1);
+    border-radius: 2px 0px 0px 2px;
+    border: 1px solid rgba(216,216,216,1);
+    box-shadow: none;
+    padding-left:10px;
+    display:inline-block;
+}
+
+.share_copy,
+.share_open {
+    display: inline-block;
+    margin-right: 7px;
+    border-radius: 0 2px 2px 0;
+    height: 35px;
+    min-width: 80px;
+}
+
+.share_copy {
+    background: #2672ff;
+    border: 1px solid #2672ff;
+    position: absolute;
+    left: 300px;
+}
+
+.share_open {
+    color: #2672ff;
+    position: absolute;
+    left: 390px;
+}
+
+.info_right {
+    float: right;
+    margin-top: 10px;
+    margin-right: 50px;
+    padding-left: 50px;
+    border-left: 1px dashed #999999;
+}
+
+.btn_state {
+    width: 63px;
+    height: 63px;
+    border-radius: 2px;
+    background-color: #2672ff;
+    border: none;
+    cursor: pointer;
+}
+
+.icon_state {
+    font-size: 23px;
+    width: 18px;
+    height: 18px;
+    color: white;
+    text-align: center;
+    margin: 19px;
+    padding-left: 2px;
+}
+
+.state_title {
+    color: #484848;
+    font-size: 12px;
+    cursor: pointer;
+    text-align:center;
+    margin-top:5px;
+}

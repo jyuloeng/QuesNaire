@@ -200,9 +200,9 @@
 
             <div class="avatar_info">
                 <div class="avatar_img">
-                    <img src="~/Images/132.png" id="user_avatar"/>
+                    <img src="~/Images/132.png" id="user_avatar" />
                 </div>
-                <button class="btn_change_avatar btn-primary btn">更换头像</button>
+                <button class="btn_change_avatar btn-primary btn" id="changeAvatar">更换头像</button>
             </div>
         </div>
     </div>
@@ -228,6 +228,18 @@
         if (getCookie('user_avatar') != "") {
              document.getElementById('user_avatar').src = getCookie("user_avatar")
         }
+        var file; // 定义一个全局变量，为一个文本选择器。
+        file = $('<input type="file" />'); // 这样file就是jquery创建的一个文本选择器，但是因为我们并没有把它加载到页面山，所以是不可见的。
+        $('#changeAvatar').click(function(){
+		// 启动文件选择
+		file.click();
+        });
+        var select_file
+        file.change(function(e){
+            select_file = file[0].files[0];
+            console.log(select_file)
+	})
+        
     </script>
 </body>
 </html>

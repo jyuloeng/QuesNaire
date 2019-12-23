@@ -1,0 +1,108 @@
+﻿.naire_header {
+    height: 112px;
+}
+
+.naire_header_top{
+    height:70px;
+    line-height:70px;
+    padding-left:22px;
+}
+
+.naire_title {
+    font-size: 16px;
+    color: #4c4c4c;
+    margin-right: 15px;
+    display:inline-block;
+}
+
+.naire_number_wrap {
+    margin: 15px 15px 0 0;
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    width: 420px;
+    padding-right: 20px;
+    text-align: right;
+    color: #828282;
+    font-weight:500;
+}
+
+.naire_number {
+    padding: 0 0 0 15px;
+    font-size: 18px;
+    color: #0099FF;
+}
+
+.btn_stop {
+    float: right;
+    border-radius: 2px;
+    color: #0099FF;
+    height: 29px;
+    line-height: 28px;
+    border: 1px solid #0099FF;
+    padding: 0px 1.5em;
+    background: #fff;
+    margin-right: 60px;
+    margin-top: 21px;
+}
+
+.naire_header_bottom {
+    background: #FAFBFB;
+    position: relative;
+    height: 42px;
+    line-height: 42px;
+    border-top: 1px solid #EFF0F0;
+    border-bottom: 1px solid #EFF0F0;
+}
+.naire_edit_time_wrap {
+    display: inline-block;
+    padding-left: 20px;
+    line-height: 40px;
+    color: #828282;
+}
+
+.default_chat {
+    display: inline-block;
+    float: right;
+    color: #585858;font-size:14px;
+    margin-right:83px;
+}
+
+.naire_body {
+    margin: 20px auto 0;
+    width: 930px;
+    min-height: 450px;
+    margin-bottom: 20px;
+}
+
+.naire_item {
+    border: 1px #dbdbdb solid;
+    background-color: #fff;
+}
+
+.naire_title_wrap {
+    background-color: #FAFAFA;
+    padding: 5px 10px;
+    color: #4c4c4c;
+    line-height: 32px;
+    font-size:14px;
+}
+
+.naire_item_title{
+    float:left;
+}
+
+.naire_chart_type{
+    float:right;
+}
+
+
+
+.naire_chart {
+    text-align: center;
+    color: #4c4c4c;
+    margin: 0 auto;
+    width: 470px;
+    padding: 10px 10px;
+}

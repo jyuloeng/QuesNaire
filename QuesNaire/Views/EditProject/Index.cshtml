@@ -167,7 +167,7 @@
                                             添加单个选项
                                         </div>
                                         <!--删除选项-->
-                                        <div class="operate_delete" onclick="Delect_Itrm(this)">
+                                        <div class="operate_delete" onclick="Delect_Item(this)">
                                             <i class="delete_icon glyphicon glyphicon-remove"></i>
                                             删除最后选项
                                         </div>
@@ -212,7 +212,7 @@
                                             添加单个选项
                                         </div>
                                         <!--删除选项-->
-                                        <div class="operate_delete" onclick="Delect_Itrm(this)">
+                                        <div class="operate_delete" onclick="Delect_Item(this)">
                                             <i class="delete_icon glyphicon glyphicon-remove"></i>
                                             删除最后选项
                                         </div>
@@ -288,7 +288,7 @@
                                             添加单个选项
                                         </div>
                                         <!--删除选项-->
-                                        <div class="operate_delete" onclick="Delete_select(this)">
+                                        <div class="operate_delete" onclick="Delect_Item(this)">
                                             <i class="delete_icon glyphicon glyphicon-remove"></i>
                                             删除最后选项
                                         </div>
@@ -510,29 +510,29 @@
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
-                                            <li class="option_item" data-question-item="Radio">
+                                            <li class="option_item">
                                                 <img src="~/Images/single_seletion.png" />
-                                                <div>小学及以下</div>
+                                                <div contenteditable="true"  data-question-item="Radio">小学及以下</div>
                                             </li>
                                             <li class="option_item" data-question-item="Radio">
                                                 <img src="~/Images/single_seletion.png" />
-                                                <div>初中</div>
+                                                <div contenteditable="true" data-question-item="Radio">初中</div>
                                             </li>
                                             <li class="option_item" data-question-item="Radio">
                                                 <img src="~/Images/single_seletion.png" />
-                                                <div>高中/中专/技校</div>
+                                                <div contenteditable="true" data-question-item="Radio">高中/中专/技校</div>
                                             </li>
                                             <li class="option_item" data-question-item="Radio">
                                                 <img src="~/Images/single_seletion.png" />
-                                                <div>大学专科</div>
+                                                <div contenteditable="true" data-question-item="Radio">大学专科</div>
                                             </li>
                                             <li class="option_item" data-question-item="Radio">
                                                 <img src="~/Images/single_seletion.png" />
-                                                <div>大学本科</div>
+                                                <div contenteditable="true" data-question-item="Radio">大学本科</div>
                                             </li>
                                             <li class="option_item" data-question-item="Radio">
                                                 <img src="~/Images/single_seletion.png" />
-                                                <div>硕士研究生及以上</div>
+                                                <div contenteditable="true" data-question-item="Radio">硕士研究生及以上</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -544,7 +544,7 @@
                                             添加单个选项
                                         </div>
                                         <!--删除选项-->
-                                        <div class="operate_delete" onclick="Delete_select(this)">
+                                        <div class="operate_delete" onclick="Delect_Item(this)">
                                             <i class="delete_icon glyphicon glyphicon-remove"></i>
                                             删除最后选项
                                         </div>
@@ -597,49 +597,49 @@
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul" style="width:400px;margin-left:80px;">
-                                            <li class="option_item" style="margin-top:5px">
-                                                <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_1" style="margin-left:30px;line-height:30px" data-question-item="Radio">在校学生</div>
+                                            <li class="option_item">
+                                                <img src="~/Images/single_seletion.png" />
+                                                <div contenteditable="true" data-question-item="Radio">在校学生</div>
                                             </li>
-                                            <li class="option_item" style="margin-top:5px">
-                                                <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_2" style="margin-left:30px;line-height:30px" data-question-item="Radio">政府/机关干部/公务员</div>
+                                            <li class="option_item">
+                                                <img src="~/Images/single_seletion.png"/>
+                                                <div contenteditable="true" data-question-item="Radio">政府/机关干部/公务员</div>
                                             </li>
-                                            <li class="option_item" style="margin-top:5px">
-                                                <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_3" style="margin-left:30px;line-height:30px" data-question-item="Radio">企业管理者（包括基层及中高层管理者）</div>
+                                            <li class="option_item">
+                                                <img src="~/Images/single_seletion.png"/>
+                                                <div contenteditable="true" data-question-item="Radio">企业管理者（包括基层及中高层管理者）</div>
                                             </li>
-                                            <li class="option_item" style="margin-top:5px">
-                                                <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_4" style="margin-left:30px;line-height:30px" data-question-item="Radio">普通职员（办公室/写字楼工作人员）</div>
+                                            <li class="option_item" >
+                                                <img src="~/Images/single_seletion.png" />
+                                                <div contenteditable="true" data-question-item="Radio">普通职员（办公室/写字楼工作人员）</div>
                                             </li>
-                                            <li class="option_item" style="margin-top:5px">
-                                                <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_5" style="margin-left:30px;line-height:30px" data-question-item="Radio">专业人员（如医生/律师/文体/记者/老师等）</div>
+                                            <li class="option_item">
+                                                <img src="~/Images/single_seletion.png" />
+                                                <div contenteditable="true"  data-question-item="Radio">专业人员（如医生/律师/文体/记者/老师等）</div>
                                             </li>
-                                            <li class="option_item" style="margin-top:5px">
-                                                <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_6" style="margin-left:30px;line-height:30px" data-question-item="Radio">普通工人（如工厂工人/体力劳动者等）</div>
+                                            <li class="option_item" >
+                                                <img src="~/Images/single_seletion.png" />
+                                                <div contenteditable="true" data-question-item="Radio">普通工人（如工厂工人/体力劳动者等）</div>
                                             </li>
-                                            <li class="option_item" style="margin-top:5px">
-                                                <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_7" style="margin-left:30px;line-height:30px" data-question-item="Radio">商业服务业职工（如销售人员/商店职员/服务员等）</div>
+                                            <li class="option_item" >
+                                                <img src="~/Images/single_seletion.png" />
+                                                <div contenteditable="true"  data-question-item="Radio">商业服务业职工（如销售人员/商店职员/服务员等）</div>
                                             </li>
-                                            <li class="option_item" style="margin-top:5px">
-                                                <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_8" style="margin-left:30px;line-height:30px" data-question-item="Radio">个体经营者/承包商</div>
+                                            <li class="option_item" >
+                                                <img src="~/Images/single_seletion.png" />
+                                                <div contenteditable="true"  data-question-item="Radio">个体经营者/承包商</div>
                                             </li>
-                                            <li class="option_item" style="margin-top:5px">
-                                                <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_9" style="margin-left:30px;line-height:30px" data-question-item="Radio">自由职业者</div>
+                                            <li class="option_item" >
+                                                <img src="~/Images/single_seletion.png"  />
+                                                <div contenteditable="true"  data-question-item="Radio">自由职业者</div>
                                             </li>
-                                            <li class="option_item" style="margin-top:5px">
-                                                <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_10" style="margin-left:30px;line-height:30px" data-question-item="Radio">退休</div>
+                                            <li class="option_item" >
+                                                <img src="~/Images/single_seletion.png"  />
+                                                <div contenteditable="true" data-question-item="Radio">退休</div>
                                             </li>
-                                            <li class="option_item" style="margin-top:5px">
-                                                <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_11" style="margin-left:30px;line-height:30px" data-question-item="Radio">暂无职业</div>
+                                            <li class="option_item" >
+                                                <img src="~/Images/single_seletion.png"  />
+                                                <div contenteditable="true" data-question-item="Radio">暂无职业</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -651,7 +651,7 @@
                                             添加单个选项
                                         </div>
                                         <!--删除选项-->
-                                        <div class="operate_delete" onclick="Delect_Itrm(this)">
+                                        <div class="operate_delete" onclick="Delect_Item(this)">
                                             <i class="delete_icon glyphicon glyphicon-remove"></i>
                                             删除最后选项
                                         </div>

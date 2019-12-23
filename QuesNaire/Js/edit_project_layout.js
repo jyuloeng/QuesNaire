@@ -201,47 +201,6 @@ function Select_question(obj) {
     question_Box.appendChild(clonedDiv);
 }
 
-////单选
-//function SingleSelect_question() {
-//    question_num++;
-//    single_num++;
-//    single_select[0].style.display = "block";
-//    var question_order = single_select[0].getElementsByClassName("question_order")[0];
-//    question_order.innerHTML = question_num;
-//    var clonedDiv = single_select[0].cloneNode(true);
-//    single_select[0].style.display = "none";
-
-//    clonedDiv.setAttribute("id", "single_select_" + single_num);
-//    question_Box.appendChild(clonedDiv);
-//}
-////多选
-//function Multiple_select_question() {
-//    question_num++;
-//    multiple_select_num++;
-//    multiple_select[0].style.display = "block";
-//    var question_order = multiple_select[0].getElementsByClassName("question_order")[0];
-//    question_order.innerHTML = question_num;
-//    var clonedDiv = multiple_select[0].cloneNode(true);
-//    multiple_select[0].style.display = "none";
-//    clonedDiv.setAttribute("id", "multiple_select_" + multiple_select_num);
-
-//    question_Box.appendChild(clonedDiv);
-//}
-////填空
-//function Blank_question() {
-//    question_num++;
-//    blank_select_num++;
-//    blank_select[0].style.display = "block";
-
-//    var question_order = blank_select[0].getElementsByClassName("question_order")[0];
-//    question_order.innerHTML = question_num;
-//    var clonedDiv = blank_select[0].cloneNode(true);
-//    blank_select[0].style.display = "none";
-//    clonedDiv.setAttribute("id", "multiple_select_" + blank_select_num);
-
-//    question_Box.appendChild(clonedDiv);
-
-//}
 
 //增加選項
 function Add_Item(obj) {
@@ -250,9 +209,15 @@ function Add_Item(obj) {
     var question_div = document.getElementById(obj.parentNode.parentNode.parentNode.parentNode.id);
     //選項UL
     var ul = question_div.getElementsByTagName("ul");
-    var questionType = obj.parentNode.parentNode.parentNode.parentNode.getAttribute("questionType");
+    //var questionType = obj.parentNode.parentNode.parentNode.parentNode.getAttribute("data-type");
 
-    if (questionType == "duotiankong") {
+    var question_id = obj.parentNode.parentNode.parentNode.parentNode.getAttribute("id");
+
+    var type = String(question_id).split("_");
+    var questionType = type[0] + "_" + type[1];
+
+
+    if (questionType == "multiple_blank") {
         //選項數量
         var Item_count = ul[0].childElementCount / 2;
         var copy_li_1 = ul[0].children[0].cloneNode(true);
@@ -273,7 +238,7 @@ function Add_Item(obj) {
 
         var div = copy_li.getElementsByTagName("div");
         var count = Item_count + 1;
-        if (questionType == "education" || questionType == "occupation") {
+        if (questionType == "education_select" || questionType == "occupation_select") {
             div[0].innerHTML = "其他";
         }
         else {
@@ -289,19 +254,44 @@ function Add_Item(obj) {
 }
 
 //刪除最後一個選項
-function Delect_Itrm(obj) {
+function Delect_Item(obj) {
 
     //當前問題DIV
     var question_div = document.getElementById(obj.parentNode.parentNode.parentNode.parentNode.id);
-    //選項UL
+
+    var question_id = obj.parentNode.parentNode.parentNode.parentNode.getAttribute("id");
+
+    var type = String(question_id).split("_");
+    var questionType = type[0] + "_" + type[1];
+
+    //var questionType = obj.parentNode.parentNode.parentNode.parentNode.getAttribute("data-type");
+
+    //获取问题ul
     var ul = question_div.getElementsByTagName("ul");
 
-    //選項數量
-    var Item_count = ul[0].childElementCount;
-    //保证有一个选项
-    if (Item_count > 1) {
-        ul[0].removeChild(ul[0].lastElementChild);
+    if (questionType == "multiple_blank") {
+        //選項數量
+        var Item_count = ul[0].childElementCount;
+        //保证有一个选项
+        if (Item_count / 2 > 1) {
+            ul[0].removeChild(ul[0].children[Item_count - 1]);
+            ul[0].removeChild(ul[0].children[Item_count - 2]);
+
+        }
+
     }
+    else {
+        //選項UL
+
+        //選項數量
+        var Item_count = ul[0].childElementCount;
+        
+        if (Item_count > 1) {
+            ul[0].removeChild(ul[0].lastElementChild);
+        }
+    }
+
+
     
 }
 
@@ -331,50 +321,55 @@ function Delete_select(obj) {
 
     }
 
-    var questionType = question_div.getAttribute("questionType");
+    //var questionType = question_div.getAttribute("questionType");
 
-    //删除题目数量
+    var question_id = obj.parentNode.parentNode.parentNode.parentNode.getAttribute("id");
+
+    var type = String(question_id).split("_");
+    var questionType = type[0] + "_" + type[1];
+
+    //删除各种题目数量
     switch (questionType) {
-        case "danxuan":
+        case "single_select":
             single_num--;
             break;
-        case "duoxuan":
+        case "multiple_select":
             multiple_select_num--;
             break;
-        case "tiankong":
+        case "blank_select":
             blank_select_num--;
             break;
-        case "duotiankong":
+        case "multiple_blank":
             multiple_blank_select_num--;
             break;
-        case "name":
+        case "name_select":
             name_select_num--;
             break;
-        case "mobile":
+        case "mobile_select":
             mobile_select_num--;
             break;
-        case "email":
+        case "email_select":
             email_select_num--;
             break;
-        case "sex":
+        case "sex_select":
             sex_select_num--;
             break;
-        case "date":
+        case "date_select":
             date_select_num--;
             break;
-        case "time":
+        case "time_select":
             time_select_num--;
             break;
-        case "age":
+        case "age_select":
             age_select_num--;
             break;
-        case "ducation":
+        case "ducation_select":
             education_select_num--;
             break;
-        case "major":
+        case "major_select":
             major_select_num--;
             break;
-        case "occupation":
+        case "occupation_select":
             occupation_select_num--;
             break;
     }
@@ -383,108 +378,7 @@ function Delete_select(obj) {
     question_num--;
     question_Box.removeChild(question_div);
 }
-//function createNaire() {
-//    var danxuan = document.createElement('div');
-//    danxuan.setAttribute('id', 'single_select');
-//    danxuan.setAttribute('class', 'question_item');
-//    danxuan.setAttribute('data-questionType', 'danxuan');
-//    danxuan.setAttribute('data-item', 'question');
 
-//    var float_div = document.createElement('div');
-//    float_div.setAttribute('class', 'float_div');
-
-//        var required = document.createElement('div');
-//        var Delete = document.createElement('div');
-//        required.setAttribute('id', 'required_select');
-//        Delete.setAttribute('id', 'delete_select');
-
-//    float_div.appendChild(required);
-//    float_div.appendChild(Delete);
-
-//    var question_content_wrap = document.createElement('div');
-//    question_content_wrap.setAttribute('class', 'question_content_wrap');
-//    var question_content = document.createElement('div');
-//    question_content.setAttribute('class', 'question_content');
-
-
-//    var question_title_wrap = document.createElement('div');
-//    question_title_wrap.setAttribute('class', 'question_title_wrap');
-
-//    var question_order = document.createElement('div');
-//    question_order.setAttribute('class', 'question_order');
-
-
-//    //问题序号
-//    var content_editable = document.createElement('div');
-//    content_editable.setAttribute('class', 'content_editable');
-
-//    //问题标题
-//    var question_title = document.createElement('div');
-//    question_title.setAttribute('class', 'question_title');
-//    question_title.setAttribute('contenteditable', 'true');
-//    question_title.setAttribute('data-item-title', 'title');
-//    question_title.innerText = "请选择一个选项";
-
-//    question_title_wrap.appendChild(content_editable);
-//    question_title_wrap.appendChild(question_title);
-
-
-//    var question_option_list = document.createElement('div');
-//    question_option_list.setAttribute('class', 'question_option_list');
-
-//    //ul样式
-//    var quesrion_option_ul = document.createElement('ul');
-//    quesrion_option_ul.setAttribute('class', 'quesrion_option_ul');
-
-//    var li = document.createElement('li');
-//    li.setAttribute('class', 'option_item');
-//    var img = document.createElement('img');
-//    img.src = "~/Images/single_seletion.png";
-//    var div = document.createElement('div');
-//    div.innerText = "选项1";
-//    li.appendChild(img);
-//    li.appendChild(div);
-
-//    quesrion_option_ul.appendChild(li);
-//    quesrion_option_ul.appendChild(li);
-
-
-//    var question_opeion_operate = document.createElement('div');
-//    question_opeion_operate.setAttribute('class', 'question_opeion_operate');
-
-//    //增加选项框
-//    var operate_add = document.createElement('div');
-//    operate_add.setAttribute('class', 'operate_add');
-//    var add_i = document.createElement('i');
-//    add_i.setAttribute('class', 'add_icon');
-//    operate_add.appendChild(add_i);
-//    operate_add.innerText = "添加单个选项";
-
-//    //删除选项框
-//    var operate_delete = document.createElement('div');
-//    operate_delete.setAttribute('class', 'operate_add');
-//    var delete_i = document.createElement('i');
-//    delete_i.setAttribute('class', 'delete_icon');
-//    operate_delete.appendChild(delete_i);
-//    operate_delete.innerText = "删除最后选项";
-
-//    question_opeion_operate.appendChild(operate_add);
-//    question_opeion_operate.appendChild(operate_delete);
-
-
-//    question_content.appendChild(question_title_wrap);
-//    question_content.appendChild(question_option_list);
-//    question_content.appendChild(question_opeion_operate);
-
-//    question_content_wrap.appendChild(question_content);
-
-
-//    danxuan.appendChild(float_div);
-//    danxuan.appendChild(question_content_wrap);
-
-//    question_list.push(danxuan);
-
-//};
 
 //  odd 同步标题
 var header_title = document.getElementsByClassName('header_edit_title');

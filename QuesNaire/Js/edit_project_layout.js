@@ -485,3 +485,16 @@ function Delete_select(obj) {
 //    question_list.push(danxuan);
 
 //};
+
+//  odd 同步标题
+var header_title = document.getElementsByClassName('header_edit_title');
+var naire_title = document.getElementById('input_title');
+
+naire_title.addEventListener('mouseout', function (e) {
+    titleChange(e);
+}, false);
+
+function titleChange(e) {
+    console.log(e.srcElement.innerText);
+    header_title[0].innerText = e.srcElement.innerText;
+}

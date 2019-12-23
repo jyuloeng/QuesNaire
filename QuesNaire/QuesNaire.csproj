@@ -391,6 +391,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\women.png" />
+    <Content Include="Js\create_project.js" />
     <Content Include="Js\edit_project_layout.js" />
     <Content Include="Js\manager_layout.js" />
     <Content Include="Js\project.js" />

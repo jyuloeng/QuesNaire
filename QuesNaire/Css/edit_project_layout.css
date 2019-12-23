@@ -463,8 +463,8 @@ a:not([href]):not([tabindex]), a:not([href]):not([tabindex]):focus, a:not([href]
 .main {
     position: relative;
     box-sizing: border-box;
-    padding: 64px 0 0;
     min-width: 1130px;
+    padding-top: 64px;
 }
 
 element.style {
@@ -489,10 +489,6 @@ element.style {
 
 .edit-center {
     text-align: center;
-}
-
-.mCustomScrollbar {
-    touch-action: pinch-zoom;
 }
 
 .mCustomScrollBox {
@@ -578,7 +574,7 @@ dl, ol, ul {
 
 .survey_main_wrap {
     position: relative;
-    padding: 40px 260px 30px 302px;
+    padding: 40px 260px 30px 260px;
     line-height: 1.4;
 }
 
@@ -717,6 +713,7 @@ h1, h2, h3, h4, h5, h6, p {
 .question_content {
     margin-top: 10px;
     margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .question_title {
@@ -738,15 +735,14 @@ h1, h2, h3, h4, h5, h6, p {
     margin-bottom: 10px
 }
 
-    .option_item div {
-        margin-left: 30px;
-        line-height: 30px
-    }
+.option_item div {
+    line-height: 30px
+}
 
-    .option_item img {
-        margin-top: 6px;
-        float: left
-    }
+.option_item img {
+    margin-top: 7px;
+    float: left
+}
 
 #multiple_selection:hover {
     border: 0.5px solid rgb(38,114,255);
@@ -924,12 +920,13 @@ h1, h2, h3, h4, h5, h6, p {
     background-color: white;
     border-radius: 4px;
     position: relative;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
 }
 
 .float_div {
     display: none;
     position: absolute;
-    right: 120px;
+    right: 0;
     width: 200px;
     height: 50px;
 }
@@ -949,26 +946,26 @@ h1, h2, h3, h4, h5, h6, p {
     height: 30px;
 }
 
-    .required_select:hover {
-        cursor: pointer;
-        background-image: url(/Images/required_select.png);
-    }
+.required_select:hover {
+    cursor: pointer;
+    background-image: url(/Images/required_select.png);
+}
 
 .delete_select {
-    margin-top: 10px;
     z-index: 1;
     position: absolute;
     right: 60px;
-    margin-left: 5px;
-    width: 30px;
-    background-image: url(/Images/delete.png);
-    height: 30px;
+    width: 20px;
+    background: url(/Images/delete.png) no-repeat;
+    background-size: 100%;
+    height: 20px;
+    top: 22px;
 }
 
-    .delete_select:hover {
-        cursor: pointer;
-        background-image: url(/Images/delete_select.png);
-    }
+.delete_select:hover {
+    cursor: pointer;
+    background-image: url(/Images/delete_select.png);
+}
 
 .question_title:hover {
     border: 1px dashed black;
@@ -985,10 +982,11 @@ h1, h2, h3, h4, h5, h6, p {
 
 .operate_add {
     margin-left: 80px;
-    width: 150px;
+    width: 140px;
     text-align: left;
     color: rgb(58,167,244);
     line-height: 30px;
+    padding: 0 10px;
 }
 
     .operate_add:hover {
@@ -998,11 +996,12 @@ h1, h2, h3, h4, h5, h6, p {
 
 .add_icon {
     margin-top: 5px;
-    margin-right: 20px;
+    margin-right: 10px;
     float: left;
     width: 20px;
     height: 20px;
-    background: url(/Images/add.png);
+    font-size: 15px;
+    line-height: 19px;
 }
 
 .operate_delete {
@@ -1010,10 +1009,11 @@ h1, h2, h3, h4, h5, h6, p {
     top: 0px;
     left: 170px;
     margin-left: 80px;
-    width: 150px;
+    width: 140px;
     text-align: left;
     color: rgb(58,167,244);
     line-height: 30px;
+    padding: 0 10px;
 }
 
     .operate_delete:hover {
@@ -1023,11 +1023,12 @@ h1, h2, h3, h4, h5, h6, p {
 
 .delete_icon {
     margin-top: 5px;
-    margin-right: 20px;
+    margin-right: 10px;
     float: left;
     width: 20px;
     height: 20px;
-    background: url(/Images/delete_icon.png);
+    font-size: 15px;
+    line-height:20px;
 }
 
 .question_title_wrap {
@@ -1058,4 +1059,12 @@ h1, h2, h3, h4, h5, h6, p {
     height: 30px;
     width: 400px;
     margin-bottom: 20px;
+}
+
+.survey_main{
+    max-width:1200px;
+}
+
+.option_item>div{
+    margin-left:30px;
 }

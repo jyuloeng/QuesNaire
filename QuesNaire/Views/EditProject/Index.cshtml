@@ -58,10 +58,10 @@
 
     <div class="main">
         <!--题目-->
-        <div class="question_type_wrap mCustomScrollbar _mCS_1 mCS-autoHide">
+        <div class="question_type_wrap">
 
-            <div id="mCSB_1" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside">
-                <div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+            <div class="mCustomScrollBox">
+                <div style="position:relative; top:0; left:0;" dir="ltr">
                     <!-- 题型 -->
                     <div class="question-type-box">
                         <div class="question_type_dl">
@@ -99,6 +99,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="survey_main_wrap">
             <div class="survey_main">
                 <!--标题栏-->
@@ -107,32 +109,33 @@
                     <div class="survey_title">
                         <div class="content_editable">
                             <div class="title_content" edit-type="project" contenteditable="true" has-value="true" tabindex="0">
-                                <p style="text-align: left;">问卷标题</p>
+                                <p style="text-align: left;" id="input_title">问卷标题</p>
                             </div>
                         </div>
                     </div>
                     <div class="survey_prefix">
                         <div class="content_editable">
-                            <div class="prefix_content" edit-type="begin_desc" contenteditable="true" tabindex="0" placeholder="点击编辑欢迎语">
+                            <div class="prefix_content" edit-type="begin_desc" contenteditable="true" tabindex="0" placeholder="点击编辑欢迎语" id="input_hint">
                                 感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！
                             </div>
                         </div>
                     </div>
                 </div>
+
+
                 <!--详细问题-->
                 <div class="survey_question_wrap">
                     <!--问题框-->
                     <div id="question_box">
                         <!--单选框-->
-                        <div style="display:none;" class="question_item single_select" questionType="danxuan" data-item="question">
+                        <div style="display:none;" class="question_item single_select" data-type="Radio" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
                             <div class="question_content_wrap">
                                 <div class="question_content">
+
                                     <!--标题框-->
                                     <div class="question_title_wrap">
                                         <!--问题序号-->
@@ -141,29 +144,31 @@
                                             <div class="question_title " contenteditable="true" data-item-title="title">请选择一个选项</div>
                                         </div>
                                     </div>
+
                                     <!--选项-->
                                     <div class="question_option_list" id="question_list">
                                         <ul class="quesrion_option_ul" id="question_item">
                                             <li class="option_item">
                                                 <img src="~/Images/single_seletion.png" />
-                                                <div contenteditable="true" data-question-item="danxuan">选项1</div>
+                                                <div contenteditable="true" data-question-item="Radio">选项1</div>
                                             </li>
                                             <li class="option_item">
                                                 <img src="~/Images/single_seletion.png" />
-                                                <div contenteditable="true" data-question-item="danxuan">选项2</div>
+                                                <div contenteditable="true" data-question-item="Radio">选项2</div>
                                             </li>
                                         </ul>
                                     </div>
+
                                     <!--选择操作-->
                                     <div class="question_opeion_operate" id="question_operate">
                                         <!--增加选项-->
                                         <div class="operate_add" onclick="Add_Item(this)">
-                                            <i class="add_icon"></i>
+                                            <i class="add_icon glyphicon glyphicon-plus"></i>
                                             添加单个选项
                                         </div>
                                         <!--删除选项-->
                                         <div class="operate_delete" onclick="Delect_Itrm(this)">
-                                            <i class="delete_icon"></i>
+                                            <i class="delete_icon glyphicon glyphicon-remove"></i>
                                             删除最后选项
                                         </div>
                                     </div>
@@ -171,10 +176,8 @@
                             </div>
                         </div>
                         <!--多选-->
-                        <div class="question_item multiple_select" style="display:none;" questionType="duoxuan" data-item="question">
+                        <div class="question_item multiple_select" style="display:none;" data-type="Checkbox" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -193,11 +196,11 @@
                                         <ul class="quesrion_option_ul">
                                             <li class="option_item">
                                                 <img src="~/Images/multiple_selecte.png" />
-                                                <div id="select_1" contenteditable="true" data-question-item="duoxuan">选项1</div>
+                                                <div id="select_1" contenteditable="true" data-question-item="Checkbox">选项1</div>
                                             </li>
                                             <li class="option_item">
                                                 <img src="~/Images/multiple_selecte.png" />
-                                                <div id="select_2" contenteditable="true" data-question-item="duoxuan">选项2</div>
+                                                <div id="select_2" contenteditable="true" data-question-item="Checkbox">选项2</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -205,22 +208,20 @@
                                     <div class="question_opeion_operate">
                                         <!--增加选项-->
                                         <div class="operate_add" onclick="Add_Item(this)">
-                                            <i class="add_icon"></i>
+                                            <i class="add_icon glyphicon glyphicon-plus"></i>
                                             添加单个选项
                                         </div>
                                         <!--删除选项-->
                                         <div class="operate_delete" onclick="Delect_Itrm(this)">
-                                            <i class="delete_icon"></i>
+                                            <i class="delete_icon glyphicon glyphicon-remove"></i>
                                             删除最后选项
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="question_item blank_select" style="display:none;" questionType="tiankong" data-item="question">
+                        <div class="question_item blank_select" style="display:none;" data-type="Input" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -231,14 +232,14 @@
                                         <!--问题序号-->
                                         <div class="question_order">3</div>
                                         <div class="content_editable">
-                                            <div class="question_title " contenteditable="true">请填写本项内容</div>
+                                            <div class="question_title " contenteditable="true" data-item-title="title">请填写本项内容</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="tiankong" />
+                                                <input type="text" readonly="readonly"  />
                                             </li>
                                         </ul>
                                     </div>
@@ -246,10 +247,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="question_item multiple_blank_select" style="display:none" questionType="duotiankong" data-item="question">
+                        <!--    多填最后处理-->
+                        <div class="question_item multiple_blank_select" style="display:none" data-type="Multiple" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -267,13 +267,13 @@
                                     <div class="question_option_list" id="question_list">
                                         <ul class="quesrion_option_ul" id="question_item">
                                             <li class="option_item">
-                                                <div id="select_1" style="margin-left:30px;line-height:30px" contenteditable="true">填空1</div>
+                                                <div id="select_1" contenteditable="true" style="margin-left:0">填空1</div>
                                             </li>
                                             <li class="input_blank">
                                                 <input type="text" readonly="readonly" data-question-item="duotiankong" />
                                             </li>
                                             <li class="option_item">
-                                                <div id="select_2" style="margin-left:30px;line-height:30px" contenteditable="true">填空2</div>
+                                                <div id="select_2" contenteditable="true" style="margin-left:0">填空2</div>
                                             </li>
                                             <li class="input_blank">
                                                 <input type="text" readonly="readonly" data-question-item="duotiankong" />
@@ -284,12 +284,12 @@
                                     <div class="question_opeion_operate">
                                         <!--增加选项-->
                                         <div class="operate_add" onclick="Add_Item(this)">
-                                            <i class="add_icon"></i>
+                                            <i class="add_icon glyphicon glyphicon-plus"></i>
                                             添加单个选项
                                         </div>
                                         <!--删除选项-->
                                         <div class="operate_delete" onclick="Delete_select(this)">
-                                            <i class="delete_icon"></i>
+                                            <i class="delete_icon glyphicon glyphicon-remove"></i>
                                             删除最后选项
                                         </div>
                                     </div>
@@ -297,10 +297,8 @@
                             </div>
                         </div>
 
-                        <div class="question_item name_select" style="display:none" questionType="name" data-item="question">
+                        <div class="question_item name_select" style="display:none" data-type="Input" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -311,14 +309,14 @@
                                         <!--问题序号-->
                                         <div class="question_order">5</div>
                                         <div class="content_editable">
-                                            <div class="" tabindex="0"><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/name_select.png);display: inline-block;"></i>姓名</div>
+                                            <div class="" tabindex="0" data-item-title="title">姓名</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="name" />
+                                                <input type="text" readonly="readonly" />
                                             </li>
                                         </ul>
                                     </div>
@@ -326,10 +324,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="question_item mobile_select" style="display:none" questionType="mobile" data-item="question">
+                        <div class="question_item mobile_select" style="display:none" data-type="Input" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -340,14 +336,14 @@
                                         <!--问题序号-->
                                         <div class="question_order">6</div>
                                         <div class="content_editable">
-                                            <div><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/phone_select.png);display: inline-block;"></i>手机</div>
+                                            <div data-item-title="title">手机</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="mobile" />
+                                                <input type="text" readonly="readonly" />
                                             </li>
                                         </ul>
                                     </div>
@@ -355,10 +351,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="question_item email_select" style="display:none" questionType="email" data-item="question">
+                        <div class="question_item email_select" style="display:none" data-type="Input" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -369,14 +363,14 @@
                                         <!--问题序号-->
                                         <div class="question_order">7</div>
                                         <div class="content_editable">
-                                            <div><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/email_select.png);display: inline-block;"></i>邮箱</div>
+                                            <div data-item-title="title">邮箱</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul" style="width:400px;margin-left:80px;">
                                             <li class="input_blank" style="margin-top:5px">
-                                                <input type="text" readonly="readonly" data-question-item="email" />
+                                                <input type="text" readonly="readonly" />
                                             </li>
                                         </ul>
                                     </div>
@@ -384,10 +378,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="question_item sex_select" style="display:none" questionType="sex" data-item="question">
+                        <div class="question_item sex_select" style="display:none" data-type="Radio" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -398,19 +390,20 @@
                                         <!--问题序号-->
                                         <div class="question_order">8</div>
                                         <div class="content_editable">
-                                            <div><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/sex_select.png);display: inline-block;"></i>性别</div>
+                                            <div data-item-title="title">性别</div>
                                         </div>
                                     </div>
                                     <!--选项-->
-                                    <div class="question_option_list">
-                                        <ul class="quesrion_option_ul" style="width:400px;margin-left:80px;">
-                                            <li class="option_item" style="margin-top:5px" data-question-item="sex">
-                                                <img src="~/Images/man.png" style="margin-top:6px;float:left" />
-                                                <div>男</div>
+                                    <!--选项-->
+                                    <div class="question_option_list" id="question_list">
+                                        <ul class="quesrion_option_ul" id="question_item">
+                                            <li class="option_item">
+                                                <img src="~/Images/single_seletion.png" />
+                                                <div contenteditable="true" data-question-item="Radio">男</div>
                                             </li>
-                                            <li class="option_item" style="margin-top:5px" data-question-item="sex">
-                                                <img src="~/Images/women.png" style="margin-top:6px;float:left" />
-                                                <div id="select_2" style="margin-left:30px;line-height:30px">女</div>
+                                            <li class="option_item">
+                                                <img src="~/Images/single_seletion.png" />
+                                                <div contenteditable="true" data-question-item="Radio">女</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -418,10 +411,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="question_item date_select" style="display:none" questionType="date" data-item="question">
+                        <div class="question_item date_select" style="display:none" data-type="Input" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -432,14 +423,14 @@
                                         <!--问题序号-->
                                         <div class="question_order">9</div>
                                         <div class="content_editable">
-                                            <div><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/date_select.png);display: inline-block;"></i>生日</div>
+                                            <div data-item-title="title">生日</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="date" />
+                                                <input type="text" readonly="readonly" />
                                             </li>
                                         </ul>
                                     </div>
@@ -447,10 +438,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="question_item time_select" style="display:none" questionType="time" data-item="question">
+                        <div class="question_item time_select" style="display:none" data-type="Input" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -461,14 +450,14 @@
                                         <!--问题序号-->
                                         <div class="question_order">10</div>
                                         <div class="content_editable">
-                                            <div><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/time_select.png);display: inline-block;"></i>时间</div>
+                                            <div data-item-title="title">时间</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="time" />
+                                                <input type="text" readonly="readonly" />
                                             </li>
                                         </ul>
                                     </div>
@@ -476,10 +465,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="question_item age_select" style="display:none" questionType="age" data-item="question">
+                        <div class="question_item age_select" style="display:none" data-type="Input" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -490,14 +477,14 @@
                                         <!--问题序号-->
                                         <div class="question_order">11</div>
                                         <div class="content_editable">
-                                            <div><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/age_select.png);display: inline-block;"></i>年龄</div>
+                                            <div data-item-title="title">年龄</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="age" />
+                                                <input type="text" readonly="readonly" />
                                             </li>
                                         </ul>
                                     </div>
@@ -505,10 +492,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="question_item education_select" style="display:none" questionType="education" data-item="question">
+                        <div class="question_item education_select" style="display:none" data-type="Radio" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -519,33 +504,33 @@
                                         <!--问题序号-->
                                         <div class="question_order">12</div>
                                         <div class="content_editable">
-                                            <div><i></i>您的最高学历（含目前在读）是？</div>
+                                            <div data-item-title="title">您的最高学历（含目前在读）是？</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
-                                            <li class="option_item" data-question-item="education">
+                                            <li class="option_item" data-question-item="Radio">
                                                 <img src="~/Images/single_seletion.png" />
                                                 <div>小学及以下</div>
                                             </li>
-                                            <li class="option_item" data-question-item="education">
+                                            <li class="option_item" data-question-item="Radio">
                                                 <img src="~/Images/single_seletion.png" />
                                                 <div>初中</div>
                                             </li>
-                                            <li class="option_item" data-question-item="education">
+                                            <li class="option_item" data-question-item="Radio">
                                                 <img src="~/Images/single_seletion.png" />
                                                 <div>高中/中专/技校</div>
                                             </li>
-                                            <li class="option_item" data-question-item="education">
+                                            <li class="option_item" data-question-item="Radio">
                                                 <img src="~/Images/single_seletion.png" />
                                                 <div>大学专科</div>
                                             </li>
-                                            <li class="option_item" data-question-item="education">
+                                            <li class="option_item" data-question-item="Radio">
                                                 <img src="~/Images/single_seletion.png" />
                                                 <div>大学本科</div>
                                             </li>
-                                            <li class="option_item" data-question-item="education">
+                                            <li class="option_item" data-question-item="Radio">
                                                 <img src="~/Images/single_seletion.png" />
                                                 <div>硕士研究生及以上</div>
                                             </li>
@@ -555,22 +540,20 @@
                                     <div class="question_opeion_operate">
                                         <!--增加选项-->
                                         <div class="operate_add" onclick="Add_Item(this)">
-                                            <i class="add_icon"></i>
+                                            <i class="add_icon glyphicon glyphicon-plus"></i>
                                             添加单个选项
                                         </div>
                                         <!--删除选项-->
                                         <div class="operate_delete" onclick="Delete_select(this)">
-                                            <i class="delete_icon"></i>
+                                            <i class="delete_icon glyphicon glyphicon-remove"></i>
                                             删除最后选项
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="question_item major_select" style="display:none" questionType="major" data-item="question">
-                            <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
+                        <div class="question_item major_select" style="display:none" data-type="Input" data-item="question">
+                            <div class="float_div">              
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -581,14 +564,14 @@
                                         <!--问题序号-->
                                         <div class="question_order">11</div>
                                         <div class="content_editable">
-                                            <div><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/major_select.png);display: inline-block;"></i>您大学所学专业是？</div>
+                                            <div data-item-title="title">您大学所学专业是？</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="major" />
+                                                <input type="text" readonly="readonly"  />
                                             </li>
                                         </ul>
                                     </div>
@@ -596,10 +579,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="question_item occupation_select" style="display:none" questionType="occupation" data-item="question">
+                        <div class="question_item occupation_select" style="display:none" data-type="Radio" data-item="question">
                             <div class="float_div">
-                                <!--必选-->
-                                <div class="required_select"></div>
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
@@ -610,7 +591,7 @@
                                         <!--问题序号-->
                                         <div class="question_order">14</div>
                                         <div class="content_editable">
-                                            <div><i></i>您目前的职业是？</div>
+                                            <div data-item-title="title">您目前的职业是？</div>
                                         </div>
                                     </div>
                                     <!--选项-->
@@ -618,47 +599,47 @@
                                         <ul class="quesrion_option_ul" style="width:400px;margin-left:80px;">
                                             <li class="option_item" style="margin-top:5px">
                                                 <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_1" style="margin-left:30px;line-height:30px">在校学生</div>
+                                                <div id="select_1" style="margin-left:30px;line-height:30px" data-question-item="Radio">在校学生</div>
                                             </li>
                                             <li class="option_item" style="margin-top:5px">
                                                 <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_2" style="margin-left:30px;line-height:30px">政府/机关干部/公务员</div>
+                                                <div id="select_2" style="margin-left:30px;line-height:30px" data-question-item="Radio">政府/机关干部/公务员</div>
                                             </li>
                                             <li class="option_item" style="margin-top:5px">
                                                 <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_3" style="margin-left:30px;line-height:30px">企业管理者（包括基层及中高层管理者）</div>
+                                                <div id="select_3" style="margin-left:30px;line-height:30px" data-question-item="Radio">企业管理者（包括基层及中高层管理者）</div>
                                             </li>
                                             <li class="option_item" style="margin-top:5px">
                                                 <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_4" style="margin-left:30px;line-height:30px">普通职员（办公室/写字楼工作人员）</div>
+                                                <div id="select_4" style="margin-left:30px;line-height:30px" data-question-item="Radio">普通职员（办公室/写字楼工作人员）</div>
                                             </li>
                                             <li class="option_item" style="margin-top:5px">
                                                 <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_5" style="margin-left:30px;line-height:30px">专业人员（如医生/律师/文体/记者/老师等）</div>
+                                                <div id="select_5" style="margin-left:30px;line-height:30px" data-question-item="Radio">专业人员（如医生/律师/文体/记者/老师等）</div>
                                             </li>
                                             <li class="option_item" style="margin-top:5px">
                                                 <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_6" style="margin-left:30px;line-height:30px">普通工人（如工厂工人/体力劳动者等）</div>
+                                                <div id="select_6" style="margin-left:30px;line-height:30px" data-question-item="Radio">普通工人（如工厂工人/体力劳动者等）</div>
                                             </li>
                                             <li class="option_item" style="margin-top:5px">
                                                 <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_7" style="margin-left:30px;line-height:30px">商业服务业职工（如销售人员/商店职员/服务员等）</div>
+                                                <div id="select_7" style="margin-left:30px;line-height:30px" data-question-item="Radio">商业服务业职工（如销售人员/商店职员/服务员等）</div>
                                             </li>
                                             <li class="option_item" style="margin-top:5px">
                                                 <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_8" style="margin-left:30px;line-height:30px">个体经营者/承包商</div>
+                                                <div id="select_8" style="margin-left:30px;line-height:30px" data-question-item="Radio">个体经营者/承包商</div>
                                             </li>
                                             <li class="option_item" style="margin-top:5px">
                                                 <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_9" style="margin-left:30px;line-height:30px">自由职业者</div>
+                                                <div id="select_9" style="margin-left:30px;line-height:30px" data-question-item="Radio">自由职业者</div>
                                             </li>
                                             <li class="option_item" style="margin-top:5px">
                                                 <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_10" style="margin-left:30px;line-height:30px">退休</div>
+                                                <div id="select_10" style="margin-left:30px;line-height:30px" data-question-item="Radio">退休</div>
                                             </li>
                                             <li class="option_item" style="margin-top:5px">
                                                 <img src="~/Images/single_seletion.png" style="margin-top:6px;float:left" />
-                                                <div id="select_11" style="margin-left:30px;line-height:30px">暂无职业</div>
+                                                <div id="select_11" style="margin-left:30px;line-height:30px" data-question-item="Radio">暂无职业</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -666,33 +647,35 @@
                                     <div class="question_opeion_operate">
                                         <!--增加选项-->
                                         <div class="operate_add" onclick="Add_Item(this)">
-                                            <i class="add_icon"></i>
+                                            <i class="add_icon glyphicon glyphicon-plus"></i>
                                             添加单个选项
                                         </div>
                                         <!--删除选项-->
                                         <div class="operate_delete" onclick="Delect_Itrm(this)">
-                                            <i class="delete_icon"></i>
+                                            <i class="delete_icon glyphicon glyphicon-remove"></i>
                                             删除最后选项
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        </div>
                     </div>
                     <!--发布-->
                     <div class="survey_suffix_wrap">
                         <div class="release_share_box">
-                            <button class="release_share_btn" wj-hawkeye="edit_v2_publish_btn2">发布并分享</button>
+                            <button class="release_share_btn" id="btn_submit">发布并分享</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Js/edit_project_layout.js"></script>
+    <script src="~/Js/create_project.js"></script>
 
 </body>
 </html>

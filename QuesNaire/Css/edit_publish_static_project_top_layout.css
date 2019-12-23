@@ -14,7 +14,8 @@
     top: 0;
     left: 0;
     color: #484848;
-    width:100%;
+    width: 100%;
+    position: fixed;
 }
 
 .edit_left {

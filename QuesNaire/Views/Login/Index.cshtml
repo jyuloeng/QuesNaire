@@ -35,7 +35,7 @@
             <a href="#">问卷网服务协议</a>
             <a href="#" class="forget_password">忘记密码?</a>
         </div>
-        <button type="submit" class="btn btn-primary btn_register">登录</button>
+        <button type="submit" class="btn btn-primary btn_register"  onclick="login()">登录</button>
     </div>
 </div>
 
@@ -43,3 +43,36 @@
     <span>第三方登录&nbsp;或</span>
     <a href="#" class="link_register">立即注册</a>
 </div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function login() {
+        var account;
+        var password;
+         var x = document.getElementById("tab_phone");
+        if (x.className == "active") {
+            account = document.getElementById("reg_input_phone").value;
+        }
+        else {
+            account = document.getElementById("reg_input_email").value;
+        }
+        password = document.getElementById("reg_input_password").value;
+        if (account == "" || password == "") {
+            return;
+        }
+        axios.post('../Login/login_info', {
+            account: account,
+            password: password,
+             })
+            .then(function (response) {
+                console.log(response.data);
+                var id = response.data
+                if (id != "0") {
+                    window.location.href = "../ProjectList/Index?id="+id;
+                }
+
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+</script>

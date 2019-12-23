@@ -1,4 +1,6 @@
-﻿using QuesNaire.App_Code;
+﻿
+using QuesNaire.App_Code;
+using QuesNaire.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +22,7 @@ namespace QuesNaire.Controllers
         [HttpPost]
         public JsonResult register_info(string account, string password, string name)
         {
-            user_infoDataContext db = new user_infoDataContext();
+            NaireWebDataContext db = new NaireWebDataContext();
             var rs = from r in db.user_info
                      where account == r.account
                      select new

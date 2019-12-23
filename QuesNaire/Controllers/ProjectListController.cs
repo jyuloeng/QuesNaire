@@ -1,8 +1,10 @@
-﻿using QuesNaire.App_Code;
+﻿
+using QuesNaire.App_Code;
 using QuesNaire.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -29,7 +31,7 @@ namespace QuesNaire.Controllers
                 return View();
             if (Request.Cookies["user_id"] != null)
             {
-                user_infoDataContext db = new user_infoDataContext();
+                NaireWebDataContext db = new NaireWebDataContext();
                 var rs = from r in db.user_info
                          where id == r.id.ToString()
                          select new
@@ -38,7 +40,6 @@ namespace QuesNaire.Controllers
                              r.name,
                              r.avatar
                          };
-                _ = Request.Cookies["user_id"];
                 var name = rs.FirstOrDefault().name;
                 var account = rs.FirstOrDefault().account;
                 var avatar = rs.FirstOrDefault().avatar;
@@ -59,5 +60,39 @@ namespace QuesNaire.Controllers
             return View();
         }
         private UserInfo user = new UserInfo();
+        public string upImg(string avatar,string id)
+        {
+
+            //NaireWebDataContext db = new NaireWebDataContext();
+            //var user = db.user_info.Where(r => r.id.ToString() == id).FirstOrDefault();
+            //user.avatar = avatar;
+            //db.SubmitChanges();
+
+            return PostResponse("http://test.xkspbz.com/avatar/getImgUrl.php", "img=" + avatar, out string statusCode);
+        }
+        public string PostResponse(string url, string postData, out string statusCode)
+        {
+            string result = string.Empty;
+            //设置Http的正文
+            HttpContent httpContent = new StringContent(postData);
+            //设置Http的内容标头
+            httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            //设置Http的内容标头的字符
+            httpContent.Headers.ContentType.CharSet = "utf-8";
+            using (HttpClient httpClient = new HttpClient())
+            {
+                //异步Post
+                HttpResponseMessage response = httpClient.PostAsync(url, httpContent).Result;
+                //输出Http响应状态码
+                statusCode = response.StatusCode.ToString();
+                //确保Http响应成功
+                if (response.IsSuccessStatusCode)
+                {
+                    //异步读取json
+                    result = response.Content.ReadAsStringAsync().Result;
+                }
+            }
+            return result;
+        }
     }
 }

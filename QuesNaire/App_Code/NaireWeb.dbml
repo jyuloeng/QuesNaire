@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_naireweb" Class="NaireWebDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=101.132.133.32;Initial Catalog=db_naireweb;User ID=sa;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="db_nairewebConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.user_info" Member="user_info">
+    <Type Name="user_info">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="account" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="avatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="user_info_naire_info" Member="naire_info" ThisKey="id" OtherKey="id" Type="naire_info" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.question_info" Member="question_info">
+    <Type Name="question_info">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="naire_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="flag" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="items" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="question_info_data_info" Member="data_info" ThisKey="id" OtherKey="question_id" Type="data_info" />
+      <Association Name="naire_info_question_info" Member="naire_info" ThisKey="naire_id" OtherKey="id" Type="naire_info" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.naire_info" Member="naire_info">
+    <Type Name="naire_info">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="state" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="start_time" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="update_time" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="question" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="data" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="naire_info_question_info" Member="question_info" ThisKey="id" OtherKey="naire_id" Type="question_info" />
+      <Association Name="user_info_naire_info" Member="user_info" ThisKey="id" OtherKey="id" Type="user_info" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.data_info" Member="data_info">
+    <Type Name="data_info">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="question_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Association Name="question_info_data_info" Member="question_info" ThisKey="question_id" OtherKey="id" Type="question_info" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.admin_info" Member="admin_info">
+    <Type Name="admin_info">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="account" Type="System.String" DbType="NChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="avatar" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

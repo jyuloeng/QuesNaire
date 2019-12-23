@@ -153,9 +153,9 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-            
+
         </div>
-        
+
     </div>
 
     <!--    我的信息-->
@@ -215,7 +215,9 @@
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Js/project_list_layout.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        var upImg;
         function getCookie(name) {
             var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
             if (arr = document.cookie.match(reg))
@@ -226,20 +228,70 @@
         document.getElementById('user_account').innerText = getCookie("user_account")
         document.getElementById('user_name').innerText = getCookie("user_name")
         if (getCookie('user_avatar') != "") {
-             document.getElementById('user_avatar').src = getCookie("user_avatar")
+            document.getElementById('user_avatar').src = getCookie("user_avatar")
         }
         var file; // 定义一个全局变量，为一个文本选择器。
-        file = $('<input type="file" />'); // 这样file就是jquery创建的一个文本选择器，但是因为我们并没有把它加载到页面山，所以是不可见的。
-        $('#changeAvatar').click(function(){
-		// 启动文件选择
-		file.click();
+        file = $('<input type="file"  accept="image/*"/>'); // 这样file就是jquery创建的一个文本选择器，但是因为我们并没有把它加载到页面山，所以是不可见的。
+        $('#changeAvatar').click(function () {
+            // 启动文件选择
+            file.click();
         });
         var select_file
-        file.change(function(e){
-            select_file = file[0].files[0];
-            console.log(select_file)
-	})
-        
+        file.change(function (e) {
+            var _URL = window.URL || window.webkitURL;
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    $('#user_avatar').attr('src', this.src);
+                };
+                img.src = _URL.createObjectURL(file);
+                console.log(_URL.createObjectURL(file));
+                getBase64(img.src);
+                
+            }
+        })
+        function getBase64(imgUrl) {
+            window.URL = window.URL || window.webkitURL;
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", imgUrl, true);
+            xhr.responseType = "blob";
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    //得到一个blob对象
+                    var blob = this.response;
+                    let oFileReader = new FileReader();
+                    oFileReader.onloadend = function (e) {
+                        let base64 = e.target.result;
+                        upDataImg(base64);
+                        console.log(base64)
+                    };
+                    oFileReader.readAsDataURL(blob);
+
+                    let src = window.URL.createObjectURL(blob);
+
+                    console.log(src)
+
+                }
+            }
+            xhr.send();
+        }
+        function upDataImg(upImg) {
+            console.log(window.upImg);
+            axios.post('../ProjectList/upImg', {
+                avatar: upImg,
+                id:getCookie("user_id")
+             })
+            .then(function (response) {
+                console.log(response.data);
+
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        }
+
+
     </script>
 </body>
 </html>

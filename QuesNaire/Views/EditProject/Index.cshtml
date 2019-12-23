@@ -12,7 +12,10 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Css/base.css" rel="stylesheet" type="text/css" />
+    <link href="~/Css/base.css" rel="stylesheet" type="text/css" />
     <link href="~/Css/edit_project_layout.css" rel="stylesheet" type="text/css" />
+    <link href="~/Css/edit_publish_static_project_top_layout.css" rel="stylesheet" type="text/css" />
+
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 
     <style>
@@ -20,77 +23,39 @@
 
 </head>
 <body>
-    <!--导航栏-->
-    <div class="header_wrap">
-        <div class="edit-header">
-            <div class="edit-left">
-                <a class="back-link" href="#">
-                    <div class="header-edit-back-div back-tooltip-link show_title" data-title="返回首页"></div>
-                    <div class="header-edit-icon back"></div>
-                </a>
-                <div class="header-edit-title">问卷标题</div>
-            </div>
-            <div class="edit-right" >
-                <div class="user-head" style="position:relative;">
-                     <!--用户头像-->
-                    <a class="user-head-logo-div" href="#">
-                        <div class="user-head-logo center"></div>
-                    </a>
-                    <div class="user-head-hover" id="head-hover" >
-                        <div class="hax"></div>
-                        <!--用户ID-->
-                        <div class="user-head-hover-title" title="账号ID">账号ID</div>
-                        <div class="user-head-hover-exit">
-                            
-                            <div class="user-head-hover-exit-title" wj-hawkeye="list_v1_user_logout" id="exit_login" style="margin-top:10px;font-size:18px">
-                                <i class="user-head-icon user-head-icon-exit" id="icon-exit"></i>
-                            退出登录
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="edit-right-left">
-                    <!--浏览按按钮-->
-                    <a class="btn_preview edit-help-btn" id="btn_preview">
-                        <div class="edit-right-preview" id="glance" >
-                            预览
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="edit-center" >
-                <!--编辑项目-->
-                <a permission-type="edit" id="edit_project" href="#" style="border-bottom:2px solid blue;">
-                    <div class="edit-center-title" >
-                        <div class="showUnderLine" id="edit-header-edit">
-                            编辑项目
-                        </div>
-                    </div>
-                </a>
-                <div class="header-edit-icon arrow-left" id="right">
-                    <img src="~/Images/right_arrowhead.png" />
-                </div>
-                <!--发布项目-->
-                <a permission-type="collect" href="#">
-                    <div class="edit-center-title">
-                        <div id="edit-header-publish">
-                            发布项目
-                        </div>
-                    </div>
-                </a>
-                <div class="header-edit-icon arrow-left" id="right">
-                    <img src="~/Images/right_arrowhead.png" />
-                </div>
-                <a permission-type="report" href="#">
-                    <div class="edit-center-title">
-                        <div id="edit-header-report">
-                            统计报表
-                        </div>
-                    </div>
-                </a>
-            </div>
+    <!--    顶部导航-->
+    <div class="edit_header">
+        <div class="edit_left">
+            <a href="#" class="back_link">
+                <img src="~/Images/ic-arrow-back-24px.png" />
+            </a>
+            <div class="header_edit_title">🍓23号爱心义卖满意度调查问卷</div>
         </div>
+        <div class="edit_right">
+            <div class="user_wrap">
+                <img src="~/Images/132.png" />
+                <!--    弹出层-->
+                <div class="user_info">
+                    <div class="user_name">odd</div>
+                    <div class="user-exit">
+                        <i class="glyphicon glyphicon-log-out" style="margin-right:10px;"></i>退出登录
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="edit_check">预览</a>
+
+        </div>
+        <div class="edit_center">
+            <a href="#" class="edit_center_title" style="color: #2672ff !important;border-bottom:2px solid #2672ff">编辑项目</a>
+            <div class="edit_center_icon"></div>
+            <a href="#" class="edit_center_title">发布项目</a>
+            <div class="edit_center_icon"></div>
+            <a href="#" class="edit_center_title">统计报表</a>
+        </div>
+
+        <div class="clearfix"></div>
     </div>
+
     <div class="main">
         <!--题目-->
         <div class="question_type_wrap mCustomScrollbar _mCS_1 mCS-autoHide">
@@ -103,44 +68,30 @@
                             <dl class="type_module">
                                 <dt>选择题</dt>
                                 <dd>
-                                    <label class="type_item three_letter_spacing  ui-draggable ui-draggable-handle" question-name="single_select" id="single_selection" onclick="Select_question(this)">
-                                        <i class="icon_wj icon_type_single icon" id="single_selection_icon_i"></i>
-                                        单选题
-                                    </label>
-                                    <label class="type_item three_letter_spacing  ui-draggable ui-draggable-handle" question-name="multiple_select" id="multiple_selection" onclick="Select_question(this)">
-                                        <i class="icon_wj icon_type_multiple"></i>
-                                        多选题
-                                    </label>
+                                    <label class="type_item three_letter_spacing  ui-draggable ui-draggable-handle" question-name="single_select" id="single_selection" onclick="Select_question(this)"><i class="icon_wj icon_type_single icon" id="single_selection_icon_i"></i>单选题</label>
+                                    <label class="type_item three_letter_spacing  ui-draggable ui-draggable-handle" question-name="multiple_select" id="multiple_selection" onclick="Select_question(this)"><i class="icon_wj icon_type_multiple"></i>多选题</label>
                                 </dd>
                             </dl>
                             <dl class="type_module">
                                 <dt>填空题</dt>
                                 <dd>
-                                    <label class="type_item three_letter_spacing  ui-draggable ui-draggable-handle"question-name="blank" id="blank" onclick="Select_question(this)">
-                                        <i class="icon_wj icon_type_blank"></i>
-                                        填空题
-                                    </label>
-                                    <label class="type_item   ui-draggable ui-draggable-handle" question-name="multiple_blank" id="multiple_blank" onclick="Select_question(this)">
-                                        <i class="icon_wj icon_type_multiple_blank"></i>
-                                        多项填空
-                                    </label>
+                                    <label class="type_item three_letter_spacing  ui-draggable ui-draggable-handle" question-name="blank" id="blank" onclick="Select_question(this)"><i class="icon_wj icon_type_blank"></i>填空题</label>
+                                    <label class="type_item   ui-draggable ui-draggable-handle" question-name="multiple_blank" id="multiple_blank" onclick="Select_question(this)"><i class="icon_wj icon_type_multiple_blank"></i>多项填空</label>
                                 </dd>
                             </dl>
                             <dl class="type_module">
                                 <dt>个人信息</dt>
                                 <dd>
-                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="6" disp-type="name" question-name="name" id="name" onclick="Select_question(this)"> <i class="icon_wj icon_type_name"></i>姓名  </label>
-                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="6" disp-type="mobile" question-name="mobile" id="mobile" onclick="Select_question(this)"> <i class="icon_wj icon_type_mobile"></i>手机  </label>
-                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="6" disp-type="email" question-name="email" id="email" onclick="Select_question(this)"> <i class="icon_wj icon_type_email"></i>邮箱  </label>
-                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="2" disp-type="sex" question-name="sex" id="sex" onclick="Select_question(this)"> <i class="icon_wj icon_type_sex"></i>性别  </label>
-                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="95" disp-type="date" question-name="date" id="date" onclick="Select_question(this)"> <i class="icon_wj icon_type_date"></i>生日  </label>
-                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="95" disp-type="time" question-name="time" id="time" onclick="Select_question(this)"> <i class="icon_wj icon_type_time"></i>时间  </label>
-                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="2" disp-type="age" question-name="age" id="age" onclick="Select_question(this)"> <i class="icon_wj icon_type_age"></i>年龄  </label>
-                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="2" disp-type="education" question-name="education" id="education" onclick="Select_question(this)"> <i class="icon_wj icon_type_education"></i>学历  </label>
-                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="8" disp-type="major" question-name="major" id="major" onclick="Select_question(this)"> <i class="icon_wj icon_type_major"></i>专业  </label>
-                                    @*<label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="8" disp-type="university" question-name="university"> <i class="icon_wj icon_type_university"></i>院校  </label>
-                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="8" disp-type="industry" question-name="industry"> <i class="icon_wj icon_type_industry"></i>行业  </label>*@
-                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle" question-type="2" disp-type="occupation" question-name="occupation" id="occupation" onclick="Select_question(this)"> <i class="icon_wj icon_type_occupation"></i>职业  </label>
+                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle letter_spacing" question-type="6" disp-type="name" question-name="name" id="name" onclick="Select_question(this)"> <i class="icon_wj icon_type_name"></i>姓名</label>
+                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle letter_spacing" question-type="6" disp-type="mobile" question-name="mobile" id="mobile" onclick="Select_question(this)"> <i class="icon_wj icon_type_mobile"></i>手机</label>
+                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle letter_spacing" question-type="6" disp-type="email" question-name="email" id="email" onclick="Select_question(this)"> <i class="icon_wj icon_type_email"></i>邮箱</label>
+                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle letter_spacing" question-type="2" disp-type="sex" question-name="sex" id="sex" onclick="Select_question(this)"> <i class="icon_wj icon_type_sex"></i>性别</label>
+                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle letter_spacing" question-type="95" disp-type="date" question-name="date" id="date" onclick="Select_question(this)"> <i class="icon_wj icon_type_date"></i>生日</label>
+                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle letter_spacing" question-type="95" disp-type="time" question-name="time" id="time" onclick="Select_question(this)"> <i class="icon_wj icon_type_time"></i>时间</label>
+                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle letter_spacing" question-type="2" disp-type="age" question-name="age" id="age" onclick="Select_question(this)"> <i class="icon_wj icon_type_age"></i>年龄</label>
+                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle letter_spacing" question-type="2" disp-type="education" question-name="education" id="education" onclick="Select_question(this)"> <i class="icon_wj icon_type_education"></i>学历</label>
+                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle letter_spacing" question-type="8" disp-type="major" question-name="major" id="major" onclick="Select_question(this)"> <i class="icon_wj icon_type_major"></i>专业</label>
+                                    <label class="type_item two_letter_spacing  ui-draggable ui-draggable-handle letter_spacing" question-type="2" disp-type="occupation" question-name="occupation" id="occupation" onclick="Select_question(this)"> <i class="icon_wj icon_type_occupation"></i>职业</label>
                                 </dd>
                             </dl>
                         </div>
@@ -171,7 +122,7 @@
                 <!--详细问题-->
                 <div class="survey_question_wrap">
                     <!--问题框-->
-                    <div id="question_box" >
+                    <div id="question_box">
                         <!--单选框-->
                         <div style="display:none;" class="question_item single_select" questionType="danxuan" data-item="question">
                             <div class="float_div">
@@ -193,11 +144,11 @@
                                     <!--选项-->
                                     <div class="question_option_list" id="question_list">
                                         <ul class="quesrion_option_ul" id="question_item">
-                                            <li class="option_item" >
-                                                <img src="~/Images/single_seletion.png"/>
+                                            <li class="option_item">
+                                                <img src="~/Images/single_seletion.png" />
                                                 <div contenteditable="true" data-question-item="danxuan">选项1</div>
                                             </li>
-                                            <li class="option_item" >
+                                            <li class="option_item">
                                                 <img src="~/Images/single_seletion.png" />
                                                 <div contenteditable="true" data-question-item="danxuan">选项2</div>
                                             </li>
@@ -220,7 +171,7 @@
                             </div>
                         </div>
                         <!--多选-->
-                        <div  class="question_item multiple_select" style="display:none;" questionType="duoxuan" data-item="question">
+                        <div class="question_item multiple_select" style="display:none;" questionType="duoxuan" data-item="question">
                             <div class="float_div">
                                 <!--必选-->
                                 <div class="required_select"></div>
@@ -241,7 +192,7 @@
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
                                             <li class="option_item">
-                                                <img src="~/Images/multiple_selecte.png"/>
+                                                <img src="~/Images/multiple_selecte.png" />
                                                 <div id="select_1" contenteditable="true" data-question-item="duoxuan">选项1</div>
                                             </li>
                                             <li class="option_item">
@@ -285,9 +236,9 @@
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
-                                        <ul class="quesrion_option_ul" >
-                                            <li class="input_blank" >
-                                                <input type="text" readonly="readonly"  data-question-item="tiankong"/>
+                                        <ul class="quesrion_option_ul">
+                                            <li class="input_blank">
+                                                <input type="text" readonly="readonly" data-question-item="tiankong" />
                                             </li>
                                         </ul>
                                     </div>
@@ -319,13 +270,13 @@
                                                 <div id="select_1" style="margin-left:30px;line-height:30px" contenteditable="true">填空1</div>
                                             </li>
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="duotiankong"/>
+                                                <input type="text" readonly="readonly" data-question-item="duotiankong" />
                                             </li>
                                             <li class="option_item">
                                                 <div id="select_2" style="margin-left:30px;line-height:30px" contenteditable="true">填空2</div>
                                             </li>
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="duotiankong"/>
+                                                <input type="text" readonly="readonly" data-question-item="duotiankong" />
                                             </li>
                                         </ul>
                                     </div>
@@ -367,7 +318,7 @@
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="name"/>
+                                                <input type="text" readonly="readonly" data-question-item="name" />
                                             </li>
                                         </ul>
                                     </div>
@@ -387,16 +338,16 @@
                                     <!--标题框-->
                                     <div class="question_title_wrap">
                                         <!--问题序号-->
-                                        <div class="question_order" >6</div>
+                                        <div class="question_order">6</div>
                                         <div class="content_editable">
                                             <div><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/phone_select.png);display: inline-block;"></i>手机</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
-                                        <ul class="quesrion_option_ul" >
-                                            <li class="input_blank" >
-                                                <input type="text" readonly="readonly" data-question-item="mobile"/>
+                                        <ul class="quesrion_option_ul">
+                                            <li class="input_blank">
+                                                <input type="text" readonly="readonly" data-question-item="mobile" />
                                             </li>
                                         </ul>
                                     </div>
@@ -417,7 +368,7 @@
                                     <div class="question_title_wrap">
                                         <!--问题序号-->
                                         <div class="question_order">7</div>
-                                        <div class="content_editable" >
+                                        <div class="content_editable">
                                             <div><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/email_select.png);display: inline-block;"></i>邮箱</div>
                                         </div>
                                     </div>
@@ -425,7 +376,7 @@
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul" style="width:400px;margin-left:80px;">
                                             <li class="input_blank" style="margin-top:5px">
-                                                <input type="text" readonly="readonly" data-question-item="email"/>
+                                                <input type="text" readonly="readonly" data-question-item="email" />
                                             </li>
                                         </ul>
                                     </div>
@@ -452,7 +403,7 @@
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
-                                        <ul class="quesrion_option_ul" style="width:400px;margin-left:80px;" >
+                                        <ul class="quesrion_option_ul" style="width:400px;margin-left:80px;">
                                             <li class="option_item" style="margin-top:5px" data-question-item="sex">
                                                 <img src="~/Images/man.png" style="margin-top:6px;float:left" />
                                                 <div>男</div>
@@ -475,19 +426,19 @@
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
                             <div class="question_content_wrap">
-                                <div class="question_content" >
+                                <div class="question_content">
                                     <!--标题框-->
                                     <div class="question_title_wrap">
                                         <!--问题序号-->
                                         <div class="question_order">9</div>
-                                        <div class="content_editable" >
+                                        <div class="content_editable">
                                             <div><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/date_select.png);display: inline-block;"></i>生日</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
-                                        <ul class="quesrion_option_ul" >
-                                            <li class="input_blank" >
+                                        <ul class="quesrion_option_ul">
+                                            <li class="input_blank">
                                                 <input type="text" readonly="readonly" data-question-item="date" />
                                             </li>
                                         </ul>
@@ -506,17 +457,17 @@
                             <div class="question_content_wrap">
                                 <div class="question_content">
                                     <!--标题框-->
-                                    <div class="question_title_wrap" >
+                                    <div class="question_title_wrap">
                                         <!--问题序号-->
-                                        <div class="question_order" >10</div>
-                                        <div class="content_editable" >
+                                        <div class="question_order">10</div>
+                                        <div class="content_editable">
                                             <div><i style="margin-left: 8px;margin-top: 5px;width: 18px;height: 18px;background: url(/Images/time_select.png);display: inline-block;"></i>时间</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
-                                            <li class="input_blank" >
+                                            <li class="input_blank">
                                                 <input type="text" readonly="readonly" data-question-item="time" />
                                             </li>
                                         </ul>
@@ -546,7 +497,7 @@
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly"  data-question-item="age" />
+                                                <input type="text" readonly="readonly" data-question-item="age" />
                                             </li>
                                         </ul>
                                     </div>
@@ -561,13 +512,13 @@
                                 <!--删除-->
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
-                            <div class="question_content_wrap" >
-                                <div class="question_content" >
+                            <div class="question_content_wrap">
+                                <div class="question_content">
                                     <!--标题框-->
-                                    <div class="question_title_wrap" >
+                                    <div class="question_title_wrap">
                                         <!--问题序号-->
-                                        <div class="question_order" >12</div>
-                                        <div class="content_editable" >
+                                        <div class="question_order">12</div>
+                                        <div class="content_editable">
                                             <div><i></i>您的最高学历（含目前在读）是？</div>
                                         </div>
                                     </div>
@@ -575,7 +526,7 @@
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
                                             <li class="option_item" data-question-item="education">
-                                                <img src="~/Images/single_seletion.png"/>
+                                                <img src="~/Images/single_seletion.png" />
                                                 <div>小学及以下</div>
                                             </li>
                                             <li class="option_item" data-question-item="education">
@@ -603,13 +554,13 @@
                                     <!--选择操作-->
                                     <div class="question_opeion_operate">
                                         <!--增加选项-->
-                                        <div class="operate_add"  onclick="Add_Item(this)">
+                                        <div class="operate_add" onclick="Add_Item(this)">
                                             <i class="add_icon"></i>
                                             添加单个选项
                                         </div>
                                         <!--删除选项-->
                                         <div class="operate_delete" onclick="Delete_select(this)">
-                                            <i class="delete_icon" ></i>
+                                            <i class="delete_icon"></i>
                                             删除最后选项
                                         </div>
                                     </div>
@@ -636,8 +587,8 @@
                                     <!--选项-->
                                     <div class="question_option_list">
                                         <ul class="quesrion_option_ul">
-                                            <li class="input_blank" >
-                                                <input type="text" readonly="readonly" data-question-item="major"/>
+                                            <li class="input_blank">
+                                                <input type="text" readonly="readonly" data-question-item="major" />
                                             </li>
                                         </ul>
                                     </div>
@@ -653,12 +604,12 @@
                                 <div class="delete_select" onclick="Delete_select(this)"></div>
                             </div>
                             <div class="question_content_wrap">
-                                <div class="question_content" >
+                                <div class="question_content">
                                     <!--标题框-->
-                                    <div class="question_title_wrap" >
+                                    <div class="question_title_wrap">
                                         <!--问题序号-->
-                                        <div class="question_order" >14</div>
-                                        <div class="content_editable" >
+                                        <div class="question_order">14</div>
+                                        <div class="content_editable">
                                             <div><i></i>您目前的职业是？</div>
                                         </div>
                                     </div>
@@ -737,11 +688,11 @@
                 </div>
             </div>
         </div>
-       </div>
+    </div>
 
-        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
-        <script src="~/Js/edit_project_layout.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Js/edit_project_layout.js"></script>
 
 </body>
 </html>

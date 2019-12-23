@@ -291,6 +291,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Css\base.css" />
     <Content Include="Css\edit_project_layout.css" />
+    <Content Include="Css\edit_publish_static_project_top_layout.css" />
     <Content Include="Css\homes_layout.css" />
     <Content Include="Css\login_register_layout.css" />
     <Content Include="Css\manager_layout.css" />
@@ -306,10 +307,12 @@
     <Content Include="Images\add.png" />
     <Content Include="Images\age.png" />
     <Content Include="Images\age_select.png" />
+    <Content Include="Images\arrow_left.jpg" />
     <Content Include="Images\banbenhao.png" />
     <Content Include="Images\bq_logo.png" />
     <Content Include="Images\check.png" />
     <Content Include="Images\checkbox1.png" />
+    <Content Include="Images\checkbox2.png" />
     <Content Include="Images\date.png" />
     <Content Include="Images\date_select.png" />
     <Content Include="Images\delete.png" />
@@ -323,9 +326,11 @@
     <Content Include="Images\fill_selection.png" />
     <Content Include="Images\fill_selection_select.png" />
     <Content Include="Images\home-page-background-all.jpg" />
+    <Content Include="Images\ic-arrow-back-24px.png" />
     <Content Include="Images\icon-ducument.png" />
     <Content Include="Images\icon_banbenhao.png" />
     <Content Include="Images\icon_bootstrap.png" />
+    <Content Include="Images\icon_edit_question.png" />
     <Content Include="Images\icon_framework.png" />
     <Content Include="Images\icon_jQuery.png" />
     <Content Include="Images\icon_shujuku.png" />

@@ -97,3 +97,90 @@ function toListView() {
     list_wrap.classList.remove("project_list_hidden");
     card_wrap.classList.add("project_list_hidden");
 }
+
+//  初始化页面数据
+
+class Naire {
+    constructor(id, title, state, start_time, edit_time, data) {
+        this.id = id;
+        this.title = title;
+        this.state = state;
+        this.start_time = start_time;
+        this.edit_time = edit_time;
+        this.data = data;
+    }
+}
+
+var btn_create_project = document.getElementById('btn_create_project');
+btn_create_project.addEventListener('click', createProject, false);
+
+function createProject() {
+    //ajax异步提交表单
+    //$.ajax({
+    //    url: '../ProjectList/getUserNaire',
+    //    data: {},
+    //    type: 'POST',
+    //    async: true,
+    //    success: function (data) {
+    //        console.log(data);
+    //    }
+    //});
+}
+
+var naire_json = document.getElementById('naire_json').value;
+var naire = JSON.parse(naire_json);
+
+var card_ul_list = document.getElementById('card_ul_list');
+var list_table_list = document.getElementById('list_table_list');
+console.log(naire);
+
+(function () {
+    for (var i = 0; i < naire.length; i++) {
+
+        var card_li = document.createElement('li');
+        card_li.classList.add('card_li');
+        card_li.setAttribute('data-naire-id', naire[i].id);
+
+        card_li.innerHTML = '<div class="project_title"><div class="list_title_wrap" >'
+            + '     <span class="list_title">' + naire[i].title + '</span>'
+            + '     <span class="list_title_icon">问卷</span> </div >';
+
+        if (naire[i].state == "未发布") {
+            card_li.innerHTML += '<div class="project_state state_unpublished">' + naire[i].state + '</div></div >';
+        } else {
+            card_li.innerHTML += '<div class="project_state state_published">' + naire[i].state + '</div></div >';
+        }
+        
+        card_li.innerHTML += ' <div class="project_details"><span class="total_collection">' + naire[i].data + '份数据</span>'
+            + '<span class="edit_time">' + naire[i].update_time + '</span ></div>'
+            + '<div class="operate_bar"><div class="operate_type"><i class="glyphicon glyphicon-pencil"></i>'
+            + '<span>编辑</span></div><div class="operate_type">'
+            + '<i class="glyphicon glyphicon-send" ></i >'
+            + '<span> 发布</span ></div > '
+            + '<div class="operate_type"><i class="glyphicon glyphicon-stats"></i>'
+            + '<span> 数据</span ></div > '
+            + '<div class="operate_type"><i class="glyphicon glyphicon-trash"></i><span>回收</span></div></div>';
+
+        card_ul_list.appendChild(card_li);
+
+        var table_tab = document.createElement('tr');
+        table_tab.classList.add('table_tab');
+        table_tab.setAttribute('data-naire-id', naire[i].id);
+
+        table_tab.innerHTML = '<td class="table_list_title">' + naire[i].title + '</td>';
+
+        if (naire[i].state == "未发布") {
+            table_tab.innerHTML += '<td class="table_list_state state_unpublished" > ' + naire[i].state + '</td >';
+        } else {
+            table_tab.innerHTML += '<td class="table_list_state state_published" > ' + naire[i].state + '</td >';
+        }
+        table_tab.innerHTML += '<td class="table_list_collection">' + naire[i].data + '</td>'
+            + '<td class="table_list_create_time">' + naire[i].start_time + '</td>'
+            + '<td class="table_list_edit_time">' + naire[i].update_time + '</td>'
+            + '<td class="table_list_operate"><div class="operate_type">编辑</div>'
+            + '<div class="operate_type">发布</div><div class="operate_type">数据</div>'
+            + '<div class="operate_type"><i class="glyphicon glyphicon-trash"></i></div></td>';
+
+        list_table_list.appendChild(table_tab);
+    }
+}());

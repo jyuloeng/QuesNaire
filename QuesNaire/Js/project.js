@@ -53,16 +53,14 @@ class CheckBoxResult {
 
 
 var naire = {
-    "title": "标题",
-    "hint": "描述",
+    "title": "这是一份测试问卷",
+    "hint": "马上开始8",
     "list": [
-        { "title": "填空题1", "flag": 1 },
-        { "title": "单选题1", "flag": 2, "items": ["A", "B", "C", "D", "E", "F"] },
-        { "title": "填空题2", "flag": 1 },
-        { "title": "单选题2", "flag": 2, "items": ["A", "B"] },
-        { "title": "多选题1", "flag": 3, "items": ["A", "B"] },
-        { "title": "多选题2", "flag": 3, "items": ["A", "B"] }
-    ]
+        { "id": 15, "naire_id": 7, "title": "请选择一个选项", "flag": 2, "items": "[\"选项1\",\"选项2\"]" },
+        { "id": 16, "naire_id": 7, "title": "请填写以下内容", "flag": 4, "items": "[\"填空1\",\"填空2\"]" },
+        { "id": 17, "naire_id": 7, "title": "请填写本项内容", "flag": 1, "items": "null" },
+        { "id": 18, "naire_id": 7, "title": "手机", "flag": 1, "items": "null" },
+        { "id": 19, "naire_id": 7, "title": "姓名", "flag": 1, "items": "null" }]
 }
 
 var naire_title = document.getElementById('naire_title');
@@ -81,6 +79,7 @@ var naire_list = naire.list;
         switch (naire_list[i].flag) {
             case 1:
                 var naire_item = document.createElement('div');
+                naire_item.setAttribute('data-question-id', naire_list[i].id);
                 naire_item.setAttribute('data-type', 'input');
                 naire_item.setAttribute('data-item', 'question');
                 naire_item.classList.add('naire_item');
@@ -101,8 +100,11 @@ var naire_list = naire.list;
                 input_item.setAttribute('type', 'text');
                 input_item.setAttribute('data-question-item', 'input');
                 input_item.classList.add('input_item');
+                
 
                 var naire_item_input = document.createElement('div');
+                naire_item_input.classList.add('naire_item_input');
+
                 naire_item_input.appendChild(input_item);
 
                 naire_item.appendChild(naire_item_input);
@@ -112,6 +114,7 @@ var naire_list = naire.list;
                 break;
             case 2:
                 var naire_item = document.createElement('div');
+                naire_item.setAttribute('data-question-id', naire_list[i].id);
                 naire_item.setAttribute('data-type', 'radio');
                 naire_item.setAttribute('data-item', 'question');
                 naire_item.classList.add('naire_item');
@@ -160,6 +163,7 @@ var naire_list = naire.list;
                 break;
             case 3:
                 var naire_item = document.createElement('div');
+                naire_item.setAttribute('data-question-id', naire_list[i].id);
                 naire_item.setAttribute('data-type', 'checkbox');
                 naire_item.setAttribute('data-item', 'question');
                 naire_item.classList.add('naire_item');
@@ -205,6 +209,43 @@ var naire_list = naire.list;
 
                 div_naire.appendChild(naire_item);
                 //console.log('duoxuan');
+                break;
+            case 4:
+                var naire_item = document.createElement('div');
+                naire_item.setAttribute('data-question-id', naire_list[i].id);
+                naire_item.setAttribute('data-type', 'multiple');
+                naire_item.setAttribute('data-item', 'question');
+                naire_item.classList.add('naire_item');
+
+                (function () {
+                    for (var title = 0; title < naire_list[i].items.length; title++) {
+                        var naire_item_title = document.createElement('div');
+                        naire_item_title.classList.add('naire_item_title');
+                        naire_item_title.innerText = i + 1 + "." + naire_list[i].items[title];
+
+                        var naire_must = document.createElement('span');
+                        naire_must.classList.add('naire_must');
+                        naire_must.innerText = "*";
+
+                        naire_item_title.appendChild(naire_must);
+
+                        var input_item = document.createElement('input');
+                        input_item.setAttribute('type', 'text');
+                        input_item.setAttribute('data-question-item', 'multiple');
+                        input_item.classList.add('input_item');
+
+                        var naire_item_input = document.createElement('div');
+                        naire_item_input.classList.add('naire_item_input');
+                        naire_item_input.classList.add('naire_item_inputs');
+
+                        naire_item_input.appendChild(input_item);
+
+                        naire_item.appendChild(naire_item_title);
+                        naire_item.appendChild(naire_item_input);
+                    }
+                }());
+
+                div_naire.appendChild(naire_item);
                 break;
         }
     }
@@ -262,6 +303,9 @@ function submit(){
 
                     var result = new CheckBoxResult(title, 3, choices);
                     naire_questions_list.push(result);
+                    break;
+                case "multiple":
+
                     break;
             }
         }

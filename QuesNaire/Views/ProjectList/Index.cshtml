@@ -1,4 +1,5 @@
-﻿
+﻿@model naire_info
+
 @{
     Layout = null;
 }
@@ -71,8 +72,8 @@
             <div class="project_list">
                 <!--    网格布局-->
                 <div class="card_wrap" id="card_wrap">
-                    <ul class="card_ul_list">
-                        <li class="card_li">
+                    <ul class="card_ul_list" id="card_ul_list">
+                        <li class="card_li" id="btn_create_project">
                             <a href="#" style="height: 100%;display: block;text-align: center;">
                                 <div class="create_project">
                                     <i class="glyphicon glyphicon-plus" style="margin-right: 5px;"></i>
@@ -82,7 +83,7 @@
                         </li>
 
                         <!--     网格li布局-->
-                        <li class="card_li">
+                        @*<li class="card_li">
                             <div class="project_title">
                                 <div class="list_title_wrap">
                                     <span class="list_title">问卷标题</span>
@@ -94,7 +95,7 @@
                                 <span class="total_collection">0份数据</span>
                                 <span class="edit_time">6分钟前</span>
                             </div>
-                            <!--    操作按钮-->
+                            
                             <div class="operate_bar">
                                 <div class="operate_type">
                                     <i class="glyphicon glyphicon-pencil"></i>
@@ -113,14 +114,14 @@
                                     <span>回收</span>
                                 </div>
                             </div>
-                        </li>
+                        </li>*@
                     </ul>
                 </div>
 
                 <!--    列表布局-->
                 <div class="list_wrap project_list_hidden" id="list_wrap">
                     <table class="list_table_list">
-                        <tbody>
+                        <tbody id="list_table_list">
                             <tr class="table_header">
                                 <td class="table_list_title">标题</td>
                                 <td class="table_list_state">收集状态</td>
@@ -131,7 +132,7 @@
                             </tr>
 
                             <!--    列表li布局-->
-                            <tr class="table_tab">
+                            @*<tr class="table_tab">
                                 <td class="table_list_title">问卷标题</td>
                                 <td class="table_list_state state_unpublished">未发布</td>
                                 <td class="table_list_collection">0</td>
@@ -210,6 +211,8 @@
     <footer class="footer_wrap">
         <img src="~/Images/bq_logo.png" />
     </footer>
+
+    <input class="hidden" id="naire_json" value="@ViewBag.NaireInfo" />
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
@@ -309,7 +312,6 @@
           console.log(error);
         });
         }
-
 
     </script>
 </body>

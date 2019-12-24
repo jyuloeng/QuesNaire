@@ -63,6 +63,179 @@ function finishEdit() {
     btn_finish_edit.removeEventListener('click', finishEdit, false);
 }
 
+//  初始化全部表格
+
+//  初始化 最新问卷表格
+function InitNaireNew() {
+    //  先销毁表格
+    $('#table_naire_new').bootstrapTable("destroy");
+    //  加载表格
+    $('#table_naire_new').bootstrapTable({
+        url: '../Manager/getNewNaireJson',        // 表格数据来源
+        pagination: true,   //  分页
+        search: true,       //  搜索
+        sorting: true,       //  排序
+        method: 'post',
+        pageSize: 20,
+        columns: [{
+            field: 'id',
+            title: '问卷 ID'
+        }, {
+            field: 'title',
+            title: '问卷标题'
+        }, {
+            field: 'state',
+            title: '收集状态'
+        }, {
+            field: 'start_time',
+            title: '开始时间'
+        }, {
+            field: 'update_time',
+            title: '最后更新'
+        }, {
+            field: 'data',
+            title: '收到数据'
+        }]
+    });
+}
+
+//  初始化 待发布问卷表格
+function InitNaireUnPublish() {
+    //  先销毁表格
+    $('#table_naire_unpublish').bootstrapTable("destroy");
+    //  加载表格
+    $('#table_naire_unpublish').bootstrapTable({
+        url: '../Manager/getUnPublishNaireJson',        // 表格数据来源
+        pagination: true,   //  分页
+        search: true,       //  搜索
+        sorting: true,       //  排序
+        method: 'post',
+        pageSize: 20,
+        columns: [{
+            field: 'id',
+            title: '问卷 ID'
+        }, {
+            field: 'title',
+            title: '问卷标题'
+        }, {
+            field: 'state',
+            title: '收集状态'
+        }, {
+            field: 'start_time',
+            title: '开始时间'
+        }, {
+            field: 'update_time',
+            title: '最后更新'
+        }, {
+            field: 'data',
+            title: '收到数据'
+        }]
+    });
+}
+
+//  初始化 已发布问卷表格
+function InitNairePublished() {
+    //  先销毁表格
+    $('#table_naire_published').bootstrapTable("destroy");
+    //  加载表格
+    $('#table_naire_published').bootstrapTable({
+        url: '../Manager/getPublishedNaireJson',        // 表格数据来源
+        pagination: true,   //  分页
+        search: true,       //  搜索
+        sorting: true,       //  排序
+        method: 'post',
+        pageSize: 20,
+        columns: [{
+            field: 'id',
+            title: '问卷 ID'
+        }, {
+            field: 'title',
+            title: '问卷标题'
+        }, {
+            field: 'state',
+            title: '收集状态'
+        }, {
+            field: 'start_time',
+            title: '开始时间'
+        }, {
+            field: 'update_time',
+            title: '最后更新'
+        }, {
+            field: 'data',
+            title: '收到数据'
+        }]
+    });
+}
+
+//  初始化 全部问卷表格
+function InitNaireAll() {
+    //  先销毁表格
+    $('#table_naire_all').bootstrapTable("destroy");
+    //  加载表格
+    $('#table_naire_all').bootstrapTable({
+        url: '../Manager/getAllNaireJson',        // 表格数据来源
+        pagination: true,   //  分页
+        search: true,       //  搜索
+        sorting: true,       //  排序
+        method: 'post',
+        pageSize: 20,
+        columns: [{
+            field: 'id',
+            title: '问卷 ID'
+        }, {
+            field: 'title',
+            title: '问卷标题'
+        }, {
+            field: 'state',
+            title: '收集状态'
+        }, {
+            field: 'start_time',
+            title: '开始时间'
+        }, {
+            field: 'update_time',
+            title: '最后更新'
+        }, {
+            field: 'data',
+            title: '收到数据'
+        }]
+    });
+}
+
+//  初始化 全部用户信息表格
+function InitUserInfo() {
+    //  先销毁表格
+    $('#table_user_info').bootstrapTable("destroy");
+    //  加载表格
+    $('#table_user_info').bootstrapTable({
+        url: '../Manager/getAllUserJson',        // 表格数据来源
+        pagination: true,   //  分页
+        search: true,       //  搜索
+        sorting: true,       //  排序
+        method: 'post',
+        pageSize: 20,
+        columns: [{
+            field: 'id',
+            title: '用户 ID'
+        }, {
+            field: 'name',
+            title: '用户昵称'
+        }, {
+            field: 'password',
+            title: '用户密码'
+        }, {
+            field: 'avatar',
+            title: '用户头像地址'
+        }]
+    });
+}
+
+InitNaireNew();
+InitNaireUnPublish();
+InitNairePublished();
+InitNaireAll();
+InitUserInfo();
+}
+
 //管理员登录
 function Manage_Login() {
     var account;

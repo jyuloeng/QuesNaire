@@ -24,7 +24,7 @@
             <a href="#" class="back_link">
                 <img src="~/Images/ic-arrow-back-24px.png" />
             </a>
-            <div class="header_edit_title">🍓23号爱心义卖满意度调查问卷</div>
+            <div class="header_edit_title" id="header_edit_title"></div>
         </div>
         <div class="edit_right">
             <div class="user_wrap">
@@ -33,12 +33,12 @@
                 <div class="user_info">
                     <div class="user_name">odd</div>
                     <div class="user-exit">
-                        <i class="glyphicon glyphicon-log-out"style="margin-right:10px;"></i>退出登录
+                        <i class="glyphicon glyphicon-log-out" style="margin-right:10px;"></i>退出登录
                     </div>
                 </div>
             </div>
-            <a href="#" class="edit_check" >预览</a>
-            
+            <a href="#" class="edit_check">预览</a>
+
         </div>
         <div class="edit_center">
             <a href="#" class="edit_center_title">编辑项目</a>
@@ -57,7 +57,7 @@
             <div class="info_left">
                 <div class="info_title">分享链接</div>
                 <div class="info_wrap">
-                    <div class="share_link">https://www.wenjuan.com/s/aQzIFn/</div>
+                    <div class="share_link" id="share_link"></div>
                     <button class="share_copy btn btn-primary">复制</button>
                     <button class="share_open btn btn-default">打开</button>
                 </div>
@@ -72,6 +72,8 @@
             <div class="clearfix"></div>
         </div>
     </div>
+
+    <input class="hidden" id="naire_json" value="@ViewBag.NaireInfo" />
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

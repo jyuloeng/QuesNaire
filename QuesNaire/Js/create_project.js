@@ -24,6 +24,15 @@ class CheckBox {
     }
 }
 
+//  多填实体类
+class Multiple {
+    constructor(title, flag, items) {
+        this.title = title;
+        this.flag = flag;
+        this.items = items;
+    }
+}
+
 //  问卷实体类
 class Naire {
     constructor(title, hint, list) {
@@ -75,8 +84,18 @@ function projectSubmit() {
                     }
                     var checkbox = new CheckBox(title, 3, item_list);
                     questions_list.push(checkbox);
+                    break;
+                case "Multiple":
+                    var title = questions[i].querySelector('div[data-item-title="title"]').innerText;
+                    var item_titles_list = new Array();
 
+                    var item_titles = questions[i].querySelectorAll('div[data-question-item="Multiple"]');
+                    for (var j = 0; j < item_titles.length; j++) {
+                        item_titles_list.push(item_titles[j].innerText);
+                    }
 
+                    var multiple = new Multiple(title, 4, item_titles_list);
+                    questions_list.push(multiple);
                     break;
             }
         }
@@ -85,4 +104,17 @@ function projectSubmit() {
     //  把这个东西转json就能得到问卷
     var naire = new Naire(title, hint, questions_list);
     console.log(JSON.stringify(naire));
+
+      //ajax异步提交表单
+    $.ajax({
+        url: '../EditProject/getNaireJson',
+        data: JSON.stringify(naire),
+        type: 'POST',
+        contentType: 'application/json;charset=utf-8',
+        async: true,
+        success: function (data) {
+            //  成功则重定向去发布项目页
+            window.location.href = "../PublishProject/Index?naire_id=" + data;
+        }
+    });
 }

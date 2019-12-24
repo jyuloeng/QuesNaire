@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="NaireWeb">
+  <DataContextMoniker Name="/NaireWebDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f54983d9-b983-4f5d-ad6e-4e0e906856cd" absoluteBounds="1.25, 0.875, 2, 1.5373050944010416">
+      <DataClassMoniker Name="/NaireWebDataContext/admin_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f4ccf642-9076-4baf-9d20-de69c3796e64" absoluteBounds="1.2650000000000001, 1.335, 1.9700000000000002, 0.97730509440104174" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0cb90f86-28f6-4ad1-a4a2-7c8de8c406ec" absoluteBounds="6.5, 0.75, 2, 1.7220992024739581">
+      <DataClassMoniker Name="/NaireWebDataContext/user_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b5035fca-2dcf-4e54-bf9e-6a430b55ed35" absoluteBounds="6.5150000000000006, 1.21, 1.9700000000000002, 1.1620992024739583" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1f61687e-b187-4909-80e1-1cedd27a435d" absoluteBounds="3.625, 3.75, 2, 1.7220992024739581">
+      <DataClassMoniker Name="/NaireWebDataContext/question_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c28eefe7-05f3-4800-b0e4-dd51c429b293" absoluteBounds="3.6400000000000006, 4.21, 1.9700000000000002, 1.1620992024739583" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="59c66f58-103a-48a8-a97f-99cc52ae775e" absoluteBounds="1, 3.75, 2, 1.3525109863281251">
+      <DataClassMoniker Name="/NaireWebDataContext/data_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7e61dadd-41d6-48ec-a0f9-a98f281ac3e3" absoluteBounds="1.0149999999999997, 4.21, 1.9700000000000002, 0.792510986328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.625 : 4.42625549316406); (3 : 4.42625549316406)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NaireWebDataContext/question_info/question_info_data_info" />
+      <nodes>
+        <classShapeMoniker Id="1f61687e-b187-4909-80e1-1cedd27a435d" />
+        <classShapeMoniker Id="59c66f58-103a-48a8-a97f-99cc52ae775e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="2954c299-d202-487b-823b-4d0bc16acd1e" absoluteBounds="3.75, 0.875, 2, 2.4612756347656251">
+      <DataClassMoniker Name="/NaireWebDataContext/naire_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="df23e8c3-12b7-4788-855b-bbd54f9af894" absoluteBounds="3.7649999999999997, 1.335, 1.9700000000000002, 1.901275634765625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.6875 : 3.33627563476563); (4.6875 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NaireWebDataContext/naire_info/naire_info_question_info" />
+      <nodes>
+        <classShapeMoniker Id="2954c299-d202-487b-823b-4d0bc16acd1e" />
+        <classShapeMoniker Id="1f61687e-b187-4909-80e1-1cedd27a435d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.5 : 1.67354960123698); (5.75 : 1.67354960123698)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NaireWebDataContext/user_info/user_info_naire_info" />
+      <nodes>
+        <classShapeMoniker Id="0cb90f86-28f6-4ad1-a4a2-7c8de8c406ec" />
+        <classShapeMoniker Id="2954c299-d202-487b-823b-4d0bc16acd1e" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

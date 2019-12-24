@@ -47,7 +47,7 @@
 }
 
 .share_link {
-    width: 300px;
+    width: 400px;
     font-size: 12px;
     color: rgba(72,72,72,1);
     height: 35px;
@@ -73,13 +73,13 @@
     background: #2672ff;
     border: 1px solid #2672ff;
     position: absolute;
-    left: 300px;
+    left: 400px;
 }
 
 .share_open {
     color: #2672ff;
     position: absolute;
-    left: 390px;
+    left: 490px;
 }
 
 .info_right {

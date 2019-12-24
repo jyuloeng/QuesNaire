@@ -44,6 +44,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -405,12 +408,12 @@
     <Content Include="fonts\materialdesignicons.ttf" />
     <Content Include="fonts\materialdesignicons.woff" />
     <Content Include="fonts\materialdesignicons.woff2" />
-    <Content Include="App_Code\NaireWeb.dbml">
+    <Content Include="NaireWeb.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>NaireWeb.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="App_Code\NaireWeb.dbml.layout">
+    <None Include="NaireWeb.dbml.layout">
       <DependentUpon>NaireWeb.dbml</DependentUpon>
     </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -423,11 +426,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\NaireWeb.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NaireWeb.dbml</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EditProjectController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -444,8 +442,14 @@
     <Compile Include="Models\AdminInfo.cs" />
     <Compile Include="Models\DataInfo.cs" />
     <Compile Include="Models\NaireInfo.cs" />
+    <Compile Include="Models\NaireJsonObject.cs" />
     <Compile Include="Models\QuestionInfo.cs" />
     <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="NaireWeb.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NaireWeb.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -473,6 +477,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

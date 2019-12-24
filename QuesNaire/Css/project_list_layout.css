@@ -407,7 +407,7 @@
 
 .total_collection {
     display: inline-block;
-    width: 184px;
+    width: 160px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QuesNaire.App_Code
+namespace QuesNaire
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -30,21 +30,21 @@ namespace QuesNaire.App_Code
 		
     #region 可扩展性方法定义
     partial void OnCreated();
+    partial void Insertadmin_info(admin_info instance);
+    partial void Updateadmin_info(admin_info instance);
+    partial void Deleteadmin_info(admin_info instance);
     partial void Insertuser_info(user_info instance);
     partial void Updateuser_info(user_info instance);
     partial void Deleteuser_info(user_info instance);
     partial void Insertquestion_info(question_info instance);
     partial void Updatequestion_info(question_info instance);
     partial void Deletequestion_info(question_info instance);
-    partial void Insertnaire_info(naire_info instance);
-    partial void Updatenaire_info(naire_info instance);
-    partial void Deletenaire_info(naire_info instance);
     partial void Insertdata_info(data_info instance);
     partial void Updatedata_info(data_info instance);
     partial void Deletedata_info(data_info instance);
-    partial void Insertadmin_info(admin_info instance);
-    partial void Updateadmin_info(admin_info instance);
-    partial void Deleteadmin_info(admin_info instance);
+    partial void Insertnaire_info(naire_info instance);
+    partial void Updatenaire_info(naire_info instance);
+    partial void Deletenaire_info(naire_info instance);
     #endregion
 		
 		public NaireWebDataContext() : 
@@ -77,6 +77,14 @@ namespace QuesNaire.App_Code
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<admin_info> admin_info
+		{
+			get
+			{
+				return this.GetTable<admin_info>();
+			}
+		}
+		
 		public System.Data.Linq.Table<user_info> user_info
 		{
 			get
@@ -93,14 +101,6 @@ namespace QuesNaire.App_Code
 			}
 		}
 		
-		public System.Data.Linq.Table<naire_info> naire_info
-		{
-			get
-			{
-				return this.GetTable<naire_info>();
-			}
-		}
-		
 		public System.Data.Linq.Table<data_info> data_info
 		{
 			get
@@ -109,11 +109,145 @@ namespace QuesNaire.App_Code
 			}
 		}
 		
-		public System.Data.Linq.Table<admin_info> admin_info
+		public System.Data.Linq.Table<naire_info> naire_info
 		{
 			get
 			{
-				return this.GetTable<admin_info>();
+				return this.GetTable<naire_info>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.admin_info")]
+	public partial class admin_info : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _account;
+		
+		private string _password;
+		
+		private string _name;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnaccountChanging(string value);
+    partial void OnaccountChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    #endregion
+		
+		public admin_info()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account", DbType="NChar(60) NOT NULL", CanBeNull=false)]
+		public string account
+		{
+			get
+			{
+				return this._account;
+			}
+			set
+			{
+				if ((this._account != value))
+				{
+					this.OnaccountChanging(value);
+					this.SendPropertyChanging();
+					this._account = value;
+					this.SendPropertyChanged("account");
+					this.OnaccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="NChar(60) NOT NULL", CanBeNull=false)]
+		public string password
+		{
+			get
+			{
+				return this._password;
+			}
+			set
+			{
+				if ((this._password != value))
+				{
+					this.OnpasswordChanging(value);
+					this.SendPropertyChanging();
+					this._password = value;
+					this.SendPropertyChanged("password");
+					this.OnpasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NChar(60) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -351,7 +485,7 @@ namespace QuesNaire.App_Code
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -415,7 +549,7 @@ namespace QuesNaire.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="VarChar(60) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string title
 		{
 			get
@@ -435,7 +569,7 @@ namespace QuesNaire.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_items", DbType="VarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_items", DbType="NVarChar(MAX)")]
 		public string items
 		{
 			get
@@ -535,6 +669,157 @@ namespace QuesNaire.App_Code
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.data_info")]
+	public partial class data_info : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _question_id;
+		
+		private string _data;
+		
+		private EntityRef<question_info> _question_info;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onquestion_idChanging(int value);
+    partial void Onquestion_idChanged();
+    partial void OndataChanging(string value);
+    partial void OndataChanged();
+    #endregion
+		
+		public data_info()
+		{
+			this._question_info = default(EntityRef<question_info>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_id", DbType="Int NOT NULL")]
+		public int question_id
+		{
+			get
+			{
+				return this._question_id;
+			}
+			set
+			{
+				if ((this._question_id != value))
+				{
+					if (this._question_info.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onquestion_idChanging(value);
+					this.SendPropertyChanging();
+					this._question_id = value;
+					this.SendPropertyChanged("question_id");
+					this.Onquestion_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string data
+		{
+			get
+			{
+				return this._data;
+			}
+			set
+			{
+				if ((this._data != value))
+				{
+					this.OndataChanging(value);
+					this.SendPropertyChanging();
+					this._data = value;
+					this.SendPropertyChanged("data");
+					this.OndataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="question_info_data_info", Storage="_question_info", ThisKey="question_id", OtherKey="id", IsForeignKey=true)]
+		public question_info question_info
+		{
+			get
+			{
+				return this._question_info.Entity;
+			}
+			set
+			{
+				question_info previousValue = this._question_info.Entity;
+				if (((previousValue != value) 
+							|| (this._question_info.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._question_info.Entity = null;
+						previousValue.data_info.Remove(this);
+					}
+					this._question_info.Entity = value;
+					if ((value != null))
+					{
+						value.data_info.Add(this);
+						this._question_id = value.id;
+					}
+					else
+					{
+						this._question_id = default(int);
+					}
+					this.SendPropertyChanged("question_info");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.naire_info")]
 	public partial class naire_info : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -549,11 +834,11 @@ namespace QuesNaire.App_Code
 		
 		private string _state;
 		
-		private System.DateTime _start_time;
+		private string _start_time;
 		
-		private System.DateTime _update_time;
+		private string _update_time;
 		
-		private string _question;
+		private string _questions;
 		
 		private int _data;
 		
@@ -573,12 +858,12 @@ namespace QuesNaire.App_Code
     partial void OntitleChanged();
     partial void OnstateChanging(string value);
     partial void OnstateChanged();
-    partial void Onstart_timeChanging(System.DateTime value);
+    partial void Onstart_timeChanging(string value);
     partial void Onstart_timeChanged();
-    partial void Onupdate_timeChanging(System.DateTime value);
+    partial void Onupdate_timeChanging(string value);
     partial void Onupdate_timeChanged();
-    partial void OnquestionChanging(string value);
-    partial void OnquestionChanged();
+    partial void OnquestionsChanging(string value);
+    partial void OnquestionsChanged();
     partial void OndataChanging(int value);
     partial void OndataChanged();
     #endregion
@@ -590,7 +875,7 @@ namespace QuesNaire.App_Code
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -674,8 +959,8 @@ namespace QuesNaire.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_start_time", DbType="Date NOT NULL")]
-		public System.DateTime start_time
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_start_time", DbType="NVarChar(60) NOT NULL", CanBeNull=false)]
+		public string start_time
 		{
 			get
 			{
@@ -694,8 +979,8 @@ namespace QuesNaire.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_update_time", DbType="Date NOT NULL")]
-		public System.DateTime update_time
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_update_time", DbType="NVarChar(60) NOT NULL", CanBeNull=false)]
+		public string update_time
 		{
 			get
 			{
@@ -714,22 +999,22 @@ namespace QuesNaire.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string question
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_questions", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string questions
 		{
 			get
 			{
-				return this._question;
+				return this._questions;
 			}
 			set
 			{
-				if ((this._question != value))
+				if ((this._questions != value))
 				{
-					this.OnquestionChanging(value);
+					this.OnquestionsChanging(value);
 					this.SendPropertyChanging();
-					this._question = value;
-					this.SendPropertyChanged("question");
-					this.OnquestionChanged();
+					this._questions = value;
+					this.SendPropertyChanged("questions");
+					this.OnquestionsChanged();
 				}
 			}
 		}
@@ -831,315 +1116,6 @@ namespace QuesNaire.App_Code
 		{
 			this.SendPropertyChanging();
 			entity.naire_info = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.data_info")]
-	public partial class data_info : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private int _question_id;
-		
-		private string _data;
-		
-		private EntityRef<question_info> _question_info;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onquestion_idChanging(int value);
-    partial void Onquestion_idChanged();
-    partial void OndataChanging(string value);
-    partial void OndataChanged();
-    #endregion
-		
-		public data_info()
-		{
-			this._question_info = default(EntityRef<question_info>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_id", DbType="Int NOT NULL")]
-		public int question_id
-		{
-			get
-			{
-				return this._question_id;
-			}
-			set
-			{
-				if ((this._question_id != value))
-				{
-					if (this._question_info.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onquestion_idChanging(value);
-					this.SendPropertyChanging();
-					this._question_id = value;
-					this.SendPropertyChanged("question_id");
-					this.Onquestion_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="NVarChar(60) NOT NULL", CanBeNull=false)]
-		public string data
-		{
-			get
-			{
-				return this._data;
-			}
-			set
-			{
-				if ((this._data != value))
-				{
-					this.OndataChanging(value);
-					this.SendPropertyChanging();
-					this._data = value;
-					this.SendPropertyChanged("data");
-					this.OndataChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="question_info_data_info", Storage="_question_info", ThisKey="question_id", OtherKey="id", IsForeignKey=true)]
-		public question_info question_info
-		{
-			get
-			{
-				return this._question_info.Entity;
-			}
-			set
-			{
-				question_info previousValue = this._question_info.Entity;
-				if (((previousValue != value) 
-							|| (this._question_info.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._question_info.Entity = null;
-						previousValue.data_info.Remove(this);
-					}
-					this._question_info.Entity = value;
-					if ((value != null))
-					{
-						value.data_info.Add(this);
-						this._question_id = value.id;
-					}
-					else
-					{
-						this._question_id = default(int);
-					}
-					this.SendPropertyChanged("question_info");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.admin_info")]
-	public partial class admin_info : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _account;
-		
-		private string _password;
-		
-		private string _name;
-		
-		private string _avatar;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnaccountChanging(string value);
-    partial void OnaccountChanged();
-    partial void OnpasswordChanging(string value);
-    partial void OnpasswordChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnavatarChanging(string value);
-    partial void OnavatarChanged();
-    #endregion
-		
-		public admin_info()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account", DbType="NChar(60) NOT NULL", CanBeNull=false)]
-		public string account
-		{
-			get
-			{
-				return this._account;
-			}
-			set
-			{
-				if ((this._account != value))
-				{
-					this.OnaccountChanging(value);
-					this.SendPropertyChanging();
-					this._account = value;
-					this.SendPropertyChanged("account");
-					this.OnaccountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="NChar(60)")]
-		public string password
-		{
-			get
-			{
-				return this._password;
-			}
-			set
-			{
-				if ((this._password != value))
-				{
-					this.OnpasswordChanging(value);
-					this.SendPropertyChanging();
-					this._password = value;
-					this.SendPropertyChanged("password");
-					this.OnpasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NChar(60)")]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_avatar", DbType="NChar(60)")]
-		public string avatar
-		{
-			get
-			{
-				return this._avatar;
-			}
-			set
-			{
-				if ((this._avatar != value))
-				{
-					this.OnavatarChanging(value);
-					this.SendPropertyChanging();
-					this._avatar = value;
-					this.SendPropertyChanged("avatar");
-					this.OnavatarChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }

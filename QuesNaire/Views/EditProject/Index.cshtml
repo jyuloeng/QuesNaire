@@ -1,7 +1,4 @@
 ﻿
-@{
-    Layout = null;
-}
 
 <!DOCTYPE html>
 
@@ -260,23 +257,25 @@
                                         <!--问题序号-->
                                         <div class="question_order">4</div>
                                         <div class="content_editable">
-                                            <div class="question_title " contenteditable="true">请填写以下内容</div>
+                                            <div class="question_title " contenteditable="true"  data-item-title="title">请填写以下内容</div>
                                         </div>
                                     </div>
                                     <!--选项-->
                                     <div class="question_option_list" id="question_list">
                                         <ul class="quesrion_option_ul" id="question_item">
                                             <li class="option_item">
-                                                <div id="select_1" contenteditable="true" style="margin-left:0">填空1</div>
+                                                <div id="select_1" contenteditable="true" style="margin-left:0"
+                                                     data-question-item="Multiple">填空1</div>
                                             </li>
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="duotiankong" />
+                                                <input type="text" readonly="readonly"  />
                                             </li>
                                             <li class="option_item">
-                                                <div id="select_2" contenteditable="true" style="margin-left:0">填空2</div>
+                                                <div id="select_2" contenteditable="true" style="margin-left:0"
+                                                     data-question-item="Multiple">填空2</div>
                                             </li>
                                             <li class="input_blank">
-                                                <input type="text" readonly="readonly" data-question-item="duotiankong" />
+                                                <input type="text" readonly="readonly"  />
                                             </li>
                                         </ul>
                                     </div>

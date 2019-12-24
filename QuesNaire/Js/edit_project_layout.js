@@ -389,6 +389,5 @@ naire_title.addEventListener('mouseout', function (e) {
 }, false);
 
 function titleChange(e) {
-    console.log(e.srcElement.innerText);
     header_title[0].innerText = e.srcElement.innerText;
 }

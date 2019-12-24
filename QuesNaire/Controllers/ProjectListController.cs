@@ -1,5 +1,5 @@
 ﻿
-using QuesNaire.App_Code;
+using Newtonsoft.Json;
 using QuesNaire.Models;
 using System;
 using System.Collections.Generic;
@@ -20,6 +20,7 @@ namespace QuesNaire.Controllers
         // GET: Project
         public ActionResult Index()
         {
+            
             id = Request.QueryString["id"];
             if (id != null)
             {
@@ -27,8 +28,43 @@ namespace QuesNaire.Controllers
                 cookie.Value = id;
                 Response.Cookies.Add(cookie);
             }
-            else
-                return View();
+
+            getUserInfo();
+
+            getUserNaire();
+
+            return View();
+        }
+
+        [HttpPost]
+        /// <summary>
+        /// 获得用户问卷
+        /// </summary>
+        public void getUserNaire()
+        {
+            string user_id = Request.Cookies["user_id"].Value;
+
+            NaireWebDataContext db = new NaireWebDataContext();
+            var result = from r in db.naire_info
+                         where r.user_id.ToString() == user_id
+                         select new {
+                             r.id,
+                             r.title,
+                             r.state,
+                             r.start_time,
+                             r.update_time,
+                             r.data
+                         };
+
+            ViewBag.NaireInfo = JsonConvert.SerializeObject(result);
+        }
+
+        /// <summary>
+        /// 获得用户信息
+        /// </summary>
+        public void getUserInfo()
+        {
+            
             if (Request.Cookies["user_id"] != null)
             {
                 NaireWebDataContext db = new NaireWebDataContext();
@@ -57,9 +93,10 @@ namespace QuesNaire.Controllers
                 cookie3.Value = user.Avatar;
                 Response.Cookies.Add(cookie3);
             }
-            return View();
         }
+
         private UserInfo user = new UserInfo();
+
         public string upImg(string avatar,string id)
         {
 
@@ -70,6 +107,7 @@ namespace QuesNaire.Controllers
 
             return PostResponse("http://test.xkspbz.com/avatar/getImgUrl.php", "img=" + avatar, out string statusCode);
         }
+
         public string PostResponse(string url, string postData, out string statusCode)
         {
             string result = string.Empty;

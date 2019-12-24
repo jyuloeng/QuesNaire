@@ -832,6 +832,8 @@ namespace QuesNaire
 		
 		private string _title;
 		
+		private string _hint;
+		
 		private string _state;
 		
 		private string _start_time;
@@ -856,6 +858,8 @@ namespace QuesNaire
     partial void Onuser_idChanged();
     partial void OntitleChanging(string value);
     partial void OntitleChanged();
+    partial void OnhintChanging(string value);
+    partial void OnhintChanged();
     partial void OnstateChanging(string value);
     partial void OnstateChanged();
     partial void Onstart_timeChanging(string value);
@@ -935,6 +939,26 @@ namespace QuesNaire
 					this._title = value;
 					this.SendPropertyChanged("title");
 					this.OntitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hint", DbType="NVarChar(60) NOT NULL", CanBeNull=false)]
+		public string hint
+		{
+			get
+			{
+				return this._hint;
+			}
+			set
+			{
+				if ((this._hint != value))
+				{
+					this.OnhintChanging(value);
+					this.SendPropertyChanging();
+					this._hint = value;
+					this.SendPropertyChanged("hint");
+					this.OnhintChanged();
 				}
 			}
 		}

@@ -42,6 +42,7 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="title" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="hint" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
       <Column Name="state" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
       <Column Name="start_time" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
       <Column Name="update_time" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />

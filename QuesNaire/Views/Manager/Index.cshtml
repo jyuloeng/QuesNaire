@@ -22,7 +22,7 @@
     <!--    左边导航栏-->
     <nav class="nav_wrap">
         <div class="nav_title">
-            <img src="~/Images/logo_blue.png" style="height:70%;margin-top:10px;"/>
+            <img src="~/Images/logo_blue.png" style="height:70%;margin-top:10px;" />
         </div>
         <div class="nav_item nav_item_active">
             <i class="glyphicon glyphicon-home"></i>
@@ -76,7 +76,7 @@
                     <img src="~/Images/v201911-scene-05.png" />
                     <div class="context_wrap">
                         <span class="context_title">问卷总数</span>
-                        <span class="context_number">1999</span>
+                        <span class="context_number">@ViewBag.NaireNum</span>
                     </div>
 
                 </div>
@@ -84,14 +84,14 @@
                     <img src="~/Images/v201911-scene-02.png" />
                     <div class="context_wrap">
                         <span class="context_title">用户总数</span>
-                        <span class="context_number">999</span>
+                        <span class="context_number">@ViewBag.UserNum</span>
                     </div>
                 </div>
                 <div class="index_top_item">
                     <img src="~/Images/v201911-scene-01.png" />
                     <div class="context_wrap">
                         <span class="context_title">提交总数</span>
-                        <span class="context_number">888</span>
+                        <span class="context_number">@ViewBag.DataNum</span>
                     </div>
                 </div>
                 <div class="index_top_item">
@@ -204,27 +204,27 @@
 
         <!--    最新问卷-->
         <div class="all_project_layout layout_item">
-            <table id="table" class="table table-hover table-borderless"></table>
+            <table id="table_naire_new" class="table table-hover table-borderless"></table>
         </div>
 
         <!--    待发布问卷-->
         <div class="unpublish_layout layout_item">
-            unpublish_layout
+            <table id="table_naire_unpublish" class="table table-hover table-borderless"></table>
         </div>
 
         <!--    已发布问卷-->
         <div class="published_layout layout_item">
-            published_layout
+            <table id="table_naire_published" class="table table-hover table-borderless"></table>
         </div>
 
         <!--    问卷查询-->
         <div class="query_layout layout_item">
-            query_layout
+            <table id="table_naire_all" class="table table-hover table-borderless"></table>
         </div>
 
         <!--    用户管理-->
         <div class="user_manager_layout layout_item">
-            user_manager_layout
+            <table id="table_user_info" class="table table-hover table-borderless"></table>
         </div>
 
         <!--    个人信息管理-->
@@ -244,7 +244,7 @@
                     <!--    正常状态-->
                     <div class="item_wrap_normal" id="item_wrap_normal">
                         <div class="admin_info_item">
-                            <span  class="item_name">用户昵称：</span><span>odd</span>
+                            <span class="item_name">用户昵称：</span><span>odd</span>
                         </div>
                         <div class="admin_info_item">
                             <span class="item_name">密码：</span><span>123456</span><span class="display">显示密码</span>
@@ -253,7 +253,7 @@
                     <!--    编辑状态-->
                     <div class="item_wrap_edit admin_info_hidden" id="item_wrap_edit">
                         <div class="admin_info_item">
-                            <span class="item_name">用户昵称：</span><input type="text" class="form-control input_edit"/>
+                            <span class="item_name">用户昵称：</span><input type="text" class="form-control input_edit" />
                         </div>
                         <div class="admin_info_item">
                             <span class="item_name">密码：</span><input type="password" class="form-control input_edit" />
@@ -265,7 +265,6 @@
             </div>
         </div>
     </div>
-
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
@@ -296,12 +295,12 @@
 
             // The data for our dataset
             data: {
-                labels: ['00：00', '03：00', '06：00', '9：00', '12：00', '15：00', '18：00','21：00'],
+                labels: ['00：00', '03：00', '06：00', '9：00', '12：00', '15：00', '18：00', '21：00'],
                 datasets: [{
                     label: '24小时内问卷数',
                     backgroundColor: '#e4ecef',
                     borderColor: '#2672ff',
-                    data: [0, 10, 5, 2, 20, 10, 25,13   ]
+                    data: [0, 10, 5, 2, 20, 10, 25, 13]
                 }]
             },
 
@@ -310,40 +309,13 @@
         });
     </script>
 
-    <script src="~/Js/manager_layout.js"></script>
+    
     <script src="~/Content/dist/bootstrap-table.min.js"></script>
     <script src="~/Content/dist/locale/bootstrap-table-zh-CN.min.js"></script>
-
+    <script src="~/Js/manager_layout.js"></script>
     <script>
-        //$('#table2').bootstrapTable({
-        //    url: '/json/data.json',        // 表格数据来源
-        //    pagination: true,   //  分页
-        //    search: true,       //  搜索
-        //    sorting: true,       //  排序
-        //    height:"500",
-        //    columns: [{
-        //        field: 'id',
-        //        title: 'Item ID'
-        //    }, {
-        //        field: 'name',
-        //        title: 'Item Name'
-        //    }, {
-        //        field: 'price',
-        //        title: 'Item Price'
-        //    }, {
-        //        field: 'column1',
-        //        title: '列1'
-        //    }, {
-        //        field: 'column2',
-        //        title: '列2'
-        //    }, {
-        //        field: 'column3',
-        //        title: '列3'
-        //    }, {
-        //        field: 'column4',
-        //        title: '列4'
-        //    }]
-        //});
+
+       
     </script>
 </body>
 </html>

@@ -30,7 +30,7 @@ var item_wrap_normal = document.getElementById('item_wrap_normal');
 
 var isEditting = false;
 
-btn_admin_info_change.addEventListener('click', adminInfoEdit, false);
+//btn_admin_info_change.addEventListener('click', adminInfoEdit, false);
 
 
 //  修改管理员个人信息
@@ -61,4 +61,30 @@ function finishEdit() {
     }
 
     btn_finish_edit.removeEventListener('click', finishEdit, false);
+}
+
+//管理员登录
+function Manage_Login() {
+    var account;
+    var password;
+    account = document.getElementById("reg_input_account").value;
+    password = document.getElementById("reg_input_password").value;
+    if (account == "" || password == "") {
+        return;
+    }   
+    axios.post('../Manager/Manage_Login_Info', {
+        account: account,
+        password: password,
+    })
+        .then(function (response) {
+            console.log(response.data);
+            var id = response.data
+            if (id != "0") {
+                window.location.href = "../Manager/Index";
+            }
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }

@@ -59,6 +59,7 @@
         if (account == "" || password == "") {
             return;
         }
+        
         axios.post('../Login/login_info', {
             account: account,
             password: password,
@@ -66,6 +67,7 @@
             .then(function (response) {
                 console.log(response.data);
                 var id = response.data
+                alert(id);
                 if (id != "0") {
                     window.location.href = "../ProjectList/Index?id="+id;
                 }

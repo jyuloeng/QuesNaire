@@ -391,3 +391,88 @@ naire_title.addEventListener('mouseout', function (e) {
 function titleChange(e) {
     header_title[0].innerText = e.srcElement.innerText;
 }
+
+//原本内容
+var Text;
+
+//问卷标题恢复默认值
+function RecoverDefault(obj) {
+
+    if (obj.id == "input_hint") {
+        var div = document.getElementById(obj.id);
+        div.style.backgroundColor = "#fff";
+    }
+    if (obj.id == "input_title") {
+        var div = document.getElementById(obj.id);
+        div.parentNode.style.backgroundColor = "#fff";
+    }
+    var div = document.getElementById(obj.id);
+    var text = div.innerText;
+
+    if (text == "" || text == null) {
+
+        if (obj.id == "input_hint") {
+
+            div.innerHTML = Text;
+            
+        }
+        if (obj.id == "input_title") {
+            div.parentNode.innerHTML = Text;
+        }
+    }
+}
+
+
+
+//改变标题编辑时背景颜色
+function ChangeBackground(obj) {
+
+    if (obj.id == "input_hint") {
+        var div = document.getElementById(obj.id);
+        div.style.backgroundColor = "rgb(244,244,244)";
+        Text = div.innerText;
+    }
+    if (obj.id == "input_title") {
+        var div = document.getElementById(obj.id);
+        div.parentNode.style.backgroundColor = "rgb(244,244,244)";
+        Text = div.parentNode.innerText;
+    }
+    var title = obj.getAttribute("data-item-title");
+    if (title == "title") {
+        obj.style.backgroundColor = "rgb(244,244,244)";
+        Text = obj.innerText;
+    }
+    var item = obj.getAttribute("data-question-item");
+    if (item == "Radio" || item == "Checkbox" || item == "Multiple" || item == "Radio") {
+        if (item == "Multiple") {
+            obj.style.backgroundColor = "rgb(244,244,244)";
+        }
+        else {
+            obj.parentNode.style.backgroundColor = "rgb(244,244,244)";
+        }
+        Text = obj.innerText;
+    }
+}
+//判断问题不存在空值
+function JudgeNull(obj) {
+
+    var title = obj.getAttribute("data-item-title");
+    if (title == "title") {
+        obj.style.backgroundColor = "#fff";
+        if (obj.innerText == "" || obj.innerText == null) {
+            obj.innerHTML = Text;
+        }
+    }
+    var item = obj.getAttribute("data-question-item");
+    if (item == "Radio" || item == "Checkbox" || item == "Multiple" || item =="Radio") {
+        if (item == "Multiple") {
+            obj.style.backgroundColor = "#fff";
+        } else {
+            obj.parentNode.style.backgroundColor = "#fff";
+        }
+        if (obj.innerText == "" || obj.innerText == null) {
+            obj.innerHTML = Text;
+        }
+    }
+
+}

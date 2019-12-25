@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using QuesNaire.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,21 @@ namespace QuesNaire.Controllers
     /// </summary>
     public class ManagerController : Controller
     {
+        private string id { get; set; }
         // GET: Manager
         public ActionResult Index()
         {
+
+            id = Request.QueryString["id"];
+
+            if (id != null)
+            {
+                HttpCookie cookie = new HttpCookie("manage_id");
+                cookie.Value = id;
+                Response.Cookies.Add(cookie);
+            }
+
+
             NaireWebDataContext db = new NaireWebDataContext();
             //  首页显示基本信息
             double user_num = (from r in db.user_info
@@ -172,6 +185,40 @@ namespace QuesNaire.Controllers
                       };
             var ID = rs2.FirstOrDefault().id.ToString();
             return Json(ID);
+        }
+
+        private AdminInfo admin = new AdminInfo();
+        /// <summary>
+        /// 获取管理员信息
+        /// </summary>
+        public void getManageInfo()
+        {
+            NaireWebDataContext db = new NaireWebDataContext();
+            var rs = from r in db.admin_info
+                     where id == r.id.ToString()
+                     select new
+                     {
+                         r.account,
+                         r.password,
+                         r.name
+                     };
+            var account = rs.FirstOrDefault().account;
+            var name = rs.FirstOrDefault().name;
+            var password = rs.FirstOrDefault().password;
+
+            admin.Manage_account = account;
+            admin.Manage_name = name;
+            admin.Manage_password = password;
+
+            HttpCookie cookie = new HttpCookie("manage_account");
+            cookie.Value = admin.Manage_account;
+            Response.Cookies.Add(cookie);
+            HttpCookie cookie2 = new HttpCookie("manage_name");
+            cookie2.Value = admin.Manage_name;
+            Response.Cookies.Add(cookie2);
+
+
+
         }
     }
 }

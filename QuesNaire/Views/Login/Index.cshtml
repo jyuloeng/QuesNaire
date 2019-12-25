@@ -15,66 +15,107 @@
         <!--    手机登录-->
         <div class="form-group" id="form_phone">
             <label for="reg_input_phone">手机号</label>
-            <input type="tel" class="form-control" id="reg_input_phone">
+            <input type="tel" class="form-control" onfocus="ClearError(this)" onblur="Judge(this)" id="reg_input_phone">
+            <label class="error_lable" id="phone_error"></label>
         </div>
         <!--    邮箱登录-->
         <div class="form-group form_hidden" id="form_email">
             <label for="reg_input_email">邮箱</label>
-            <input type="email" class="form-control" id="reg_input_email">
+            <input type="email" class="form-control" onfocus="ClearError(this)" onblur="Judge(this)" id="reg_input_email">
+            <label class="error_lable" id="email_error"></label>
         </div>
         <div class="form-group">
             <label for="reg_input_password">
                 密码
                 <span>（请设置包含数字、字母和符号的8~20位密码）</span>
             </label>
-            <input type="tel" class="form-control" id="reg_input_password">
+            <input type="password" class="form-control" onfocus="ClearError(this)" id="reg_input_password">
+            <label class="error_lable" id="error_password"></label>
         </div>
         <div class="checkbox">
-            <i></i>
+            <i Is-select="false" id="select" onclick="ChangeSelect(this)"></i>
             <span>我接受</span>
             <a href="#">问卷网服务协议</a>
             <a href="#" class="forget_password">忘记密码?</a>
         </div>
-        <button type="submit" class="btn btn-primary btn_register"  onclick="login()">登录</button>
+        <label class="error_lable" style="font-size:15px;" id="error_message"></label>
+        <button type="submit" class="btn btn-primary btn_register" onclick="login()">登录</button>
     </div>
 </div>
 
 <div class="link_choose">
     <span>第三方登录&nbsp;或</span>
-    <a href="#" class="link_register">立即注册</a>
+    <a href="~/Views/Register/Index.cshtml" class="link_register">立即注册</a>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     function login() {
         var account;
         var password;
-         var x = document.getElementById("tab_phone");
+        var x = document.getElementById("tab_phone");
+
+        //错误信息显示框
+        var error_message = document.getElementById("error_message");
+        var phone_error = document.getElementById("phone_error");
+        var email_error = document.getElementById("email_error");
+        var error_password = document.getElementById("error_password");
+
+
+        //是否接受协议
+        var Is_select = document.getElementById("select").getAttribute("Is-select");
+
+
         if (x.className == "active") {
             account = document.getElementById("reg_input_phone").value;
+            if (account == "") {
+                phone_error.innerHTML = "手机号不能为空!";
+                phone_error.style.display = "block";
+                return;
+            }
         }
         else {
             account = document.getElementById("reg_input_email").value;
+            if (account == "") {
+                email_error.innerHTML = "邮箱不能为空!";
+                email_error.style.display = "block";
+                return;
+            }
         }
         password = document.getElementById("reg_input_password").value;
-        if (account == "" || password == "") {
+        if (password == "") {
+            error_password.innerHTML = "密码不能为空!";
+            error_password.style.display = "block";
             return;
         }
-        
+
+        if (Is_select == "false") {
+            error_message.innerHTML = "请确认接受服务协议!";
+            error_message.style.display = "block";
+            return;
+        }
         axios.post('../Login/login_info', {
             account: account,
             password: password,
-             })
+        })
             .then(function (response) {
                 console.log(response.data);
                 var id = response.data
-                alert(id);
                 if (id != "0") {
-                    window.location.href = "../ProjectList/Index?id="+id;
+                    window.location.href = "../ProjectList/Index?id=" + id;
+                }
+                else {
+                    error_message.innerHTML = "账号或密码错误!";
+                    error_message.style.display = "block";
+                    return;
                 }
 
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        
     }
+
+   
+
 </script>

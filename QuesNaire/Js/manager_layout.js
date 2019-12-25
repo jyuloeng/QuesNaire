@@ -234,7 +234,6 @@ InitNaireUnPublish();
 InitNairePublished();
 InitNaireAll();
 InitUserInfo();
-}
 
 //管理员登录
 function Manage_Login() {
@@ -253,7 +252,7 @@ function Manage_Login() {
             console.log(response.data);
             var id = response.data
             if (id != "0") {
-                window.location.href = "../Manager/Index";
+                window.location.href = "../Manager/Index?id=" + id;
             }
 
         })

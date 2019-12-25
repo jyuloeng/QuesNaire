@@ -17,28 +17,33 @@
     <div class="reg_list">
         <div class="form-group">
             <label for="reg_input_name">用户名</label>
-            <input type="tel" class="form-control" id="reg_input_name">
+            <input type="tel" class="form-control" id="reg_input_name" onblur="JudgmentExist(this)">
         </div>
         <!--    手机注册-->
         <div class="form-group" id="form_phone">
             <label for="reg_input_phone">手机号</label>
-            <input type="tel" class="form-control" id="reg_input_phone">
+            <input type="tel" class="form-control" onfocus="ClearError(this)" onblur="Judge(this)" id="reg_input_phone">
+            <label class="error_lable" id="phone_error"></label>
         </div>
         <!--    邮箱注册-->
         <div class="form-group form_hidden" id="form_email">
             <label for="reg_input_email">邮箱</label>
-            <input type="email" class="form-control" id="reg_input_email">
+            <input type="email" class="form-control" onfocus="ClearError(this)" onblur="Judge(this)" id="reg_input_email">
+            <label class="error_lable" id="email_error"></label>
         </div>
         <div class="form-group">
             <label for="reg_input_password">
                 密码
                 <span>（请设置包含数字、字母和符号的8~20位密码）</span>
             </label>
-            <input type="tel" class="form-control" id="reg_input_password">
+            <input type="password" class="form-control" onfocus="ClearError(this)" onblur="JudgeSame(this)" id="reg_input_password">
+            <label class="error_lable" id="error_password"></label>
         </div>
         <div class="form-group">
             <label for="reg_input_password_ag">确认密码</label>
-            <input type="tel" class="form-control" id="reg_input_password_ag">
+            <input type="password" class="form-control" onfocus="ClearError(this)" onblur="JudgeSame(this)" id="reg_input_password_ag">
+            <label class="error_lable" id="error_password_ag"></label>
+
         </div>
         <div class="checkbox">
             <i onclick="accept()"></i>

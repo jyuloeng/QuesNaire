@@ -44,9 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -397,6 +395,7 @@
     <Content Include="Images\women.png" />
     <Content Include="Js\create_project.js" />
     <Content Include="Js\edit_project_layout.js" />
+    <Content Include="Js\login_register_layout.js" />
     <Content Include="Js\manager_layout.js" />
     <Content Include="Js\project.js" />
     <Content Include="Js\project_list_layout.js" />

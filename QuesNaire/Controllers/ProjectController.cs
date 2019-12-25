@@ -53,7 +53,6 @@ namespace QuesNaire.Controllers
             naireHeader.hint = naire_info.FirstOrDefault().hint.ToString();
 
             // List<NaireListItem> naireList = questions.ToList<NaireListItem>();
-
             string json = JsonConvert.SerializeObject(questions);
             var list = JsonConvert.DeserializeObject<NaireListItem>(json);
 

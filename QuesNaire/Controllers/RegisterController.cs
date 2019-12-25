@@ -49,5 +49,44 @@ namespace QuesNaire.Controllers
             var ID = rs2.FirstOrDefault().id.ToString();
             return Json(ID);
         }
+        /// <summary>
+        /// 判断用户名、手机号、邮箱是否已经存在
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult JudgmentExists(string str)
+        {
+            NaireWebDataContext db = new NaireWebDataContext();
+
+            if (str=="name")
+            {
+                var rs = from r in db.user_info
+                         where str == r.name
+                         select new
+                         {
+                             r.name
+                         };
+                if (rs.FirstOrDefault() == null)
+                {
+                    return Json(1);
+                }
+            }
+            else if(str == "account")
+            {
+                var rs = from r in db.user_info
+                         where str == r.account
+                         select new
+                         {
+                             r.account
+                         };
+                if (rs.FirstOrDefault() == null)
+                {
+                    return Json(1);
+                }
+            }
+            return Json(0);
+            
+        }
     }
 }

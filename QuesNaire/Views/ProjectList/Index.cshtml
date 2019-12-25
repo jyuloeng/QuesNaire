@@ -36,7 +36,7 @@
             <div class="nav_user">
                 <div class="nav_about">关于我们</div>
                 <div class="nav_avatar">
-                    <img src="~/Images/132.png" />
+                    <img src="~/Images/132.png"  id="user_avatar2"/>
                 </div>
             </div>
         </div>
@@ -148,7 +148,6 @@
                                     </div>
                                 </td>
                             </tr>*@
-
                         </tbody>
                     </table>
                 </div>
@@ -174,7 +173,7 @@
                         <span class="item_name">用户昵称：</span><span id="user_name">odd</span>
                     </div>
                     <div class="base_info_item">
-                        <span class="item_name">密码：</span><span>123456</span><span class="display">显示密码</span>
+                        <span class="item_name">密码：</span><span id="user_password">123456</span><span class="display">显示密码</span>
                     </div>
                 </div>
 
@@ -183,13 +182,13 @@
                     <div class="base_info_item">
                         <span class="item_name">用户昵称：</span>
                         <span>
-                            <input type="text" class="form-control input_edit" />
+                            <input type="text" class="form-control input_edit"  id="upName"/>
                         </span>
                     </div>
                     <div class="base_info_item">
                         <span class="item_name">密码：</span>
                         <span>
-                            <input type="password" class="form-control input_edit" />
+                            <input type="password" class="form-control input_edit" id="upPassword"/>
                         </span>
                     </div>
 
@@ -230,8 +229,42 @@
         }
         document.getElementById('user_account').innerText = getCookie("user_account")
         document.getElementById('user_name').innerText = getCookie("user_name")
+        document.getElementById('user_password').innerText = getCookie("user_password")
         if (getCookie('user_avatar') != "") {
             document.getElementById('user_avatar').src = getCookie("user_avatar")
+            document.getElementById('user_avatar2').src = getCookie("user_avatar")
+        }
+        alert(document.cookie);
+        //$(".card_li")[1].childNodes[4].childNodes[0].onclick = function () {
+        //    console.log("hsdkfsgf")
+        //}
+        $(".card_li")[0].onclick = function () {
+            window.location.href = "../EditProject/Index"
+        }
+        for (let i = 1; i < $(".card_li").length; i++) {
+
+            $(".card_li")[i].childNodes[4].childNodes[0].onclick = function () {
+                let v = $(".card_li")[i].attributes[1].value
+                window.location.href = "../EditProject/Index?naire_id="+v;
+            }
+            $(".card_li")[i].childNodes[4].childNodes[1].onclick = function () {
+                let v = $(".card_li")[i].attributes[1].value
+                window.location.href = "../PublishProject/Index?naire_id="+v;
+            }
+
+        }
+        //console.log($(".table_tab")[0].childNodes[5].childNodes[0])
+        for (let i = 0; i < $(".table_tab").length; i++) {
+
+            $(".table_tab")[i].childNodes[5].childNodes[0].onclick = function () {
+                let v = $(".table_tab")[i].attributes[1].value
+                window.location.href = "../EditProject/Index?naire_id="+v;
+            }
+            $(".table_tab")[i].childNodes[5].childNodes[1].onclick = function () {
+                let v = $(".table_tab")[i].attributes[1].value
+                window.location.href = "../PublishProject/Index?naire_id="+v;
+            }
+
         }
         var file; // 定义一个全局变量，为一个文本选择器。
         file = $('<input type="file"  accept="image/*"/>'); // 这样file就是jquery创建的一个文本选择器，但是因为我们并没有把它加载到页面山，所以是不可见的。
@@ -239,6 +272,23 @@
             // 启动文件选择
             file.click();
         });
+        $("#btn_change_info").click(function () {
+            if ($("#upName").val() && $("#upPassword").val()) {
+                axios.post('../ProjectList/upInfo', {
+                    id:getCookie("user_id"),
+                    name: $("#upName").val(),
+                    password:$("#upPassword").val()
+             })
+            .then(function (response) {
+                console.log(response.data);
+                document.getElementById('user_name').innerText = getCookie("user_name")
+                document.getElementById('user_password').innerText = getCookie("user_password")
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+            }
+        })
         var select_file
         file.change(function (e) {
             var _URL = window.URL || window.webkitURL;
@@ -248,9 +298,9 @@
                 img.onload = function () {
                     $('#user_avatar').attr('src', this.src);
                 };
-                img.src = _URL.createObjectURL(file);
+                let i = _URL.createObjectURL(file);
                 console.log(_URL.createObjectURL(file));
-                getBase64(img.src);
+                getBase64(i);
                 
             }
         })
@@ -268,6 +318,8 @@
                         let base64 = e.target.result;
                         upDataImg(base64);
                         console.log(base64)
+                        document.getElementById('user_avatar').src = base64;
+                        document.getElementById('user_avatar2').src = document.getElementById('user_avatar').src;
                     };
                     oFileReader.readAsDataURL(blob);
 
@@ -280,14 +332,12 @@
             xhr.send();
         }
         function upDataImg(upImg) {
-            console.log(window.upImg);
             axios.post('../ProjectList/upImg', {
                 avatar: upImg,
                 id:getCookie("user_id")
              })
             .then(function (response) {
                 console.log(response.data);
-
         })
         .catch(function (error) {
           console.log(error);

@@ -98,3 +98,7 @@
 .naire_item_inputs{
     margin-bottom:10px;
 }
+
+.disable {
+    pointer-events: none;
+}

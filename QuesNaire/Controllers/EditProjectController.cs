@@ -43,6 +43,7 @@ namespace QuesNaire.Controllers
         /// <summary>
         /// 获得前台传递的json数据
         /// </summary>
+        [HttpPost]
         public ContentResult getNaireJson(NaireJsonObject naireJson)
         {
             user_id = Request.Cookies["user_id"].Value;
@@ -76,6 +77,7 @@ namespace QuesNaire.Controllers
 
             naire.user_id = int.Parse(user_id);
             naire.title = naireJson.title;
+            naire.hint = naireJson.hint;
             naire.state = "未发布";
             naire.start_time = start_time;
             naire.update_time = edit_time;

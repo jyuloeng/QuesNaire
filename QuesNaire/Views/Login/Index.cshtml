@@ -49,6 +49,12 @@
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
+    function accept() {
+        if (document.getElementById("login").disabled == true)
+            document.getElementById("login").disabled = false;
+        else
+            document.getElementById("login").disabled = true;
+    }
     function login() {
         var account;
         var password;
@@ -100,6 +106,7 @@
             .then(function (response) {
                 console.log(response.data);
                 var id = response.data
+                //alert(id);
                 if (id != "0") {
                     window.location.href = "../ProjectList/Index?id=" + id;
                 }

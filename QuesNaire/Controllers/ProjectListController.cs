@@ -36,45 +36,8 @@ namespace QuesNaire.Controllers
                 Response.Redirect("~/Login/Index");
                 return View();
             }
-            if (id != null)
-            {
-                NaireWebDataContext db = new NaireWebDataContext();
-                var rs = from r in db.user_info
-                         where id == r.id.ToString()
-                         select new
-                         {
-                             r.account,
-                             r.name,
-                             r.password,
-                             r.avatar
-                         };
-                var name = rs.FirstOrDefault().name;
-                var account = rs.FirstOrDefault().account;
-                var avatar = rs.FirstOrDefault().avatar;
-                var password = rs.FirstOrDefault().password;
-                user.Name = name;
-                user.Id = int.Parse(id);
-                user.Account = account;
-                user.Avatar = avatar;
-                user.Password = password;
-                HttpCookie cookie = new HttpCookie("user_account");
-                cookie.Value = user.Account;
-                Response.Cookies.Add(cookie);
-                HttpCookie cookie2 = new HttpCookie("user_name");
-                cookie2.Value = user.Name;
-                Response.Cookies.Add(cookie2);
-                HttpCookie cookie3 = new HttpCookie("user_avatar");
-                cookie3.Value = user.Avatar;
-                Response.Cookies.Add(cookie3);
-                HttpCookie cookie4 = new HttpCookie("user_password");
-                cookie4.Value = user.Password;
-                Response.Cookies.Add(cookie4);
-                getUserNaire();
-            }
-            else
-            {
-                Response.Redirect("~/Login/Index");
-            }
+            getUserInfo();
+            getUserNaire();
             return View();
         }
         private UserInfo user = new UserInfo();
@@ -157,7 +120,40 @@ namespace QuesNaire.Controllers
 
             ViewBag.NaireInfo = JsonConvert.SerializeObject(result);
         }
-        
+        public void getUserInfo()
+        {
+            NaireWebDataContext db = new NaireWebDataContext();
+            var rs = from r in db.user_info
+                     where id == r.id.ToString()
+                     select new
+                     {
+                         r.account,
+                         r.name,
+                         r.password,
+                         r.avatar
+                     };
+            var name = rs.FirstOrDefault().name;
+            var account = rs.FirstOrDefault().account;
+            var avatar = rs.FirstOrDefault().avatar;
+            var password = rs.FirstOrDefault().password;
+            user.Name = name;
+            user.Id = int.Parse(id);
+            user.Account = account;
+            user.Avatar = avatar;
+            user.Password = password;
+            HttpCookie cookie = new HttpCookie("user_account");
+            cookie.Value = user.Account;
+            Response.Cookies.Add(cookie);
+            HttpCookie cookie2 = new HttpCookie("user_name");
+            cookie2.Value = user.Name;
+            Response.Cookies.Add(cookie2);
+            HttpCookie cookie3 = new HttpCookie("user_avatar");
+            cookie3.Value = user.Avatar;
+            Response.Cookies.Add(cookie3);
+            HttpCookie cookie4 = new HttpCookie("user_password");
+            cookie4.Value = user.Password;
+            Response.Cookies.Add(cookie4);
+        }
 
     }
 }

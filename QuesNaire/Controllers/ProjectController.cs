@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using QuesNaire.Models;
 using System;
 using System.Collections.Generic;
@@ -19,66 +20,103 @@ namespace QuesNaire.Controllers
             //  获得问卷Id
             string naire_id = Request.QueryString["naire_id"];
 
-            ////  根据问卷Id获得相应问题的Id
+            //  根据问卷Id获得相应问题的Id
             NaireWebDataContext db = new NaireWebDataContext();
 
-            ////  获得问卷标题和描述
-            var naire_info = from r in db.naire_info
+            //  获得问卷的问题
+            var question_header = from r in db.question_info
+                                  where r.naire_id == int.Parse(naire_id)
+                                  select new
+                                  {
+                                      r.id,
+                                      r.naire_id,
+                                      r.title,
+                                      r.flag
+                                  };
+
+            var questions = (from r in db.naire_info
                              where r.id == int.Parse(naire_id)
                              select new
                              {
-                                 r.title,
-                                 r.hint
-                             };
-            ////  获得问卷的问题
-            var questions = from r in db.question_info
-                               where r.naire_id == int.Parse(naire_id)
-                               select new
-                               {
-                                   r.id,
-                                   r.naire_id,
-                                   r.title,
-                                   r.flag,
-                                   r.items
-                               };
-
-            
+                                 r.questions
+                             }).FirstOrDefault().questions.ToString();
 
 
-            string naire_header = JsonConvert.SerializeObject(naire_info);
-            string naire_list = JsonConvert.SerializeObject(questions);
+            NaireJsonObject naire = JsonConvert.DeserializeObject<NaireJsonObject>(questions);
 
-            NaireHeader naireHeader = new NaireHeader();
-            naireHeader.title = naire_info.FirstOrDefault().title.ToString();
-            naireHeader.hint = naire_info.FirstOrDefault().hint.ToString();
+            string question_header_json = JsonConvert.SerializeObject(question_header);
+            List<QuestionListItemHeader> naireList = JArray.Parse(question_header_json)
+                .ToObject<List<QuestionListItemHeader>>();
 
-            // List<NaireListItem> naireList = questions.ToList<NaireListItem>();
+            List<QuestionListItem> questionListItem_list = new List<QuestionListItem>();
 
-            string json = JsonConvert.SerializeObject(questions);
-            var list = JsonConvert.DeserializeObject<NaireListItem>(json);
+            for (int i = 0; i < naireList.Count; i++)
+            {
+                QuestionListItem item = new QuestionListItem();
+                item.id = naireList[i].id;
+                item.naire_id = naireList[i].naire_id;
+                item.title = naireList[i].title;
+                item.flag = naireList[i].flag;
+                item.list = naire.list[i].items;
+
+                questionListItem_list.Add(item);
+            }
 
             //  根据相应问题的Id获得选项
+            NaireHaveIdJsonObject naireHaveId = new NaireHaveIdJsonObject();
+            naireHaveId.title = naire.title;
+            naireHaveId.hint = naire.hint;
+            naireHaveId.list = questionListItem_list;
 
             //  拼接成JSON给前台生成问卷（挂个data-quesion-id）的属性
-
-
-
+            ViewBag.NaireHaveId = JsonConvert.SerializeObject(naireHaveId);
 
             return View();
         }
 
+        /// <summary>
+        /// 获得前台提交的问题回答数据
+        /// </summary>
+        [HttpPost]
+        public void getQuestionData(QuestionDataList questionDataList)
+        {
 
+            NaireWebDataContext db = new NaireWebDataContext();
+            List<QuestionDataItem> question_data_items = questionDataList.list;
+            
+            for(int i = 0; i < question_data_items.Count; i++)
+            {
+                data_info data = new data_info();
+                data.question_id = question_data_items[i].id;
+                if (question_data_items[i].items.Count > 1)
+                {
+                    data.data = JsonConvert.SerializeObject(question_data_items[i].items);
+                }
+                else if(question_data_items[i].items.Count == 1)
+                {
+                    data.data = question_data_items[i].items[0];
+                }
 
+                //  提交存入数据库
+                db.data_info.InsertOnSubmit(data);
+                db.SubmitChanges();
+            }
+        }   
     }
 
-    public class NaireHeader
+    public class QuestionDataList
     {
-        public string title { get; set; }
-
-        public string hint { get; set; }
+        public List<QuestionDataItem> list { get; set; }
     }
 
-    public class NaireListItem
+    public class QuestionDataItem
+    {
+        public int id { get; set; }
+        public List<string> items { get; set; }
+    }
+
+
+    public class QuestionListItemHeader
     {
         public int id { get; set; }
 
@@ -88,6 +126,26 @@ namespace QuesNaire.Controllers
 
         public int flag { get; set; }
 
-        public List<string> items { get; set; }
+    }
+
+    public class QuestionListItem
+    {
+        public int id { get; set; }
+
+        public int naire_id { get; set; }
+
+        public string title { get; set; }
+
+        public int flag { get; set; }
+
+        public List<string> list { get; set; }
+    }
+
+    public class NaireHaveIdJsonObject{
+        public string title { get; set; }
+
+        public string hint { get; set; }
+
+        public List<QuestionListItem> list { get; set; }
     }
 }

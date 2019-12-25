@@ -112,6 +112,7 @@ function projectSubmit() {
         type: 'POST',
         contentType: 'application/json;charset=utf-8',
         async: true,
+        cache: false,
         success: function (data) {
             //  成功则重定向去发布项目页
             window.location.href = "../PublishProject/Index?naire_id=" + data;

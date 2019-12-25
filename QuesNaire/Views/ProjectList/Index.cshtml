@@ -253,6 +253,19 @@
             }
 
         }
+        //console.log($(".table_tab")[0].childNodes[5].childNodes[0])
+        for (let i = 0; i < $(".table_tab").length; i++) {
+
+            $(".table_tab")[i].childNodes[5].childNodes[0].onclick = function () {
+                let v = $(".table_tab")[i].attributes[1].value
+                window.location.href = "../EditProject/Index?naire_id="+v;
+            }
+            $(".table_tab")[i].childNodes[5].childNodes[1].onclick = function () {
+                let v = $(".table_tab")[i].attributes[1].value
+                window.location.href = "../PublishProject/Index?naire_id="+v;
+            }
+
+        }
         var file; // 定义一个全局变量，为一个文本选择器。
         file = $('<input type="file"  accept="image/*"/>'); // 这样file就是jquery创建的一个文本选择器，但是因为我们并没有把它加载到页面山，所以是不可见的。
         $('#changeAvatar').click(function () {

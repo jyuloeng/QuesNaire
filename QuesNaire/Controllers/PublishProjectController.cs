@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace QuesNaire.Controllers
 {
@@ -37,18 +39,18 @@ namespace QuesNaire.Controllers
         /// 更改发布状态
         /// </summary>
         [HttpPost]
-        public void changeState(NaireStateJsonObject naireState)
+        public void changeState(string id ,string state)
         {
             NaireWebDataContext db = new NaireWebDataContext();
             var result = from r in db.naire_info
-                         where r.id == int.Parse(naireState.id)
+                         where r.id == int.Parse(id)
                          select r;
 
             if (result != null)
             {
                 foreach(naire_info r in result)
                 {
-                    if(naireState.state == "0")
+                    if(state == "0")
                     {
                         r.state = "正在收集";
                     }
@@ -58,6 +60,7 @@ namespace QuesNaire.Controllers
                     }
                 }
             }
+            db.SubmitChanges();
 
         }
 

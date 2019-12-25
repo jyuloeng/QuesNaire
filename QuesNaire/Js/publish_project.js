@@ -29,24 +29,37 @@ btn_state.addEventListener('click', publishProject, false);
 
 function publishProject() {
 
-    var naire_state = {
-        id: naire[0].id,
-        state: state
-    }
+    var id = naire[0].id;
+    var state1 = state;
 
-    $.ajax({
-        url: '../PublishProject/changeState',
-        data: JSON.stringify(naire_state),
-        type: 'POST',
-        contentType: 'application/json;charset=utf-8',
-        success: function (data) {
+    //$.ajax({
+    //    url: '../PublishProject/changeState',
+        //data: {
+        //    id: id,
+        //    state: state
+        //},
+    //    type: 'POST',
+    //    contentType: 'application/json;charset=utf-8',
+    //    success: function (data) {
 
-            console.log(data);
+    //        console.log(data);
+    //        isPublished = !isPublished;
+    //        changeState();
+
+    //    }
+    //});
+    axios.post('../PublishProject/changeState', {
+        id: id,
+        state: state1
+    })
+        .then(function (response) {
+            console.log(response.data);
             isPublished = !isPublished;
             changeState();
-
-        }
-    });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
 
 function changeState() {

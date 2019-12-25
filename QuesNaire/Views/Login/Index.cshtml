@@ -30,12 +30,12 @@
             <input type="tel" class="form-control" id="reg_input_password">
         </div>
         <div class="checkbox">
-            <i></i>
+            <i onclick="accept()"></i>
             <span>我接受</span>
             <a href="#">问卷网服务协议</a>
             <a href="#" class="forget_password">忘记密码?</a>
         </div>
-        <button type="submit" class="btn btn-primary btn_register"  onclick="login()">登录</button>
+        <button id="login" type="submit" class="btn btn-primary btn_register"  onclick="login()" disabled="disabled">登录</button>
     </div>
 </div>
 
@@ -45,6 +45,12 @@
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
+    function accept() {
+        if (document.getElementById("login").disabled == true)
+            document.getElementById("login").disabled = false;
+        else
+            document.getElementById("login").disabled = true;
+    }
     function login() {
         var account;
         var password;
@@ -67,7 +73,7 @@
             .then(function (response) {
                 console.log(response.data);
                 var id = response.data
-                alert(id);
+                //alert(id);
                 if (id != "0") {
                     window.location.href = "../ProjectList/Index?id="+id;
                 }

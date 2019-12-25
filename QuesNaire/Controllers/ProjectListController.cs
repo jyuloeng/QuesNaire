@@ -157,17 +157,7 @@ namespace QuesNaire.Controllers
 
             ViewBag.NaireInfo = JsonConvert.SerializeObject(result);
         }
-        [HttpPost]
-        public string addNaire(string userId)
-        {
-            NaireWebDataContext db = new NaireWebDataContext();
-            naire_info naire = new naire_info();
-            naire.user_id = int.Parse(userId);
-             db.naire_info.InsertOnSubmit(naire);
-            db.SubmitChanges();
-            int id = naire.id;
-            return id.ToString();
-        }
+        
 
     }
 }

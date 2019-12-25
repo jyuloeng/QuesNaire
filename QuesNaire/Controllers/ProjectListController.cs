@@ -24,7 +24,6 @@ namespace QuesNaire.Controllers
         // GET: Project
         public ActionResult Index()
         {
-            
             id = Request.QueryString["id"];
             if (id != null)
             {
@@ -32,44 +31,6 @@ namespace QuesNaire.Controllers
                 cookie.Value = id;
                 Response.Cookies.Add(cookie);
             }
-
-            getUserInfo();
-
-            getUserNaire();
-
-            return View();
-        }
-
-        [HttpPost]
-        /// <summary>
-        /// 获得用户问卷
-        /// </summary>
-        public void getUserNaire()
-        {
-            string user_id = Request.Cookies["user_id"].Value;
-
-            NaireWebDataContext db = new NaireWebDataContext();
-            var result = from r in db.naire_info
-                         where r.user_id.ToString() == user_id
-                         select new {
-                             r.id,
-                             r.title,
-                             r.state,
-                             r.start_time,
-                             r.update_time,
-                             r.data
-                         };
-
-            ViewBag.NaireInfo = JsonConvert.SerializeObject(result);
-        }
-
-        /// <summary>
-        /// 获得用户信息
-        /// </summary>
-        public void getUserInfo()
-        {
-            
-            if (Request.Cookies["user_id"] != null)
             else
             {
                 Response.Redirect("~/Login/Index");
@@ -108,6 +69,7 @@ namespace QuesNaire.Controllers
                 HttpCookie cookie4 = new HttpCookie("user_password");
                 cookie4.Value = user.Password;
                 Response.Cookies.Add(cookie4);
+                getUserNaire();
             }
             else
             {
@@ -115,15 +77,14 @@ namespace QuesNaire.Controllers
             }
             return View();
         }
-
         private UserInfo user = new UserInfo();
         [HttpPost]
-        public string upImg(string avatar,string id)
+        public string upImg(string avatar, string id)
         {
 
             NaireWebDataContext db = new NaireWebDataContext();
             var user = db.user_info.Where(r => r.id.ToString() == id).FirstOrDefault();
-            user.avatar = "http://test.xkspbz.com/avatar/img"+GetImage(avatar, id);
+            user.avatar = "http://test.xkspbz.com/avatar/img" + GetImage(avatar, id);
             db.SubmitChanges();
             HttpCookie cookie3 = new HttpCookie("user_avatar");
             cookie3.Value = "http://test.xkspbz.com/avatar/img" + GetImage(avatar, id);
@@ -131,9 +92,7 @@ namespace QuesNaire.Controllers
 
             return "1";
         }
-        private string GetImage(string imgbyte,string id)
-
-        public string PostResponse(string url, string postData, out string statusCode)
+        private string GetImage(string imgbyte, string id)
         {
             string result3 = string.Empty;
             try
@@ -141,7 +100,7 @@ namespace QuesNaire.Controllers
                 string requestUri = "http://test.xkspbz.com/avatar/getImgUrl.php";//请求的url
                 HttpClient httpClient = new HttpClient();
                 //参数实例 p1=v1&p2=v2
-                string str = "img=" + imgbyte+"&id="+id;
+                string str = "img=" + imgbyte + "&id=" + id;
                 var content = new StringContent(str, Encoding.UTF8, "application/x-www-form-urlencoded");
                 HttpResponseMessage result = httpClient.PostAsync(requestUri, content).Result;
                 string result2 = result.Content.ReadAsStringAsync().Result;
@@ -152,15 +111,15 @@ namespace QuesNaire.Controllers
                 result3 = "error";
             }
             return result3;
-        } 
+        }
         [HttpPost]
-        public string upInfo(string id, string name , string password)
+        public string upInfo(string id, string name, string password)
         {
             NaireWebDataContext db = new NaireWebDataContext();
             var rs = from r in db.user_info
                      where r.id.ToString() == id
                      select r;
-            if(rs.FirstOrDefault()!=null)
+            if (rs.FirstOrDefault() != null)
             {
                 rs.FirstOrDefault().name = name;
                 rs.FirstOrDefault().password = password;
@@ -175,5 +134,40 @@ namespace QuesNaire.Controllers
 
             return "1";
         }
+        [HttpPost]
+        /// <summary>
+        /// 获得用户问卷
+        /// </summary>
+        public void getUserNaire()
+        {
+            string user_id = Request.Cookies["user_id"].Value;
+
+            NaireWebDataContext db = new NaireWebDataContext();
+            var result = from r in db.naire_info
+                         where r.user_id.ToString() == user_id
+                         select new
+                         {
+                             r.id,
+                             r.title,
+                             r.state,
+                             r.start_time,
+                             r.update_time,
+                             r.data
+                         };
+
+            ViewBag.NaireInfo = JsonConvert.SerializeObject(result);
+        }
+        [HttpPost]
+        public string addNaire(string userId)
+        {
+            NaireWebDataContext db = new NaireWebDataContext();
+            naire_info naire = new naire_info();
+            naire.user_id = int.Parse(userId);
+             db.naire_info.InsertOnSubmit(naire);
+            db.SubmitChanges();
+            int id = naire.id;
+            return id.ToString();
+        }
+
     }
 }

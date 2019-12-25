@@ -147,7 +147,7 @@
                                         <i class="glyphicon glyphicon-trash"></i>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr>*@
                         </tbody>
                     </table>
                 </div>
@@ -235,6 +235,24 @@
             document.getElementById('user_avatar2').src = getCookie("user_avatar")
         }
         alert(document.cookie);
+        //$(".card_li")[1].childNodes[4].childNodes[0].onclick = function () {
+        //    console.log("hsdkfsgf")
+        //}
+        $(".card_li")[0].onclick = function () {
+            window.location.href = "../EditProject/Index"
+        }
+        for (let i = 1; i < $(".card_li").length; i++) {
+
+            $(".card_li")[i].childNodes[4].childNodes[0].onclick = function () {
+                let v = $(".card_li")[i].attributes[1].value
+                window.location.href = "../EditProject/Index?naire_id="+v;
+            }
+            $(".card_li")[i].childNodes[4].childNodes[1].onclick = function () {
+                let v = $(".card_li")[i].attributes[1].value
+                window.location.href = "../PublishProject/Index?naire_id="+v;
+            }
+
+        }
         var file; // 定义一个全局变量，为一个文本选择器。
         file = $('<input type="file"  accept="image/*"/>'); // 这样file就是jquery创建的一个文本选择器，但是因为我们并没有把它加载到页面山，所以是不可见的。
         $('#changeAvatar').click(function () {

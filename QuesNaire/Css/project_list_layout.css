@@ -537,3 +537,113 @@
 .table_list_operate .operate_type:last-child:hover {
     color: #2672ff;
 }
+
+.recycle_bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 900;
+    background: #000;
+    opacity: 0.3;
+}
+
+.recycle_content {
+    width: 850px;
+    position: fixed;
+    z-index: 901;
+    left: 50%;
+    top: 50%;
+    margin-left: -425px;
+    margin-top: -245px;
+    background: #fff;
+    border-radius: 4px;
+    padding: 24px;
+}
+
+.recycle_title {
+    color: #484848;
+    font-size: 18px;
+    height: 25px;
+    line-height: 25px;
+}
+
+.recylce_close {
+    height: 18px;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 18px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.recycle_bottom {
+    padding-top: 24px;
+    overflow: auto;
+    box-sizing: border-box;
+    text-align: right;
+}
+
+.recycle_context{
+    margin-top: 5px;
+    min-height:200px;
+}
+
+.recycle_context thead {
+    background: #fafafa;
+    border: 1px solid #e2e2e2;
+    font-size: 14px;
+    color: #2c2c2c;
+    
+}
+
+
+
+.recycle_context thead th {
+    line-height: 35px;
+    text-align: left;
+    font-weight:400;
+    font-size:15px;
+    margin:0;
+}
+
+.checkbox_wrap {
+    width: 34px;
+    text-align: center;
+}
+
+.checkbox {
+    display: block;
+    width: 14px;
+    height: 14px;
+    margin: 0 auto;
+    border: 1px solid #e2e2e2;
+}
+
+.recycle_data tr{
+    height:36px;
+    line-height:36px;
+}
+
+.btn_delete {
+    background-color: #2672ff;
+    color: #fff;
+    margin-left: 3px;
+    height: 36px;
+    width: 96px;
+}
+
+.btn_restore {
+    height: 34px;
+    width: 94px;
+    border: solid 1px #aaaaaa;
+    background-color: #ffffff;
+    color: #484848;
+}
+
+.table_recycle_td_title{
+    width:50%;
+    padding-right:10px;
+}

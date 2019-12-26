@@ -82,6 +82,7 @@ namespace QuesNaire.Controllers
             naire.start_time = start_time;
             naire.update_time = edit_time;
             naire.questions = JsonConvert.SerializeObject(naireJson);
+            naire.recycle = 0;
 
             //  提交问卷
             db.naire_info.InsertOnSubmit(naire);

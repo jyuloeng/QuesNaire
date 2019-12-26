@@ -444,6 +444,7 @@
     <Compile Include="Models\NaireInfo.cs" />
     <Compile Include="Models\NaireJsonObject.cs" />
     <Compile Include="Models\QuestionInfo.cs" />
+    <Compile Include="Models\Statistic.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="NaireWeb.designer.cs">
       <AutoGen>True</AutoGen>

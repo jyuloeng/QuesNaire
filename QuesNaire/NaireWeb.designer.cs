@@ -268,7 +268,7 @@ namespace QuesNaire
 		
 		private string _avatar;
 		
-		private EntityRef<naire_info> _naire_info;
+		private EntitySet<naire_info> _naire_info;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -288,7 +288,7 @@ namespace QuesNaire
 		
 		public user_info()
 		{
-			this._naire_info = default(EntityRef<naire_info>);
+			this._naire_info = new EntitySet<naire_info>(new Action<naire_info>(this.attach_naire_info), new Action<naire_info>(this.detach_naire_info));
 			OnCreated();
 		}
 		
@@ -392,32 +392,16 @@ namespace QuesNaire
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_info_naire_info", Storage="_naire_info", ThisKey="id", OtherKey="id", IsUnique=true, IsForeignKey=false)]
-		public naire_info naire_info
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_info_naire_info", Storage="_naire_info", ThisKey="id", OtherKey="user_id")]
+		public EntitySet<naire_info> naire_info
 		{
 			get
 			{
-				return this._naire_info.Entity;
+				return this._naire_info;
 			}
 			set
 			{
-				naire_info previousValue = this._naire_info.Entity;
-				if (((previousValue != value) 
-							|| (this._naire_info.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._naire_info.Entity = null;
-						previousValue.user_info = null;
-					}
-					this._naire_info.Entity = value;
-					if ((value != null))
-					{
-						value.user_info = this;
-					}
-					this.SendPropertyChanged("naire_info");
-				}
+				this._naire_info.Assign(value);
 			}
 		}
 		
@@ -439,6 +423,18 @@ namespace QuesNaire
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_naire_info(naire_info entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_info = this;
+		}
+		
+		private void detach_naire_info(naire_info entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_info = null;
 		}
 	}
 	
@@ -844,6 +840,10 @@ namespace QuesNaire
 		
 		private int _data;
 		
+		private int _recycle;
+		
+		private string _recycle_time;
+		
 		private EntitySet<question_info> _question_info;
 		
 		private EntityRef<user_info> _user_info;
@@ -870,6 +870,10 @@ namespace QuesNaire
     partial void OnquestionsChanged();
     partial void OndataChanging(int value);
     partial void OndataChanged();
+    partial void OnrecycleChanging(int value);
+    partial void OnrecycleChanged();
+    partial void Onrecycle_timeChanging(string value);
+    partial void Onrecycle_timeChanged();
     #endregion
 		
 		public naire_info()
@@ -890,10 +894,6 @@ namespace QuesNaire
 			{
 				if ((this._id != value))
 				{
-					if (this._user_info.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnidChanging(value);
 					this.SendPropertyChanging();
 					this._id = value;
@@ -914,6 +914,10 @@ namespace QuesNaire
 			{
 				if ((this._user_id != value))
 				{
+					if (this._user_info.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.Onuser_idChanging(value);
 					this.SendPropertyChanging();
 					this._user_id = value;
@@ -1063,6 +1067,46 @@ namespace QuesNaire
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_recycle", DbType="Int NOT NULL")]
+		public int recycle
+		{
+			get
+			{
+				return this._recycle;
+			}
+			set
+			{
+				if ((this._recycle != value))
+				{
+					this.OnrecycleChanging(value);
+					this.SendPropertyChanging();
+					this._recycle = value;
+					this.SendPropertyChanged("recycle");
+					this.OnrecycleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_recycle_time", DbType="NVarChar(60)")]
+		public string recycle_time
+		{
+			get
+			{
+				return this._recycle_time;
+			}
+			set
+			{
+				if ((this._recycle_time != value))
+				{
+					this.Onrecycle_timeChanging(value);
+					this.SendPropertyChanging();
+					this._recycle_time = value;
+					this.SendPropertyChanged("recycle_time");
+					this.Onrecycle_timeChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="naire_info_question_info", Storage="_question_info", ThisKey="id", OtherKey="naire_id")]
 		public EntitySet<question_info> question_info
 		{
@@ -1076,7 +1120,7 @@ namespace QuesNaire
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_info_naire_info", Storage="_user_info", ThisKey="id", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_info_naire_info", Storage="_user_info", ThisKey="user_id", OtherKey="id", IsForeignKey=true)]
 		public user_info user_info
 		{
 			get
@@ -1093,17 +1137,17 @@ namespace QuesNaire
 					if ((previousValue != null))
 					{
 						this._user_info.Entity = null;
-						previousValue.naire_info = null;
+						previousValue.naire_info.Remove(this);
 					}
 					this._user_info.Entity = value;
 					if ((value != null))
 					{
-						value.naire_info = this;
-						this._id = value.id;
+						value.naire_info.Add(this);
+						this._user_id = value.id;
 					}
 					else
 					{
-						this._id = default(int);
+						this._user_id = default(int);
 					}
 					this.SendPropertyChanged("user_info");
 				}

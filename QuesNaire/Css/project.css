@@ -102,3 +102,15 @@
 .disable {
     pointer-events: none;
 }
+
+.preview_wrap {
+    height: 50px;
+    vertical-align: bottom;
+    background: #efefef;
+    width: 100%;
+    z-index: 99;
+    text-align: center;
+    line-height: 50px;
+    font-size: 14px;
+    color: #AAAAAA;
+}

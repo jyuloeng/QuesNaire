@@ -36,7 +36,14 @@
             <div class="nav_user">
                 <div class="nav_about">关于我们</div>
                 <div class="nav_avatar">
-                    <img src="~/Images/132.png"  id="user_avatar2"/>
+                    <img src="~/Images/132.png" id="user_avatar2" />
+                    <!--    弹出层-->
+                    <div class="user_info">
+                        <div class="user_name" id="name">odd</div>
+                        <div class="user-exit" id="quit">
+                            <i class="glyphicon glyphicon-log-out" style="margin-right:10px;"></i>退出登录
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,7 +70,7 @@
                     <input type="text" class="search_input" />
                 </div>
                 <!--    回收站-->
-                <div class="nav_recycle">
+                <div class="nav_recycle" id="btn_recycle">
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>回收站</span>
                 </div>
@@ -211,6 +218,52 @@
     <footer class="footer_wrap">
         <img src="~/Images/bq_logo.png" />
     </footer>
+
+    <!--    回收站-->
+    <div class="recycle_dialog hidden" id="recycle_dialog">
+        <div class="recycle_bg"></div>
+        <div class="recycle_content">
+            <div class="recycle_top">
+                <h2 class="recycle_title" style="float:left">回收站</h2>
+                <div class="recylce_close" style="float:right">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            
+            <div class="recycle_context">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="checkbox_wrap" scope="col">
+                                <input class="checkbox" type="checkbox" style="margin: 0 auto;">
+                            </th>
+                            <th scope="col" width="50%">标题</th>
+                            <th scope="col" style="width:130px;">收集数据</th>
+                            <th scope="col" style="width:130px;">创建时间</th>
+                            <th scope="col" style="width:130px;">删除时间</th>
+                        </tr>
+                    </thead>
+                    <tbody class="recycle_data"> 
+                        @*<tr>
+                            <td class="checkbox_wrap"> 
+                                <input data-naire-id="2" class="checkbox" type="checkbox" style="margin: 0 auto;"> 
+                            </td> 
+                            <td class="table_recycle_td_title">问卷标题</td> 
+                            <td>0</td> 
+                            <td>2019年12月16日</td> 
+                            <td>2019年12月18日</td> 
+                        </tr>*@  
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="recycle_bottom">
+                <button class="btn btn-default btn_restore">恢复</button>
+                <button class="btn btn-primary btn_delete">删除</button>
+            </div>
+        </div>
+    </div>
 
     <input class="hidden" id="naire_json" value="@ViewBag.NaireInfo" />
 

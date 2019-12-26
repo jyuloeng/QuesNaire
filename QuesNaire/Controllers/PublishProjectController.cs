@@ -52,7 +52,7 @@ namespace QuesNaire.Controllers
                 {
                     if(state == "0")
                     {
-                        r.state = "正在收集";
+                        r.state = "收集中";
                     }
                     else
                     {

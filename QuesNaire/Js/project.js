@@ -437,3 +437,11 @@ function submit() {
         }
     });
 }
+
+//  如果是预览状态，移除点击事件
+var isPreview = document.getElementById('isPreview');
+if (isPreview.value == "1") {
+    btn_submit.removeEventListener('click', submit, false);
+    var preview_wrap = document.querySelector('.preview_wrap');
+    preview_wrap.classList.remove('hidden');
+}

@@ -115,7 +115,9 @@ namespace QuesNaire.Controllers
                              r.state,
                              r.start_time,
                              r.update_time,
-                             r.data
+                             r.data,
+                             r.recycle,
+                             r.recycle_time
                          };
 
             ViewBag.NaireInfo = JsonConvert.SerializeObject(result);
@@ -155,5 +157,67 @@ namespace QuesNaire.Controllers
             Response.Cookies.Add(cookie4);
         }
 
+        /// <summary>
+        /// 恢复回收站问卷
+        /// </summary>
+        [HttpPost]
+        public void restoreNaire(List<int> naireIds)
+        {
+            for(int i = 0; i < naireIds.Count; i++)
+            {
+                NaireWebDataContext db = new NaireWebDataContext();
+                var result = from r in db.naire_info
+                             where r.id == naireIds[i]
+                             select r;
+                if (result != null)
+                {
+                    foreach(naire_info r in result)
+                    {
+                        r.recycle = 0;
+                        r.recycle_time = null;
+                    }
+                    db.SubmitChanges();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 删除回收站问卷
+        /// </summary>
+        [HttpPost]
+        public void deleteNaire(List<int> naireIds)
+        {
+            for (int i = 0; i < naireIds.Count; i++)
+            {
+                NaireWebDataContext db = new NaireWebDataContext();
+                var result = from r in db.naire_info
+                             where r.id == naireIds[i]
+                             select r;
+                db.naire_info.DeleteAllOnSubmit(result);
+                db.SubmitChanges();
+            }
+        }
+
+        /// <summary>
+        /// 问卷改为回收状态
+        /// </summary>
+        /// <param name="naire_id"></param>
+        [HttpPost]
+        public void naireToRecycleBin(int naire_id)
+        {
+            NaireWebDataContext db = new NaireWebDataContext();
+            var result = from r in db.naire_info
+                         where r.id == naire_id
+                         select r;
+            if (result != null)
+            {
+                foreach (naire_info r in result)
+                {
+                    r.recycle = 1;
+                    r.recycle_time = DateTime.Now.ToString("yyyy/MM/dd");
+                }
+                db.SubmitChanges();
+            }
+        }
     }
 }

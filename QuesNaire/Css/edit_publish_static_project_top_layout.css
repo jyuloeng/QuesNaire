@@ -53,8 +53,8 @@
     height: 64px;
     width: 36px;
     float: right;
-    background: #fff;
     position: relative;
+    padding-bottom: 100px;
 }
 
 .user_wrap img{

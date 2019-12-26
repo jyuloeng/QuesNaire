@@ -26,6 +26,11 @@ namespace QuesNaire.Controllers
                 cookie.Value = id;
                 Response.Cookies.Add(cookie);
             }
+            else
+            {
+                Response.Redirect("~/Manager/ManagerLogin");
+                return View();
+            }
 
 
             NaireWebDataContext db = new NaireWebDataContext();
@@ -40,6 +45,9 @@ namespace QuesNaire.Controllers
             ViewBag.UserNum = user_num;
             ViewBag.NaireNum = naire_num;
             ViewBag.DataNum = data_num;
+
+
+            getManageInfo();
 
             return View();
         }
@@ -216,6 +224,9 @@ namespace QuesNaire.Controllers
             HttpCookie cookie2 = new HttpCookie("manage_name");
             cookie2.Value = admin.Manage_name;
             Response.Cookies.Add(cookie2);
+            HttpCookie cookie3 = new HttpCookie("manage_password");
+            cookie3.Value = admin.Manage_password;
+            Response.Cookies.Add(cookie3);
 
 
 

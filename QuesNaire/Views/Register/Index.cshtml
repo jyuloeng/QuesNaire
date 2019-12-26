@@ -14,21 +14,22 @@
 
 <div class="form_wrap">
 
-    <div class="reg_list">
+    <div class="reg_list" id="register">
         <div class="form-group">
             <label for="reg_input_name">用户名</label>
-            <input type="tel" class="form-control" id="reg_input_name" onblur="JudgmentExist(this)">
+            <input type="tel" class="form-control" id="reg_input_name" onfocus="ClearError(this)" onblur="JudgmentExist(this)">
+            <label class="error_lable" id="name_error"></label>
         </div>
         <!--    手机注册-->
         <div class="form-group" id="form_phone">
             <label for="reg_input_phone">手机号</label>
-            <input type="tel" class="form-control" onfocus="ClearError(this)" onblur="Judge(this)" id="reg_input_phone">
+            <input type="tel" class="form-control" onfocus="ClearError(this)" onblur="Judge(this);JudgmentExist(this)" id="reg_input_phone">
             <label class="error_lable" id="phone_error"></label>
         </div>
         <!--    邮箱注册-->
         <div class="form-group form_hidden" id="form_email">
             <label for="reg_input_email">邮箱</label>
-            <input type="email" class="form-control" onfocus="ClearError(this)" onblur="Judge(this)" id="reg_input_email">
+            <input type="email" class="form-control" onfocus="ClearError(this)" onblur="Judge(this);JudgmentExist(this)" id="reg_input_email">
             <label class="error_lable" id="email_error"></label>
         </div>
         <div class="form-group">
@@ -46,11 +47,12 @@
 
         </div>
         <div class="checkbox">
-            <i onclick="accept()"></i>
+            <i Is-select="false" id="select" onclick="ChangeSelect(this)"></i>
             <span>我接受</span>
             <a href="#">问卷网服务协议</a>
         </div>
-        <button id="register" type="submit" class="btn btn-primary btn_register" onclick="register()" disabled="disabled">立即注册</button>
+        <label class="error_lable" style="font-size:15px;" id="error_message"></label>
+        <button id="register" type="submit" class="btn btn-primary btn_register" onclick="register()">立即注册</button>
     </div>
 </div>
 
@@ -60,13 +62,11 @@
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-    function accept() {
-        if (document.getElementById("register").disabled == true)
-            document.getElementById("register").disabled = false;
-        else
-            document.getElementById("register").disabled = true;
-    }
     function register() {
+
+        //是否接受协议
+        var Is_select = document.getElementById("select").getAttribute("Is-select");
+
         if (document.getElementById("reg_input_password").value != document.getElementById("reg_input_password_ag").value) {
             console.log("密码不一致");
             return;
@@ -85,8 +85,19 @@
         password = document.getElementById("reg_input_password_ag").value
         if (account == "" || password == "" || name == "") {
             return;
-        }axios.post('../Register/register_info', {
-            account: account,
+        }
+        if (email_error.style.display == "block" || name_error.style.display == "block" || phone_error.style.display == "block" || error_password.style.display == "block" || error_password.style.display == "block" || error_password_ag.style.display == "block") {
+            return;
+        }
+
+        if (Is_select == "false") {
+            error_message.innerHTML = "请确认接受服务协议!";
+            error_message.style.display = "block";
+            return;
+        }
+
+        axios.post('../Register/register_info', {
+            account: account, 
             password: password,
             name: name
              })

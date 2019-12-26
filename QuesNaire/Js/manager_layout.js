@@ -260,3 +260,86 @@ function Manage_Login() {
             console.log(error);
         });
 }
+
+
+//读取cookies
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    if (arr = document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}
+
+//删除cookies
+function deleteCookie(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = getCookie(name);
+    if (cval != null)
+        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+}
+
+InitManageInfo();
+//初始化管理员信息
+function InitManageInfo() {
+    var admin_name = document.getElementById("admin_name");
+    var admin_info_item = document.getElementsByClassName("admin_info_item");
+
+    var name = getCookie("manage_name");
+    var account = getCookie("manage_account");
+    
+
+    admin_name.innerText = name;
+
+    admin_info_item[0].children[1].innerText = account;
+    admin_info_item[1].children[1].innerText = name;
+    admin_info_item[2].children[1].innerText = "*******";
+
+}
+
+//显示密码
+function ShowPassword(obj) {
+    var admin_info_item = document.getElementsByClassName("admin_info_item");
+    var span_pas = admin_info_item[2].children[1];
+
+    var password = getCookie("manage_password");
+
+    if (span_pas.innerText == "*******") {
+        span_pas.innerText = password;
+        obj.innerText = "隐藏密码";
+    }
+    else
+    {
+        span_pas.innerText = "*******"
+        obj.innerText = "显示密码";
+    }
+}
+
+var btn_admin_info_change = document.getElementById("btn_admin_info_change");
+btn_admin_info_change.addEventListener("click", Show_AdminInfo_Change, false);
+
+//改变管理员信息框显示
+function Show_AdminInfo_Change() {
+    var item_wrap_edit = document.getElementById("item_wrap_edit");
+    var item_wrap_normal = document.getElementById("item_wrap_normal");
+    var text = btn_admin_info_change.innerText;
+
+    if (text == "修改")
+    {
+        item_wrap_edit.classList.remove('admin_info_hidden');
+        btn_admin_info_change.innerText = "取消修改";
+    }
+    if (btn_admin_info_change.innerText == "取消修改") {
+        item_wrap_normal.classList.add('admin_info_hidden');
+        btn_admin_info_change.innerText = "修改";
+    }
+}
+//退出登录
+function Return_Admin_Login() {
+
+    window.location.href=("ManagerLogin");
+    deleteCookie("manage_password");
+    deleteCookie("manage_name");
+    deleteCookie("manage_account");
+}

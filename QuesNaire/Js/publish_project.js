@@ -82,3 +82,9 @@ function changeState() {
     }
 }
 
+var edit_check = document.querySelector('.edit_check');
+edit_check.addEventListener('click', toPreview, false);
+
+function toPreview() {
+    window.location.href = "http://localhost:61507/Project/Index?naire_id=" + naire[0].id + "&isPreview=1";
+}

@@ -52,39 +52,45 @@ namespace QuesNaire.Controllers
         /// <summary>
         /// 判断用户名、手机号、邮箱是否已经存在
         /// </summary>
-        /// <param name="str"></param>
         /// <returns></returns>
         [HttpPost]
-        public JsonResult JudgmentExists(string str)
+        public JsonResult JudgmentExists(string type,string input)
         {
             NaireWebDataContext db = new NaireWebDataContext();
-
-            if (str=="name")
+            if (type == "name")
             {
                 var rs = from r in db.user_info
-                         where str == r.name
+                         where input == r.name
                          select new
                          {
                              r.name
                          };
-                if (rs.FirstOrDefault() == null)
+                if (rs.FirstOrDefault() != null)
                 {
                     return Json(1);
                 }
             }
-            else if(str == "account")
+            if (type == "phone"||type== "email")
             {
                 var rs = from r in db.user_info
-                         where str == r.account
+                         where input == r.account
                          select new
                          {
                              r.account
                          };
-                if (rs.FirstOrDefault() == null)
+                if (rs.FirstOrDefault() != null)
                 {
-                    return Json(1);
+                    if(type == "phone")
+                    {
+                        return Json(2);
+                    }
+                    if (type == "email")
+                    {
+                        return Json(3);
+                    }
                 }
             }
+
             return Json(0);
             
         }

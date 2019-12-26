@@ -20,8 +20,29 @@ namespace QuesNaire.Controllers
             //  获得问卷Id
             string naire_id = Request.QueryString["naire_id"];
 
+            //  判断问卷是否在预览状态
+            string isPreview = Request.QueryString["isPreview"];
+            if(isPreview == "1")
+            {
+                ViewBag.isPreview = "1";
+            }
+
             //  根据问卷Id获得相应问题的Id
             NaireWebDataContext db = new NaireWebDataContext();
+
+            //  判断是否发布了，如果没发布就不能打开
+            naire_info stateResult = (from r in db.naire_info
+                              where r.id == int.Parse(naire_id) 
+                              select r).FirstOrDefault();
+
+            if(stateResult.state == "未发布")
+            {
+                //  重定向去首页
+                if(isPreview != "1")
+                {
+                    return Redirect("~/Home/Index");
+                }  
+            }
 
             //  获得问卷的问题
             var question_header = from r in db.question_info

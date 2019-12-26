@@ -60,8 +60,8 @@
     <!--    头部，留个空好了-->
     <div class="top_wrap">
         <div class="user_wrap">
-            <span>管理员：</span><span class="user_name">odd</span>
-            <div class="exit">退出</div>
+            <span>管理员：</span><span class="user_name" id="admin_name"></span>
+            <div class="exit" onclick="Return_Admin_Login()">退出</div>
         </div>
     </div>
 
@@ -239,15 +239,15 @@
                         <span id="btn_admin_info_change">修改</span>
                     </div>
                     <div class="admin_info_item" style="margin-top:40px;">
-                        <span class="item_name">账号：</span><span>793523185@qq.com</span>
+                        <span class="item_name">账号：</span><span></span>
                     </div>
                     <!--    正常状态-->
                     <div class="item_wrap_normal" id="item_wrap_normal">
                         <div class="admin_info_item">
-                            <span class="item_name">用户昵称：</span><span>odd</span>
+                            <span class="item_name">用户昵称：</span><span></span>
                         </div>
                         <div class="admin_info_item">
-                            <span class="item_name">密码：</span><span>123456</span><span class="display">显示密码</span>
+                            <span class="item_name">密码：</span><span></span><span class="display" onclick="ShowPassword(this)">显示密码</span>
                         </div>
                     </div>
                     <!--    编辑状态-->

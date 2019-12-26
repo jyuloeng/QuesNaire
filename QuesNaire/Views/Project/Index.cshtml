@@ -17,6 +17,9 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
+    <div class="preview_wrap hidden">
+        <div class="preview_title">提示：当前为预览页面，您将不可以提交。</div>
+    </div>
     <div id="naire" class="naire">
         <!--    问卷标题-->
         <div id="naire_title" class="naire_title"></div>
@@ -92,6 +95,7 @@
         <button type="submit" class="btn btn-info btn_submit" id="btn_submit">提交</button>
 
         <input class="hidden" id="naire_json" value="@ViewBag.NaireHaveId" />
+        <input class="hidden" id="isPreview" value="@ViewBag.isPreview" />
     </div>
     <div class="naire_support">TeamAlbm提供技术支持</div>
 

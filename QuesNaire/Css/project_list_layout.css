@@ -100,6 +100,7 @@
 .nav_avatar {
     position: absolute;
     margin: 20px 30px;
+    padding-bottom: 100px;
 }
 
 .nav_avatar img {
@@ -646,4 +647,59 @@
 .table_recycle_td_title{
     width:50%;
     padding-right:10px;
+}
+
+.user_info {
+    display: none;
+    z-index: 1100;
+    position: absolute;
+    width: 260px;
+    background: #fff;
+    right: 0;
+    right: -7px;
+    top: 57px;
+    padding: 18px 0;
+    color: #707070;
+    box-shadow: 0 4px 12px 0 rgba(0,0,0,.1);
+    border-radius: 2px;
+}
+
+.user_name {
+    font-size: 18px;
+    margin: 0 20px;
+    line-height: 18px;
+    padding: 12px 0;
+    border-bottom: 1px #eaeaea solid;
+    width: 220px;
+    cursor: default;
+}
+
+.user-exit {
+    font-size: 15px;
+    color: #707070;
+    line-height: 24px;
+    height: 24px;
+    margin: 6px 20px;
+    padding: 12px 0
+}
+
+.user_info:before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    right: 10px;
+    padding: 8px;
+    background-color: inherit;
+    border: inherit;
+    border-right: 0;
+    border-bottom: 0;
+    transform: rotate(45deg);
+}
+
+.user-exit:hover {
+    color: #2672ff;
+}
+
+.nav_avatar:hover .user_info{
+    display:block;
 }

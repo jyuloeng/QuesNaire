@@ -352,89 +352,88 @@ function submit() {
         isNull[0].focus();
         return;
     }
-    alert("dsd");
 
-    //var naire_questions = document.querySelectorAll('div[data-item="question"]');
-    //var naire_questions_list = new Array();
+    var naire_questions = document.querySelectorAll('div[data-item="question"]');
+    var naire_questions_list = new Array();
 
-    //(function () {
-    //    for (var i = 0; i < naire_questions.length; i++) {
-    //        var type = naire_questions[i].getAttribute('data-type');
-    //        switch (type) {
-    //            case "input":
-    //                var question_id = naire_questions[i].getAttribute('data-question-id');
-    //                var input = naire_questions[i].querySelector('input[class="input_item"]').value;
+    (function () {
+        for (var i = 0; i < naire_questions.length; i++) {
+            var type = naire_questions[i].getAttribute('data-type');
+            switch (type) {
+                case "input":
+                    var question_id = naire_questions[i].getAttribute('data-question-id');
+                    var input = naire_questions[i].querySelector('input[class="input_item"]').value;
 
-    //                var result = new InputResult(question_id, input);
-    //                naire_questions_list.push(result);
-    //                break;
-    //            case "radio":
-    //                var question_id = naire_questions[i].getAttribute('data-question-id');
-    //                var choice;
+                    var result = new InputResult(question_id, input);
+                    naire_questions_list.push(result);
+                    break;
+                case "radio":
+                    var question_id = naire_questions[i].getAttribute('data-question-id');
+                    var choice;
 
-    //                var items = naire_questions[i].querySelector('div[class="naire_item_items"]');
-    //                var radios = items.querySelectorAll('input[data-question-item="radio"]');
-    //                for (var j = 0; j < radios.length; j++) {
-    //                    if (radios[j].checked) {
-    //                        choice = radios[j].value;
-    //                        break;
-    //                    }
-    //                }
+                    var items = naire_questions[i].querySelector('div[class="naire_item_items"]');
+                    var radios = items.querySelectorAll('input[data-question-item="radio"]');
+                    for (var j = 0; j < radios.length; j++) {
+                        if (radios[j].checked) {
+                            choice = radios[j].value;
+                            break;
+                        }
+                    }
 
-    //                var result = new RadioReuslt(question_id, choice);
-    //                naire_questions_list.push(result);
-    //                break;
-    //            case "checkbox":
-    //                var question_id = naire_questions[i].getAttribute('data-question-id');
-    //                var choices = new Array();
+                    var result = new RadioReuslt(question_id, choice);
+                    naire_questions_list.push(result);
+                    break;
+                case "checkbox":
+                    var question_id = naire_questions[i].getAttribute('data-question-id');
+                    var choices = new Array();
 
-    //                var items = naire_questions[i].querySelector('div[class="naire_item_items"]');
-    //                var checkboxes = items.querySelectorAll('input[data-question-item="checkbox"]');
-    //                for (var j = 0; j < checkboxes.length; j++) {
-    //                    if (checkboxes[j].checked) {
-    //                        choices.push(checkboxes[j].value);
-    //                    }
-    //                }
+                    var items = naire_questions[i].querySelector('div[class="naire_item_items"]');
+                    var checkboxes = items.querySelectorAll('input[data-question-item="checkbox"]');
+                    for (var j = 0; j < checkboxes.length; j++) {
+                        if (checkboxes[j].checked) {
+                            choices.push(checkboxes[j].value);
+                        }
+                    }
 
-    //                var result = new CheckBoxResult(question_id, choices);
-    //                naire_questions_list.push(result);
-    //                break;
-    //            case "multiple":
-    //                var question_id = naire_questions[i].getAttribute('data-question-id');
+                    var result = new CheckBoxResult(question_id, choices);
+                    naire_questions_list.push(result);
+                    break;
+                case "multiple":
+                    var question_id = naire_questions[i].getAttribute('data-question-id');
 
-    //                var inputs = new Array();
-    //                var items = naire_questions[i].querySelectorAll('input[data-question-item="multiple"]');
-    //                for (var j = 0; j < items.length; j++) {
-    //                    inputs.push(items[j].value);
-    //                }
+                    var inputs = new Array();
+                    var items = naire_questions[i].querySelectorAll('input[data-question-item="multiple"]');
+                    for (var j = 0; j < items.length; j++) {
+                        inputs.push(items[j].value);
+                    }
 
-    //                var result = new MultipleResult(question_id, inputs);
-    //                naire_questions_list.push(result);
-    //                break;
-    //        }
-    //    }
-    //}());
+                    var result = new MultipleResult(question_id, inputs);
+                    naire_questions_list.push(result);
+                    break;
+            }
+        }
+    }());
 
-    ////	只需要把这个naire_questions_list东西
-    ////  转json即可得到这份问卷数据
-    //var naire_post_json = {
-    //    list: naire_questions_list
-    //}
-    //console.log(JSON.stringify(naire_post_json));
+    //	只需要把这个naire_questions_list东西
+    //  转json即可得到这份问卷数据
+    var naire_post_json = {
+        list: naire_questions_list
+    }
+    console.log(JSON.stringify(naire_post_json));
 
-    ////ajax异步提交表单
-    //$.ajax({
-    //    url: '../Project/getQuestionData',
-    //    data: JSON.stringify(naire_post_json),
-    //    type: 'POST',
-    //    contentType: 'application/json;charset=utf-8',
-    //    async: true,
-    //    cache: false,
-    //    success: function (data) {
-    //        //  弹窗提示
-    //        window.alert("提交成功！谢谢您的回答！");
-    //        //  将按钮设为不可用
-    //        btn_submit.classList.add('disable');
-    //    }
-    //});
+    //ajax异步提交表单
+    $.ajax({
+        url: '../Project/getQuestionData',
+        data: JSON.stringify(naire_post_json),
+        type: 'POST',
+        contentType: 'application/json;charset=utf-8',
+        async: true,
+        cache: false,
+        success: function (data) {
+            //  弹窗提示
+            window.alert("提交成功！谢谢您的回答！");
+            //  将按钮设为不可用
+            btn_submit.classList.add('disable');
+        }
+    });
 }

@@ -36,6 +36,10 @@ namespace QuesNaire.Controllers
             statistic.update_time = naires.FirstOrDefault().update_time;
             statistic.data = naires.FirstOrDefault().data;
 
+            ViewBag.naireTitle = statistic.title;
+            ViewBag.naireData = statistic.data;
+            ViewBag.updateTime = statistic.update_time;
+
             //  然后找问题表拿 问题id，flag，题目，选项
             var questions = from r in db.question_info
                             where r.naire_id == int.Parse(naire_id)
@@ -97,7 +101,7 @@ namespace QuesNaire.Controllers
           
 
             string statistic_info = JsonConvert.SerializeObject(statistic);
-
+            ViewBag.statisticJson = statistic_info;
 
             return View();
         }

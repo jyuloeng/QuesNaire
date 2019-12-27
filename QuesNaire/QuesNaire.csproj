@@ -401,6 +401,7 @@
     <Content Include="Js\project_list_layout.js" />
     <Content Include="Js\publish_project.js" />
     <Content Include="Js\register_layout.js" />
+    <Content Include="Js\statistic_layout.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\materialdesignicons.eot" />

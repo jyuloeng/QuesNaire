@@ -13,7 +13,7 @@ for (let i = 0; i < questions.length; i++) {
         case 3:
             naire_item.innerHTML = '<div class="naire_title_wrap">'
                 //< !--问卷标题-->
-                + '<span class="naire_item_title">' + questions[i].title + '</span>'
+                + '<span class="naire_item_title">' + (i + 1) + '.' + questions[i].title + '</span>'
                 //<!--问卷类型-->
                 + '<div class="naire_chart_type">'
                 + '<div class="btn-group">'
@@ -61,7 +61,7 @@ for (let i = 0; i < questions.length; i++) {
                     data: {
                         labels: questions[i].options,
                         datasets: [{
-                            data: [10, 20, 30, 40, 50, 60, 70],
+                            data: questions[i].replys,
                             backgroundColor: ['#ff5722', '#ff9800', '#ffc107', '#ffeb3b',
                                 '#4caf50', '#00bcd4', '#03a9f4', '#2196f3', '#3f51b5', '#673ab7',
                                 '#9c27b0']
@@ -75,23 +75,13 @@ for (let i = 0; i < questions.length; i++) {
                         }
                     }
                 });
-
-            var table_data = [{
-                options: "选项1",
-                replys: "0"
-            }, {
-                options: "选项2",
-                replys: "10"
-            }, {
-                options: "选项3",
-                replys: "32"
-            }, {
-                options: "选项4",
-                replys: "11"
-            }, {
-                options: "选项5",
-                replys: "50"
-            },];
+            var table_data = new Array();
+            for (let k = 0; k < questions[i].options.length; k++) {
+                table_data.push({
+                    options: questions[i].options[k],
+                    replys: questions[i].replys[k]
+                })
+            }
 
             //  先销毁表格
             $('#question_table_' + i + '').bootstrapTable("destroy");
@@ -112,7 +102,7 @@ for (let i = 0; i < questions.length; i++) {
         case 1:
             naire_item.innerHTML = '<div class="naire_title_wrap">'
                 //< !--问卷标题-->
-                + '<span class="naire_item_title">' + questions[i].title + '</span>'
+                + '<span class="naire_item_title">' + (i + 1)+'.'+ questions[i].title + '</span>'
                 //<!--问卷类型-->
                 + '<div class="naire_chart_type">'
                 + '<div class="btn-group" style="margin-left: 4px;">'
@@ -135,33 +125,19 @@ for (let i = 0; i < questions.length; i++) {
 
             naire_body.appendChild(naire_item);
 
-            var table_data = [{
-                options: "选项1",
-                replys: "0"
-            }, {
-                options: "选项2",
-                replys: "10"
-            }, {
-                options: "选项3",
-                replys: "32"
-            }, {
-                options: "选项4",
-                replys: "11"
-            }, {
-                options: "选项5",
-                replys: "50"
-            },];
+            var table_data = new Array();
+            for (let k = 0; k < questions[i].replys.length; k++) {
+                table_data.push({
+                    replys: questions[i].replys[k]
+                })
+            }
 
             //  先销毁表格
             $('#question_table_' + i + '').bootstrapTable("destroy");
             //  加载表格
             $('#question_table_' + i + '').bootstrapTable({
                 data: table_data,        // 表格数据来源
-                columns: [{
-                    field: 'options',
-                    title: '选项',
-                    class: 'table_cols_width'
-                }, {
+                columns: [ {
                     field: 'replys',
                     title: '回复情况',
                     class: 'table_cols_width'
@@ -169,9 +145,17 @@ for (let i = 0; i < questions.length; i++) {
             });
             break;
         case 4:
+            function createTable() {
+                var table_html = "";
+                for (let option = 0; option < questions[i].options.length; option++) {
+                    table_html += ('<table id="question_table_m_' + option + '" class="table table-hover table-borderless"></table>');
+                }
+                return table_html;
+            }
+
             naire_item.innerHTML = '<div class="naire_title_wrap">'
                 //< !--问卷标题-->
-                + '<span class="naire_item_title">' + questions[i].title + '</span>'
+                + '<span class="naire_item_title">' + (i + 1) + '.此题为多项填空题，具体题目请看表格标题</span>'
                 //<!--问卷类型-->
                 + '<div class="naire_chart_type">'
                 + '<div class="btn-group" style="margin-left: 4px;">'
@@ -189,43 +173,65 @@ for (let i = 0; i < questions.length; i++) {
 
                 + '</div >'
                 + '<div class="naire_data">'
-                + '<table id="question_table_' + i + '" class="table table-hover table-borderless"></table>'
+
+                + createTable();
+
                 + '</div>';
 
             naire_body.appendChild(naire_item);
 
-            var table_data = [{
-                options: "选项1",
-                replys: "0"
-            }, {
-                options: "选项2",
-                replys: "10"
-            }, {
-                options: "选项3",
-                replys: "32"
-            }, {
-                options: "选项4",
-                replys: "11"
-            }, {
-                options: "选项5",
-                replys: "50"
-            },];
+           
 
-            //  先销毁表格
-            $('#question_table_' + i + '').bootstrapTable("destroy");
-            //  加载表格
-            $('#question_table_' + i + '').bootstrapTable({
-                data: table_data,        // 表格数据来源
-                columns: [{
-                    field: 'options',
-                    title: '选项',
-                    class: 'table_cols_width'
-                }, {
-                    field: 'replys',
-                    title: '回复情况',
-                    class: 'table_cols_width'
-                }]
-            });
+            for (let option = 0; option < questions[i].options.length; option++) {
+
+                let table_data = new Array();
+
+                //for (let reply = 0; reply < questions[i].replys.length; reply++) {
+                //    for (let k = 0; k < questions[i].options.length; k++) {
+                //        table_data.push({
+                //            replys: questions[i].replys[k]
+                //        })
+                //    }
+                //}
+
+                //for (let o = 0; o < questions[i].options.length; o++) {
+                //    for (let reply = 0; reply < questions[i].replys.length; reply++) {
+                //        table_data.push({
+                //            replys: questions[i].replys[reply]
+                //        })
+                //    }
+                //}
+
+                //  多项填空有BUG 待修复
+                for (let reply = 0; reply < questions[i].replys.length; reply++) {
+                    let str = questions[i].replys[reply].substr(0, questions[i].replys[reply].length - 1);
+                    str = str.substr(1, questions[i].replys[reply].length - 1);
+
+                    let array = str.split(',');
+
+                    for (let o = 0; o < questions[i].options.length; o++) {
+                        for (let a = 0; a < array.length; a++) {
+                            table_data.push({
+                                replys: array[a]
+                            })
+                        }
+                    }
+                }
+
+                //  先销毁表格
+                $('#question_table_m_' + option + '').bootstrapTable("destroy");
+                //  加载表格
+                $('#question_table_m_' + option + '').bootstrapTable({
+                    data: table_data,        // 表格数据来源
+                    columns: [ {
+                        field: 'replys',
+                        title: questions[i].options[option]+' 回复情况',
+                        class: 'table_cols_width'
+                    }]
+                });
+            }
+
+           
             break;
     }
 

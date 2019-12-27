@@ -194,6 +194,20 @@ namespace QuesNaire.Controllers
                              where r.id == naireIds[i]
                              select r;
                 db.naire_info.DeleteAllOnSubmit(result);
+
+                List<question_info> question_results = (from r in db.question_info
+                                       where r.naire_id == naireIds[i]
+                                       select r).ToList();
+                db.question_info.DeleteAllOnSubmit(question_results);
+
+                for(int j = 0; j < question_results.Count; j++)
+                {
+                    var data_results = from r in db.data_info
+                                       where r.question_id == question_results[i].id
+                                       select r;
+                    db.data_info.DeleteAllOnSubmit(data_results);
+                }
+
                 db.SubmitChanges();
             }
         }

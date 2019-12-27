@@ -57,7 +57,6 @@
         <div class="naire_header_top">
             <div class="naire_title">@ViewBag.naireTitle</div>
 
-            <button class="btn btn-info btn_stop" id="btn_stop">停止收集</button>
             <div class="naire_number_wrap">
                 当前已收集问卷<span class="naire_number">@ViewBag.naireData 份</span>
             </div>
@@ -118,6 +117,7 @@
             </div>*@
     </div>
 
+    <input class="hidden" id="naire_id" value="@ViewBag.naireId" />
     <input class="hidden" id="statistic_json" value="@ViewBag.statisticJson" />
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>

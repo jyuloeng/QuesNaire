@@ -185,3 +185,11 @@ for (let i = 0; i < questions.length; i++) {
     }
 
 }
+
+var edit_check = document.querySelector('.edit_check');
+var naireId = document.getElementById('naire_id').value;
+edit_check.addEventListener('click', toPreview, false);
+
+function toPreview() {
+    window.location.href = "http://localhost:61507/Project/Index?naire_id=" + naireId + "&isPreview=1";
+}

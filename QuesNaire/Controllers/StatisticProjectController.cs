@@ -54,21 +54,48 @@ namespace QuesNaire.Controllers
                     }
                 else
                     q.options = null;
+
                 var reply = from r in db.data_info
                             where r.question_id == question.id
                             select r;
-                
-                foreach (data_info data_Info in reply)
+                if(q.flag==2||q.flag==3)
                 {
-                    q.replys.Add(data_Info.data);
+                    var count = JsonConvert.DeserializeObject<List<string>>(reply.FirstOrDefault().data).Count;
+                    int[] a = new int[count];
+                    foreach (var r in reply)
+                    {
+                        var index = JsonConvert.DeserializeObject<List<string>>(r.data);
+                        for(var i = 0;i<index.Count;i++)
+                        {
+                            a[i] += int.Parse(index[i]);
+                        }
+
+                    }
+                    foreach(var i in a)
+                    {
+                        q.replys.Add(i.ToString());
+                    }
                 }
+                else if(q.flag == 1)
+                {
+                    foreach(var r in reply)
+                    {
+                        q.replys.Add(r.data);
+                    }
+                }
+                else if(q.flag == 4)
+                {
+                    foreach (var r in reply)
+                    {
+                        q.replys.Add(r.data);
+                    }
+                }
+
+                    
                 statistic.questions.Add(q);
             }
-            
+          
 
-
-
-            //  不会连表查询。。先拿个json看一下
             string statistic_info = JsonConvert.SerializeObject(statistic);
 
 

@@ -401,6 +401,7 @@
     <Content Include="Js\project_list_layout.js" />
     <Content Include="Js\publish_project.js" />
     <Content Include="Js\register_layout.js" />
+    <Content Include="Js\statistic_layout.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\materialdesignicons.eot" />
@@ -444,6 +445,7 @@
     <Compile Include="Models\NaireInfo.cs" />
     <Compile Include="Models\NaireJsonObject.cs" />
     <Compile Include="Models\QuestionInfo.cs" />
+    <Compile Include="Models\Statistic.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="NaireWeb.designer.cs">
       <AutoGen>True</AutoGen>

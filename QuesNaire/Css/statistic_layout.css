@@ -1,5 +1,6 @@
 ﻿.naire_header {
-    height: 112px;
+    height: 176px;
+    padding-top: 64px;
 }
 
 .naire_header_top{
@@ -79,6 +80,7 @@
 .naire_item {
     border: 1px #dbdbdb solid;
     background-color: #fff;
+    margin-top: 20px;
 }
 
 .naire_title_wrap {
@@ -105,4 +107,12 @@
     margin: 0 auto;
     width: 470px;
     padding: 10px 10px;
+}
+
+.naire_data {
+    padding: 20px 60px;
+}
+
+.table_cols_width{
+    width:403px;
 }

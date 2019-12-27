@@ -29,48 +29,34 @@ function toInfo() {
     section_info.classList.remove("hidden");
 }
 
+//修改按钮
 var base_info_change = document.getElementById("base_info_change");
-var item_wrap_normal = document.getElementById("item_wrap_normal");
-var item_wrap_edit = document.getElementById("item_wrap_edit");
+//提交修改按钮
 var btn_change_info = document.getElementById("btn_change_info");
 var isEditting = false;
 
-base_info_change.addEventListener("click", editInfo, false);
+base_info_change.addEventListener('click', Show_UserInfo_Change, false);
 
-//  修改帐户信息
-function editInfo() {
-    //  正在修改
-    isEditting = !isEditting;
+//改变用户信息框显示
+function Show_UserInfo_Change() {
+    var item_wrap_edit = document.getElementById("item_wrap_edit");
+    var item_wrap_normal = document.getElementById("item_wrap_normal");
+    var text = base_info_change.innerText;
 
-    item_wrap_normal.classList.add("base_info_hidden");
-    item_wrap_edit.classList.remove("base_info_hidden");
-    
-    //  为修改按钮移除监听事件
-    if (isEditting) {
-        base_info_change.removeEventListener("click", editInfo, false);
+    if (text == "修改") {
+        item_wrap_normal.classList.add('base_info_hidden');
+        item_wrap_edit.classList.remove('base_info_hidden');
+        base_info_change.innerText = "取消修改";
     }
-
-    btn_change_info.addEventListener("click", sumbitEdit, false);
+    if (text == "取消修改") {
+        item_wrap_edit.classList.add('base_info_hidden');
+        item_wrap_normal.classList.remove('base_info_hidden');
+        base_info_change.innerText = "修改";
+    }
 }
 
-//  提交修改
-function sumbitEdit() {
-    isEditting = !isEditting;
-
-    item_wrap_edit.classList.add("base_info_hidden");
-    item_wrap_normal.classList.remove("base_info_hidden");
-
-    //  为修改按钮添加监听事件
-    if (!isEditting) {
-        base_info_change.addEventListener("click", editInfo, false);
-    }
 
 
-    //  获得input的值进行验证（待做）
-
-    //  移除监听事件
-    btn_change_info.removeEventListener("click", sumbitEdit, false);
-}
 
 
 var tab_card_view = document.getElementById("tab_card_view");

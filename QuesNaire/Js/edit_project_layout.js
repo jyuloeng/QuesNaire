@@ -476,3 +476,53 @@ function JudgeNull(obj) {
     }
 
 }
+
+//删除cookies
+function deleteCookie(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = getCookie(name);
+    if (cval != null)
+        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+}
+
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    if (arr = document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}
+
+
+//初始化用户信息
+function InitUserInfo() {
+    var user_name = document.getElementById("user_name");
+    user_name.innerText = getCookie("user_name");
+    var user_avatar = document.getElementById("user_avatar");
+    user_avatar.src = getCookie("user_avatar");
+}
+InitUserInfo();
+
+//退出登录
+var exit = document.getElementById("exit");
+var back= document.getElementById("back");
+exit.addEventListener('click', ExitLogin, false);
+back.addEventListener('click', BackProject, false);
+
+
+
+
+//退出登录转到登录界面
+function ExitLogin() {
+    deleteCookie("user_name");
+    deleteCookie("user_account");
+    deleteCookie("user_password");
+    deleteCookie("user_id");
+    window.location.href = "../Login/Index";
+}
+
+//返回项目列表面
+function BackProject() {
+    window.location.href = "../ProjectList/Index?id=" + getCookie("user_id");
+}

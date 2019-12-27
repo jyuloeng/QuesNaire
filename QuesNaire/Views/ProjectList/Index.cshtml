@@ -70,7 +70,7 @@
                 <!--    搜索栏-->
                 <div class="nav_search">
                     <i class="glyphicon glyphicon-search"></i>
-                    <input type="text" class="search_input" />
+                    <input type="text" class="search_input" readonly="readonly"/>
                 </div>
                 <!--    回收站-->
                 <div class="nav_recycle" id="btn_recycle">
@@ -183,7 +183,7 @@
                         <span class="item_name">用户昵称：</span><span id="user_name">odd</span>
                     </div>
                     <div class="base_info_item">
-                        <span class="item_name">密码：</span><span id="user_password">123456</span><span class="display">显示密码</span>
+                        <span class="item_name">密码：</span><span id="user_password">*******</span><span class="display" onclick="ShowPassword(this)">显示密码</span>
                     </div>
                 </div>
 
@@ -286,7 +286,6 @@
         document.getElementById('name').innerText = getCookie("user_name");
         document.getElementById('user_account').innerText = getCookie("user_account")
         document.getElementById('user_name').innerText = getCookie("user_name")
-        document.getElementById('user_password').innerText = getCookie("user_password")
         if (getCookie('user_avatar') != "") {
             document.getElementById('user_avatar').src = getCookie("user_avatar")
             document.getElementById('user_avatar2').src = getCookie("user_avatar")
@@ -328,22 +327,53 @@
             // 启动文件选择
             file.click();
         });
+
+        //删除cookies
+        function DeleteCookie(name) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval = getCookie(name);
+            if (cval != null)
+                document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+        }
+
         $("#btn_change_info").click(function () {
-            if ($("#upName").val() && $("#upPassword").val()) {
-                axios.post('../ProjectList/upInfo', {
-                    id:getCookie("user_id"),
-                    name: $("#upName").val(),
-                    password:$("#upPassword").val()
-             })
+
+            var name = $("#upName").val();
+            var password = $("#upPassword").val();
+            
+
+            if (name == "" && password == "") {
+                return;
+            }
+            //用户名为空
+            if (name == "" && password != "") {
+                name = getCookie("user_name");
+            }
+            //密码为空
+            if (name != "" && password == "") {
+                password = getCookie("user_password");
+            }
+
+            axios.post('../ProjectList/upInfo', {
+                id:getCookie("user_id"),
+                name: name,
+                password: password
+            })
             .then(function (response) {
                 console.log(response.data);
-                document.getElementById('user_name').innerText = getCookie("user_name")
-                document.getElementById('user_password').innerText = getCookie("user_password")
-        })
+                
+                document.getElementById('user_name').innerText = getCookie("user_name");
+                DeleteCookie("user_name");
+                DeleteCookie("user_account");
+                DeleteCookie("user_password");
+                alert("修改信息成功，返回登录界面！");
+                window.location.href = "../Login/Index";
+
+           })
         .catch(function (error) {
           console.log(error);
         });
-            }
         })
         var select_file
         file.change(function (e) {
@@ -400,6 +430,21 @@
         });
         }
 
+
+        //显示密码
+        function ShowPassword(obj) {
+            var user_password = document.getElementById("user_password");
+            var password = getCookie("user_password");
+
+            if (user_password.innerText == "*******") {
+                user_password.innerText = password;
+                obj.innerText = "隐藏密码";
+            }
+            else {
+                user_password.innerText = "*******"
+                obj.innerText = "显示密码";
+            }
+        }
     </script>
 </body>
 </html>

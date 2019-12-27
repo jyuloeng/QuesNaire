@@ -358,8 +358,8 @@
     <!--    头部，留个空好了-->
     <div class="top_wrap">
         <div class="user_wrap">
-            <span>管理员：</span><span class="user_name">odd</span>
-            <div class="exit">退出</div>
+            <span>管理员：</span><span class="user_name" id="admin_name"></span>
+            <div class="exit" onclick="Return_Admin_Login()">退出</div>
         </div>
     </div>
 
@@ -552,28 +552,30 @@
                 <div class="admin_info">
                     <div class="admin_info_title">
                         账号信息
-                        <span id="btn_admin_info_change">修改</span>
+                        <span onclick="Show_AdminInfo_Change(this)">修改</span>
                     </div>
                     <div class="admin_info_item" style="margin-top:40px;">
-                        <span class="item_name">账号：</span><span>793523185@qq.com</span>
+                        <span class="item_name">账号：</span><span></span>
                     </div>
                     <!--    正常状态-->
                     <div class="item_wrap_normal" id="item_wrap_normal">
                         <div class="admin_info_item">
-                            <span class="item_name">用户昵称：</span><span>odd</span>
+                            <span class="item_name">用户昵称：</span><span></span>
                         </div>
                         <div class="admin_info_item">
-                            <span class="item_name">密码：</span><span>123456</span><span class="display">显示密码</span>
+                            <span class="item_name">密码：</span><span></span><span class="display" onclick="ShowPassword(this)">显示密码</span>
                         </div>
                     </div>
                     <!--    编辑状态-->
                     <div class="item_wrap_edit admin_info_hidden" id="item_wrap_edit">
                         <div class="admin_info_item">
-                            <span class="item_name">用户昵称：</span><input type="text" class="form-control input_edit" />
+                            <span class="item_name">用户昵称：</span><input type="text" class="form-control input_edit" id="input_name" />
                         </div>
                         <div class="admin_info_item">
-                            <span class="item_name">密码：</span><input type="password" class="form-control input_edit" />
+                            <span class="item_name">密码：</span><input type="password" class="form-control input_edit" id="input_password" />
                         </div>
+                        <label class="error_lable" id="error_message">dadad</label>
+
                         <button type="button" class="btn btn-primary btn_edit_info" id="btn_finish_edit">完成修改</button>
                     </div>
                 </div>
@@ -625,7 +627,7 @@
         });
     </script>
 
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="~/Content/dist/bootstrap-table.min.js"></script>
     <script src="~/Content/dist/locale/bootstrap-table-zh-CN.min.js"></script>
     <script src="~/Js/manager_layout.js"></script>

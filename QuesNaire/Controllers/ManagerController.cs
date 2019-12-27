@@ -26,20 +26,28 @@ namespace QuesNaire.Controllers
                 cookie.Value = id;
                 Response.Cookies.Add(cookie);
             }
+            else
+            {
+                Response.Redirect("~/Manager/ManagerLogin");
+                return View();
+            }
 
 
             NaireWebDataContext db = new NaireWebDataContext();
             //  首页显示基本信息
             double user_num = (from r in db.user_info
-                            select r.id).Count();
+                               select r.id).Count();
             double naire_num = (from r in db.naire_info
-                             select r.id).Count();
+                                select r.id).Count();
             double data_num = (from r in db.data_info
                                select r.id).Count();
 
             ViewBag.UserNum = user_num;
             ViewBag.NaireNum = naire_num;
             ViewBag.DataNum = data_num;
+
+
+            getManageInfo();
 
             return View();
         }
@@ -171,7 +179,7 @@ namespace QuesNaire.Controllers
             return Json(user_result);
         }
         [HttpPost]
-        public JsonResult Manage_Login_Info(string account,string password)
+        public JsonResult Manage_Login_Info(string account, string password)
         {
             NaireWebDataContext db = new NaireWebDataContext();
             var rs = from r in db.admin_info
@@ -196,6 +204,37 @@ namespace QuesNaire.Controllers
                       };
             var ID = rs2.FirstOrDefault().id.ToString();
             return Json(ID);
+        }
+
+        /// <summary>
+        /// 修改管理员信息
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult Change_Admin_Info(string account,string name,string password)
+        {
+            NaireWebDataContext db = new NaireWebDataContext();
+            var rs = from r in db.admin_info
+                     where r.account == account
+                     select r;
+            if (rs != null)
+            {
+                foreach(admin_info r in rs)
+                {
+                    r.name = name;
+                    r.password = password;
+                }
+            }
+            else
+            {
+                return Json(0);
+            }
+
+            db.SubmitChanges();
+            return Json(1);
         }
 
         private AdminInfo admin = new AdminInfo();
@@ -227,6 +266,9 @@ namespace QuesNaire.Controllers
             HttpCookie cookie2 = new HttpCookie("manage_name");
             cookie2.Value = admin.Manage_name;
             Response.Cookies.Add(cookie2);
+            HttpCookie cookie3 = new HttpCookie("manage_password");
+            cookie3.Value = admin.Manage_password;
+            Response.Cookies.Add(cookie3);
 
 
 

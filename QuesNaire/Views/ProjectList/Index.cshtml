@@ -9,6 +9,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Index - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -280,6 +283,7 @@
             else
                 return null;
         }
+        document.getElementById('name').innerText = getCookie("user_name");
         document.getElementById('user_account').innerText = getCookie("user_account")
         document.getElementById('user_name').innerText = getCookie("user_name")
         document.getElementById('user_password').innerText = getCookie("user_password")
@@ -287,7 +291,6 @@
             document.getElementById('user_avatar').src = getCookie("user_avatar")
             document.getElementById('user_avatar2').src = getCookie("user_avatar")
         }
-        alert(document.cookie);
         //$(".card_li")[1].childNodes[4].childNodes[0].onclick = function () {
         //    console.log("hsdkfsgf")
         //}

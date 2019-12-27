@@ -30,13 +30,14 @@
                 <div class="login_form">
                     <div class="form-group">
                         <label for="reg_input_account">账号</label>
-                        <input type="email" class="form-control" id="reg_input_account">
+                        <input type="email" class="form-control" onfocus="ClearError()" id="reg_input_account">
                     </div>
                     <div class="form-group">
                         <label for="reg_input_password">密码</label>
-                        <input type="tel" class="form-control" id="reg_input_password">
+                        <input type="password" class="form-control" onfocus="ClearError()" id="reg_input_password">
                     </div>
                     <a href="#" class="forget_password">忘记密码?</a>
+                    <label class="error_lable" id="error_message">asdadassad</label>
                     <button type="submit" class="btn btn-primary btn_login" onclick="Manage_Login()">登录</button>
                 </div>
             </div>

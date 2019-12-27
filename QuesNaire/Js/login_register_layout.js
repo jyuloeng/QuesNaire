@@ -9,12 +9,14 @@ function Judge(obj) {
         if (phone == "" || phone == null) {
             phone_error.innerHTML = "手机号不能为空!";
             phone_error.style.display = "block";
+            return;
         }
         //手机号格式不对
         if (!(/^1[3456789]\d{9}$/.test(phone)) && phone != "") {
             var phone_error = document.getElementById("phone_error");
             phone_error.innerHTML = "手机号格式有误,请输入正确的手机号！";
             phone_error.style.display = "block";
+            return;
         }
     }
     //判断邮箱
@@ -25,6 +27,7 @@ function Judge(obj) {
         if (email == "" || email == null) {
             email_error.innerHTML = "邮箱不能为空!";
             email_error.style.display = "block";
+            return;
         }
 
         //邮箱格式不对
@@ -33,6 +36,8 @@ function Judge(obj) {
             var email_error = document.getElementById("email_error");
             email_error.innerHTML = "邮箱格式有误,请输入正确的邮箱！";
             email_error.style.display = "block";
+            return;
+
         }
     }
 
@@ -41,12 +46,19 @@ function Judge(obj) {
 //清除错误提示
 function ClearError(obj) {
 
-    var error_message = document.getElementById("error_message");
-    if (error_message.innerText == "账号或密码错误!") {
-        error_message.innerHTML = "";
-        error_message.style.display = "none";
+    var id = obj.parentNode.parentNode.id;
+    if (id == "login") {
+         var error_message = document.getElementById("error_message");
+        if (error_message.innerText == "账号或密码错误!") {
+            error_message.innerHTML = "";
+            error_message.style.display = "none";
+        }
     }
-
+    if (obj.id == "reg_input_name") {
+        var name_error = document.getElementById("name_error");
+        name_error.innerHTML = "";
+        name_error.style.display = "none";
+    }
     if (obj.id == "reg_input_phone") {
         var phone_error = document.getElementById("phone_error");
         phone_error.innerHTML = "";
@@ -114,8 +126,67 @@ function JudgeSame(obj) {
 
 //判断
 function JudgmentExist(obj) {
-    var str;
-    if (obj.id == "reg_input_name") {
+    var name_error = document.getElementById("name_error");
+    var phone_error = document.getElementById("phone_error");
+    var email_error = document.getElementById("email_error");
 
+
+    var type;
+    var input = obj.value;
+
+    if (obj.id == "reg_input_name" && input=="") {
+        name_error.innerHTML = "用户名为空！";
+        name_error.style.display = "block";
     }
+
+    if (obj.id == "reg_input_name") {
+        type = "name";
+        if (name_error.style.display == "block") {
+            return;
+        }
+    }
+    if (obj.id == "reg_input_phone") {
+        type = "phone";
+        if (phone_error.style.display == "block") {
+            return;
+        }
+    }
+    if (obj.id == "reg_input_email") {
+        type = "email";
+        if (email_error.style.display == "block") {
+            return;
+        }
+    }
+    if (input == "" || input == null) {
+        return;
+    }
+    axios.post('../Register/JudgmentExists', {
+        type:type,
+        input: input
+        
+    })
+        .then(function (response) {
+            console.log(response.data);
+            var index = response.data;
+            switch (index) {
+                case 1:
+                    name_error.innerHTML = "用户名已存在！";
+                    name_error.style.display = "block";
+                    break;
+                case 2:
+                    phone_error.innerHTML = "手机号已经注册，请直接登录！";
+                    phone_error.style.display = "block";
+                    break;
+                case 3:
+                    email_error.innerHTML = "邮箱已经注册，请直接登录！";
+                    email_error.style.display = "block";
+                    break;
+                default:
+                    break;
+            }
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }

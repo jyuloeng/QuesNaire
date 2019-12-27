@@ -247,11 +247,111 @@ var naire_list = naire.list;
     }
 }());
 
+//判断是否全部填写了
+function JudgeNull() {
+    var radio_index = 0;
+    var radio_num = 0;
+    var checkbox_index = 0;
+
+    //没有填的题目数量
+    var Null_num = 0;
+    var naire_item = document.getElementsByClassName("naire_item");
+
+
+    for (var i = 0; i < naire_item.length; i++) {
+        var data_type = naire_item[i].getAttribute("data-type");
+
+        //判断单选
+        if (data_type == "radio") {
+           
+            radio_num = naire_item[i].lastElementChild.children.length;
+
+            for (var j = 0; j < naire_item[i].lastElementChild.children.length; j++) {
+                var check = naire_item[i].lastElementChild.children[j].getElementsByTagName("input");
+                if (check[0].checked == false) {
+                    radio_index++;
+
+                }
+                if (radio_num == radio_index) {
+                    Null_num++;
+                    check[0].parentNode.parentNode.parentNode.classList.add("IsNull");
+                }
+                else {
+                    check[0].parentNode.parentNode.parentNode.classList.remove("IsNull");
+                }
+                
+            }
+            radio_index = 0;
+
+        }
+        //判断多选
+        if (data_type == "checkbox") {
+            for (var j = 0; j < naire_item[i].lastElementChild.children.length; j++) {
+                var check = naire_item[i].lastElementChild.children[j].getElementsByTagName("input");
+                var item_num = naire_item[i].lastElementChild.children.length;
+                if (check[0].checked == false) {
+                    checkbox_index++;
+                }
+                if (checkbox_index == item_num) {
+                    Null_num++;
+                    check[0].parentNode.parentNode.parentNode.classList.add("IsNull");
+
+                }
+                else {
+                    check[0].parentNode.parentNode.parentNode.classList.remove("IsNull");
+                }
+            }
+        }
+        //单项填空
+        if (data_type == "input") {
+            var input = naire_item[i].lastElementChild.getElementsByTagName("input");
+            if (input[0].value == "") {
+                Null_num++;
+                input[0].classList.add("IsNull");
+            }
+            else {
+                input[0].classList.remove("IsNull");
+            }
+            
+        }
+        //多项填空
+        if (data_type == "multiple") {
+            var multiple_input = naire_item[i].getElementsByClassName("naire_item_inputs");
+            for (var j = 0; j < multiple_input.length; j++) {
+                var input = multiple_input[j].getElementsByTagName("input");
+                if (input[0].value == "") {
+                    input[0].classList.add("IsNull");
+                    Null_num++;
+                }
+                else {
+                    input[0].classList.remove("IsNull");
+                }
+                
+            }
+        }
+    }
+    return Null_num;
+}
+
 //  提交按钮的相关操作
 var btn_submit = document.getElementById('btn_submit');
 btn_submit.addEventListener('click', submit, false);
 
 function submit() {
+
+    //存在没有填写的题目
+    if (JudgeNull() > 0) {
+        var isNull = document.getElementsByClassName("IsNull");
+        var type = isNull[0].getAttribute("data-type")
+        if (type == "radio") {
+            isNull[0].lastElementChild.children[0].children[0].focus();
+        }
+        if (type == "checkbox") {
+            isNull[0].lastElementChild.children[0].children[0].focus();
+        }
+        isNull[0].focus();
+        return;
+    }
 
     var naire_questions = document.querySelectorAll('div[data-item="question"]');
     var naire_questions_list = new Array();
@@ -269,18 +369,19 @@ function submit() {
                     break;
                 case "radio":
                     var question_id = naire_questions[i].getAttribute('data-question-id');
-                    var choice;
+                    var choices = new Array();
 
                     var items = naire_questions[i].querySelector('div[class="naire_item_items"]');
                     var radios = items.querySelectorAll('input[data-question-item="radio"]');
                     for (var j = 0; j < radios.length; j++) {
                         if (radios[j].checked) {
-                            choice = radios[j].value;
-                            break;
+                            choices.push(1);
+                        } else {
+                            choices.push(0);
                         }
                     }
 
-                    var result = new RadioReuslt(question_id, choice);
+                    var result = new RadioReuslt(question_id, choices);
                     naire_questions_list.push(result);
                     break;
                 case "checkbox":
@@ -291,7 +392,9 @@ function submit() {
                     var checkboxes = items.querySelectorAll('input[data-question-item="checkbox"]');
                     for (var j = 0; j < checkboxes.length; j++) {
                         if (checkboxes[j].checked) {
-                            choices.push(checkboxes[j].value);
+                            choices.push(1);
+                        } else {
+                            choices.push(0);
                         }
                     }
 

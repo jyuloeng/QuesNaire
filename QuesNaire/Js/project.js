@@ -369,18 +369,19 @@ function submit() {
                     break;
                 case "radio":
                     var question_id = naire_questions[i].getAttribute('data-question-id');
-                    var choice;
+                    var choices = new Array();
 
                     var items = naire_questions[i].querySelector('div[class="naire_item_items"]');
                     var radios = items.querySelectorAll('input[data-question-item="radio"]');
                     for (var j = 0; j < radios.length; j++) {
                         if (radios[j].checked) {
-                            choice = radios[j].value;
-                            break;
+                            choices.push(1);
+                        } else {
+                            choices.push(0);
                         }
                     }
 
-                    var result = new RadioReuslt(question_id, choice);
+                    var result = new RadioReuslt(question_id, choices);
                     naire_questions_list.push(result);
                     break;
                 case "checkbox":
@@ -391,7 +392,9 @@ function submit() {
                     var checkboxes = items.querySelectorAll('input[data-question-item="checkbox"]');
                     for (var j = 0; j < checkboxes.length; j++) {
                         if (checkboxes[j].checked) {
-                            choices.push(checkboxes[j].value);
+                            choices.push(1);
+                        } else {
+                            choices.push(0);
                         }
                     }
 

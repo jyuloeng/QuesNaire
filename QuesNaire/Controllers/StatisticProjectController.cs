@@ -44,8 +44,8 @@ namespace QuesNaire.Controllers
             //  最后找数据表拿数据
 
             //  不会连表查询。。先拿个json看一下
-            string naires_json = JsonConvert.SerializeObject(naires);
-            string questions_json = JsonConvert.SerializeObject(questions);
+            //string naires_json = JsonConvert.SerializeObject(naires);
+            //string questions_json = JsonConvert.SerializeObject(questions);
 
 
             return View();

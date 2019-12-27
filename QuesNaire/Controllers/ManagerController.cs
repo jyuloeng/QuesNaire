@@ -68,8 +68,9 @@ namespace QuesNaire.Controllers
         [HttpPost]
         public JsonResult getNewNaireJson()
         {
+            string today = DateTime.Now.ToString("yyyy/MM/dd");//获取当前日期
             NaireWebDataContext db = new NaireWebDataContext();
-            var naire_result = from r in db.naire_info
+            var naire_result = from r in db.naire_info where r.start_time == today
                                select new
                                {
                                    r.id,
@@ -77,6 +78,8 @@ namespace QuesNaire.Controllers
                                    r.state,
                                    r.start_time,
                                    r.update_time,
+                                   r.recycle,
+                                   r.recycle_time,
                                    r.data
                                };
 
@@ -92,6 +95,7 @@ namespace QuesNaire.Controllers
         {
             NaireWebDataContext db = new NaireWebDataContext();
             var naire_result = from r in db.naire_info
+                               where r.state == "未发布"
                                select new
                                {
                                    r.id,
@@ -99,6 +103,8 @@ namespace QuesNaire.Controllers
                                    r.state,
                                    r.start_time,
                                    r.update_time,
+                                   r.recycle,
+                                   r.recycle_time,
                                    r.data
                                };
 
@@ -114,6 +120,7 @@ namespace QuesNaire.Controllers
         {
             NaireWebDataContext db = new NaireWebDataContext();
             var naire_result = from r in db.naire_info
+                               where r.state == "收集中"
                                select new
                                {
                                    r.id,
@@ -121,6 +128,8 @@ namespace QuesNaire.Controllers
                                    r.state,
                                    r.start_time,
                                    r.update_time,
+                                   r.recycle,
+                                   r.recycle_time,
                                    r.data
                                };
 
@@ -142,6 +151,8 @@ namespace QuesNaire.Controllers
                                    r.state,
                                    r.start_time,
                                    r.update_time,
+                                   r.recycle,
+                                   r.recycle_time,
                                    r.data
                                };
 
@@ -261,6 +272,102 @@ namespace QuesNaire.Controllers
 
 
 
+        }
+
+        [HttpPost] //表的编辑
+        public void editNaireInfo(naire_info naire)
+        {
+            NaireWebDataContext db = new NaireWebDataContext();
+
+                var res = from p in db.naire_info
+                          where p.id ==naire.id
+                          select p;
+                if (res.FirstOrDefault()!=null)
+                {
+                    foreach (naire_info ca in res)
+                    {
+                        ca.title = naire.title;
+                        ca.state = naire.state;
+                        ca.update_time = naire.update_time;
+                        ca.start_time = naire.start_time;
+                        ca.data = naire.data;
+                        ca.recycle = naire.recycle;
+                    }
+                    db.SubmitChanges();
+                }
+        }
+
+        [HttpPost]
+        public void DelateNaireInfo(int naire_id)
+        {
+            NaireWebDataContext db = new NaireWebDataContext();
+            var result = from r in db.naire_info
+                         where r.id == naire_id
+                         select r;
+            db.naire_info.DeleteAllOnSubmit(result);
+
+            List<question_info> question_results = (from r in db.question_info
+                                                    where r.naire_id == naire_id
+                                                    select r).ToList();
+            db.question_info.DeleteAllOnSubmit(question_results);
+
+            for (int j = 0; j < question_results.Count; j++)
+            {
+                var data_results = from r in db.data_info
+                                   where r.question_id == question_results[j].id
+                                   select r;
+                db.data_info.DeleteAllOnSubmit(data_results);
+            }
+
+            db.SubmitChanges();
+        }
+        [HttpPost]
+        public void instertNaireInfo(user_info naire_add)
+        {
+            user_info ca = new user_info();
+            ca.name = naire_add.name;
+            ca.password = naire_add.password;
+            ca.avatar = ca.avatar;
+            NaireWebDataContext db = new NaireWebDataContext();
+            db.user_info.InsertOnSubmit(ca);
+            db.SubmitChanges();
+        }
+        [HttpPost]
+        public void editNaireInfo_user(user_info naire)
+        {
+            NaireWebDataContext db = new NaireWebDataContext();
+
+            var res = from p in db.user_info
+                      where p.id == naire.id
+                      select p;
+            if (res.FirstOrDefault() != null)
+            {
+                foreach (user_info ca in res)
+                {
+                    ca.name = naire.name;
+                    ca.password = naire.password;
+                    ca.avatar = naire.avatar;
+                   
+                }
+                db.SubmitChanges();
+            }
+        }
+        [HttpPost]
+        public void DelateNaireInfo_User(int naire_id_user)
+        {
+            NaireWebDataContext db = new NaireWebDataContext();
+            try
+            {
+                var result = from r in db.user_info
+                             where r.id == naire_id_user
+                             select r;
+                db.user_info.DeleteAllOnSubmit(result);
+                db.SubmitChanges();
+            }
+            catch
+            {
+
+            }
         }
 
     }

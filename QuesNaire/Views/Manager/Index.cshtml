@@ -11,14 +11,312 @@
     <title>Index</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
 
     <link href="~/Css/base.css" rel="stylesheet" type="text/css" />
-    <link type="text/css" href="~/Css/manager_layout.css" rel="stylesheet"/>
+    <link type="text/css" href="~/Css/manager_layout.css" rel="stylesheet" />
 
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
+    <!--    添加页面模态框-->
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:600px;top: 200px;">
+                <div class="modal-header" style="display:inline-block;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <p class="modal-title" id="myModalLabel" style="font-size:24px;">
+                        添加用户页面
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <p class="modal_p">
+                        <label for="name_add" class="modal_label">用户昵称</label>
+                        <input id="name_add" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="password_add" class="modal_label">用户密码</label>
+                        <input id="password_add" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="avatar_add" class="modal_label">头像地址</label>
+                        <input id="avatar_add" class="form-control" style="display:inline-block;" />
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="tijiao">添加</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!--    编辑页面模态框 最新表-->
+    <div class="modal fade" id="change" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:600px;top: 200px;">
+                <div class="modal-header" style="display:inline-block;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <p class="modal-title" id="myModalLabel" style="font-size:24px;">
+                        编辑页面
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <p class="modal_p">
+                        <label for="id_c" class="modal_label">问&nbsp;卷&nbsp;I&nbsp;D</label>
+                        <input id="id_c" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="titile_c" class="modal_label">问卷标题</label>
+                        <input id="titile_c" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="state_c" class="modal_label">收集状态</label>
+                        <input id="state_c" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="start_time_c" class="modal_label">开始时间</label>
+                        <input id="start_time_c" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="update_time_c" class="modal_label">最后时间</label>
+                        <input id="update_time_c" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="data_c" class="modal_label">收到数据</label>
+                        <input id="data_c" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="recycle_c" class="modal_label">回收状态</label>
+                        <input id="recycle_c" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="recycle_time_c" class="modal_label">回收时间</label>
+                        <input id="recycle_time_c" class="form-control" style="display:inline-block;" />
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="change_save">保存修改</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!-- 编辑页面待发布 -->
+    <div class="modal fade" id="change_DFB" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:600px;top: 200px;">
+                <div class="modal-header" style="display:inline-block;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <p class="modal-title" id="myModalLabel" style="font-size:24px;">
+                        编辑页面 待发布
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <p class="modal_p">
+                        <label for="id_d" class="modal_label">问&nbsp;卷&nbsp;I&nbsp;D</label>
+                        <input id="id_d" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="titile_d" class="modal_label">问卷标题</label>
+                        <input id="titile_d" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="state_d" class="modal_label">收集状态</label>
+                        <input id="state_d" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="start_time_d" class="modal_label">开始时间</label>
+                        <input id="start_time_d" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="update_time_d" class="modal_label">最后时间</label>
+                        <input id="update_time_d" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="data_d" class="modal_label">收到数据</label>
+                        <input id="data_d" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="recycle_d" class="modal_label">回收状态</label>
+                        <input id="recycle_d" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="recycle_time_d" class="modal_label">回收时间</label>
+                        <input id="recycle_time_d" class="form-control" style="display:inline-block;" />
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="change_save_DFB">保存修改</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!-- 编辑页面全部表 -->
+    <div class="modal fade" id="change_QBB" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:600px;top: 200px;">
+                <div class="modal-header" style="display:inline-block;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <p class="modal-title" id="myModalLabel" style="font-size:24px;">
+                        编辑页面 全部表
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <p class="modal_p">
+                        <label for="id_q" class="modal_label">问&nbsp;卷&nbsp;I&nbsp;D</label>
+                        <input id="id_q" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="titile_q" class="modal_label">问卷标题</label>
+                        <input id="titile_q" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="state_q" class="modal_label">收集状态</label>
+                        <input id="state_q" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="start_time_q" class="modal_label">开始时间</label>
+                        <input id="start_time_q" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="update_time_q" class="modal_label">最后时间</label>
+                        <input id="update_time_q" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="data_q" class="modal_label">收到数据</label>
+                        <input id="data_q" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="recycle_q" class="modal_label">回收状态</label>
+                        <input id="recycle_q" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="recycle_time_q" class="modal_label">回收时间</label>
+                        <input id="recycle_time_q" class="form-control" style="display:inline-block;" />
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="change_save_QBB">保存修改</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!-- 编辑页面已发布 -->
+    <div class="modal fade" id="change_YFB" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:600px;top: 200px;">
+                <div class="modal-header" style="display:inline-block;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <p class="modal-title" id="myModalLabel" style="font-size:24px;">
+                        编辑页面 已发布
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <p class="modal_p">
+                        <label for="id_y" class="modal_label">问&nbsp;卷&nbsp;I&nbsp;D</label>
+                        <input id="id_y" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="titile_y" class="modal_label">问卷标题</label>
+                        <input id="titile_y" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="state_y" class="modal_label">收集状态</label>
+                        <input id="state_y" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="start_time_y" class="modal_label">开始时间</label>
+                        <input id="start_time_y" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="update_time_y" class="modal_label">最后时间</label>
+                        <input id="update_time_y" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="data_y" class="modal_label">收到数据</label>
+                        <input id="data_y" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="recycle_y" class="modal_label">回收状态</label>
+                        <input id="recycle_y" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="recycle_time_y" class="modal_label">回收时间</label>
+                        <input id="recycle_time_y" class="form-control" style="display:inline-block;" />
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="change_save_YFB">保存修改</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!--    编辑页面模态框 用户管理-->
+    <div class="modal fade" id="change_YHG" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:600px;top: 200px;">
+                <div class="modal-header" style="display:inline-block;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <p class="modal-title" id="myModalLabel" style="font-size:24px;">
+                        编辑页面 用户管理
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <p class="modal_p">
+                        <label for="id" class="modal_label">用户的ID</label>
+                        <input id="id" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="name" class="modal_label">用户昵称</label>
+                        <input id="name" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="password" class="modal_label">用户密码</label>
+                        <input id="password" class="form-control" style="display:inline-block;" />
+                    </p>
+                    <p class="modal_p">
+                        <label for="avatar" class="modal_label">头像地址</label>
+                        <input id="avatar" class="form-control" style="display:inline-block;" />
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="change_save_YHG">保存修改</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
     <!--    左边导航栏-->
     <nav class="nav_wrap">
         <div class="nav_title">
@@ -202,6 +500,19 @@
             </div>
         </div>
 
+        <style>
+            #table_naire_new tr:nth-child(even), #table_naire_unpublish tr:nth-child(even)
+            #table_naire_published tr:nth-child(even), #table_naire_all tr:nth-child(even)
+            #table_user_info tr:nth-child(even) {
+                background: #fafafa;
+            }
+
+            #table_naire_new th, #table_naire_unpublish th,
+            #table_naire_published th, #table_naire_all th,
+            #table_user_info th {
+                background: #efefef;
+            }
+        </style>
         <!--    最新问卷-->
         <div class="all_project_layout layout_item">
             <table id="table_naire_new" class="table table-hover table-borderless"></table>
@@ -217,13 +528,18 @@
             <table id="table_naire_published" class="table table-hover table-borderless"></table>
         </div>
 
-        <!--    问卷查询-->
+        <!--    全部问卷-->
         <div class="query_layout layout_item">
             <table id="table_naire_all" class="table table-hover table-borderless"></table>
         </div>
 
         <!--    用户管理-->
         <div class="user_manager_layout layout_item">
+            <div id="toolbar">
+                <button class="btn btn-default" data-toggle="modal" data-target="#add">
+                    添加
+                </button>
+            </div>
             <table id="table_user_info" class="table table-hover table-borderless"></table>
         </div>
 
@@ -309,13 +625,13 @@
         });
     </script>
 
-    
+
     <script src="~/Content/dist/bootstrap-table.min.js"></script>
     <script src="~/Content/dist/locale/bootstrap-table-zh-CN.min.js"></script>
     <script src="~/Js/manager_layout.js"></script>
     <script>
 
-       
+
     </script>
 </body>
 </html>

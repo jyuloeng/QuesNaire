@@ -18,17 +18,6 @@
       <Association Name="user_info_naire_info" Member="naire_info" ThisKey="id" OtherKey="user_id" Type="naire_info" />
     </Type>
   </Table>
-  <Table Name="dbo.question_info" Member="question_info">
-    <Type Name="question_info">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="naire_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="flag" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="items" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="question_info_data_info" Member="data_info" ThisKey="id" OtherKey="question_id" Type="data_info" />
-      <Association Name="naire_info_question_info" Member="naire_info" ThisKey="naire_id" OtherKey="id" Type="naire_info" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.data_info" Member="data_info">
     <Type Name="data_info">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -52,6 +41,17 @@
       <Column Name="recycle_time" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
       <Association Name="naire_info_question_info" Member="question_info" ThisKey="id" OtherKey="naire_id" Type="question_info" />
       <Association Name="user_info_naire_info" Member="user_info" ThisKey="user_id" OtherKey="id" Type="user_info" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.question_info" Member="question_info">
+    <Type Name="question_info">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="naire_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="flag" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="items" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="question_info_data_info" Member="data_info" ThisKey="id" OtherKey="question_id" Type="data_info" />
+      <Association Name="naire_info_question_info" Member="naire_info" ThisKey="naire_id" OtherKey="id" Type="naire_info" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

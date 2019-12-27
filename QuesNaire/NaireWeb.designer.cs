@@ -36,15 +36,15 @@ namespace QuesNaire
     partial void Insertuser_info(user_info instance);
     partial void Updateuser_info(user_info instance);
     partial void Deleteuser_info(user_info instance);
-    partial void Insertquestion_info(question_info instance);
-    partial void Updatequestion_info(question_info instance);
-    partial void Deletequestion_info(question_info instance);
     partial void Insertdata_info(data_info instance);
     partial void Updatedata_info(data_info instance);
     partial void Deletedata_info(data_info instance);
     partial void Insertnaire_info(naire_info instance);
     partial void Updatenaire_info(naire_info instance);
     partial void Deletenaire_info(naire_info instance);
+    partial void Insertquestion_info(question_info instance);
+    partial void Updatequestion_info(question_info instance);
+    partial void Deletequestion_info(question_info instance);
     #endregion
 		
 		public NaireWebDataContext() : 
@@ -93,14 +93,6 @@ namespace QuesNaire
 			}
 		}
 		
-		public System.Data.Linq.Table<question_info> question_info
-		{
-			get
-			{
-				return this.GetTable<question_info>();
-			}
-		}
-		
 		public System.Data.Linq.Table<data_info> data_info
 		{
 			get
@@ -114,6 +106,14 @@ namespace QuesNaire
 			get
 			{
 				return this.GetTable<naire_info>();
+			}
+		}
+		
+		public System.Data.Linq.Table<question_info> question_info
+		{
+			get
+			{
+				return this.GetTable<question_info>();
 			}
 		}
 	}
@@ -435,233 +435,6 @@ namespace QuesNaire
 		{
 			this.SendPropertyChanging();
 			entity.user_info = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.question_info")]
-	public partial class question_info : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private int _naire_id;
-		
-		private int _flag;
-		
-		private string _title;
-		
-		private string _items;
-		
-		private EntitySet<data_info> _data_info;
-		
-		private EntityRef<naire_info> _naire_info;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onnaire_idChanging(int value);
-    partial void Onnaire_idChanged();
-    partial void OnflagChanging(int value);
-    partial void OnflagChanged();
-    partial void OntitleChanging(string value);
-    partial void OntitleChanged();
-    partial void OnitemsChanging(string value);
-    partial void OnitemsChanged();
-    #endregion
-		
-		public question_info()
-		{
-			this._data_info = new EntitySet<data_info>(new Action<data_info>(this.attach_data_info), new Action<data_info>(this.detach_data_info));
-			this._naire_info = default(EntityRef<naire_info>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_naire_id", DbType="Int NOT NULL")]
-		public int naire_id
-		{
-			get
-			{
-				return this._naire_id;
-			}
-			set
-			{
-				if ((this._naire_id != value))
-				{
-					if (this._naire_info.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onnaire_idChanging(value);
-					this.SendPropertyChanging();
-					this._naire_id = value;
-					this.SendPropertyChanged("naire_id");
-					this.Onnaire_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_flag", DbType="Int NOT NULL")]
-		public int flag
-		{
-			get
-			{
-				return this._flag;
-			}
-			set
-			{
-				if ((this._flag != value))
-				{
-					this.OnflagChanging(value);
-					this.SendPropertyChanging();
-					this._flag = value;
-					this.SendPropertyChanged("flag");
-					this.OnflagChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string title
-		{
-			get
-			{
-				return this._title;
-			}
-			set
-			{
-				if ((this._title != value))
-				{
-					this.OntitleChanging(value);
-					this.SendPropertyChanging();
-					this._title = value;
-					this.SendPropertyChanged("title");
-					this.OntitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_items", DbType="NVarChar(MAX)")]
-		public string items
-		{
-			get
-			{
-				return this._items;
-			}
-			set
-			{
-				if ((this._items != value))
-				{
-					this.OnitemsChanging(value);
-					this.SendPropertyChanging();
-					this._items = value;
-					this.SendPropertyChanged("items");
-					this.OnitemsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="question_info_data_info", Storage="_data_info", ThisKey="id", OtherKey="question_id")]
-		public EntitySet<data_info> data_info
-		{
-			get
-			{
-				return this._data_info;
-			}
-			set
-			{
-				this._data_info.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="naire_info_question_info", Storage="_naire_info", ThisKey="naire_id", OtherKey="id", IsForeignKey=true)]
-		public naire_info naire_info
-		{
-			get
-			{
-				return this._naire_info.Entity;
-			}
-			set
-			{
-				naire_info previousValue = this._naire_info.Entity;
-				if (((previousValue != value) 
-							|| (this._naire_info.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._naire_info.Entity = null;
-						previousValue.question_info.Remove(this);
-					}
-					this._naire_info.Entity = value;
-					if ((value != null))
-					{
-						value.question_info.Add(this);
-						this._naire_id = value.id;
-					}
-					else
-					{
-						this._naire_id = default(int);
-					}
-					this.SendPropertyChanged("naire_info");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_data_info(data_info entity)
-		{
-			this.SendPropertyChanging();
-			entity.question_info = this;
-		}
-		
-		private void detach_data_info(data_info entity)
-		{
-			this.SendPropertyChanging();
-			entity.question_info = null;
 		}
 	}
 	
@@ -1184,6 +957,233 @@ namespace QuesNaire
 		{
 			this.SendPropertyChanging();
 			entity.naire_info = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.question_info")]
+	public partial class question_info : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _naire_id;
+		
+		private int _flag;
+		
+		private string _title;
+		
+		private string _items;
+		
+		private EntitySet<data_info> _data_info;
+		
+		private EntityRef<naire_info> _naire_info;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onnaire_idChanging(int value);
+    partial void Onnaire_idChanged();
+    partial void OnflagChanging(int value);
+    partial void OnflagChanged();
+    partial void OntitleChanging(string value);
+    partial void OntitleChanged();
+    partial void OnitemsChanging(string value);
+    partial void OnitemsChanged();
+    #endregion
+		
+		public question_info()
+		{
+			this._data_info = new EntitySet<data_info>(new Action<data_info>(this.attach_data_info), new Action<data_info>(this.detach_data_info));
+			this._naire_info = default(EntityRef<naire_info>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_naire_id", DbType="Int NOT NULL")]
+		public int naire_id
+		{
+			get
+			{
+				return this._naire_id;
+			}
+			set
+			{
+				if ((this._naire_id != value))
+				{
+					if (this._naire_info.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onnaire_idChanging(value);
+					this.SendPropertyChanging();
+					this._naire_id = value;
+					this.SendPropertyChanged("naire_id");
+					this.Onnaire_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_flag", DbType="Int NOT NULL")]
+		public int flag
+		{
+			get
+			{
+				return this._flag;
+			}
+			set
+			{
+				if ((this._flag != value))
+				{
+					this.OnflagChanging(value);
+					this.SendPropertyChanging();
+					this._flag = value;
+					this.SendPropertyChanged("flag");
+					this.OnflagChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string title
+		{
+			get
+			{
+				return this._title;
+			}
+			set
+			{
+				if ((this._title != value))
+				{
+					this.OntitleChanging(value);
+					this.SendPropertyChanging();
+					this._title = value;
+					this.SendPropertyChanged("title");
+					this.OntitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_items", DbType="NVarChar(MAX)")]
+		public string items
+		{
+			get
+			{
+				return this._items;
+			}
+			set
+			{
+				if ((this._items != value))
+				{
+					this.OnitemsChanging(value);
+					this.SendPropertyChanging();
+					this._items = value;
+					this.SendPropertyChanged("items");
+					this.OnitemsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="question_info_data_info", Storage="_data_info", ThisKey="id", OtherKey="question_id")]
+		public EntitySet<data_info> data_info
+		{
+			get
+			{
+				return this._data_info;
+			}
+			set
+			{
+				this._data_info.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="naire_info_question_info", Storage="_naire_info", ThisKey="naire_id", OtherKey="id", IsForeignKey=true)]
+		public naire_info naire_info
+		{
+			get
+			{
+				return this._naire_info.Entity;
+			}
+			set
+			{
+				naire_info previousValue = this._naire_info.Entity;
+				if (((previousValue != value) 
+							|| (this._naire_info.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._naire_info.Entity = null;
+						previousValue.question_info.Remove(this);
+					}
+					this._naire_info.Entity = value;
+					if ((value != null))
+					{
+						value.question_info.Add(this);
+						this._naire_id = value.id;
+					}
+					else
+					{
+						this._naire_id = default(int);
+					}
+					this.SendPropertyChanged("naire_info");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_data_info(data_info entity)
+		{
+			this.SendPropertyChanging();
+			entity.question_info = this;
+		}
+		
+		private void detach_data_info(data_info entity)
+		{
+			this.SendPropertyChanging();
+			entity.question_info = null;
 		}
 	}
 }

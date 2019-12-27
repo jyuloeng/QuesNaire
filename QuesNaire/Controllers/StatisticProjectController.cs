@@ -18,7 +18,7 @@ namespace QuesNaire.Controllers
         public ActionResult Index()
         {
             string naire_id = Request.QueryString["naire_id"];
-
+            ViewBag.naireId = int.Parse(naire_id);
             NaireWebDataContext db = new NaireWebDataContext();
             Statistic statistic = new Statistic();
 

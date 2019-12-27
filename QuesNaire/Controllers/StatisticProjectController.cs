@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System;
+using QuesNaire.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System;
 
 namespace QuesNaire.Controllers
 {
@@ -18,6 +20,7 @@ namespace QuesNaire.Controllers
             string naire_id = Request.QueryString["naire_id"];
 
             NaireWebDataContext db = new NaireWebDataContext();
+            Statistic statistic = new Statistic();
 
             //  先找问卷表拿 问卷标题，描述
             var naires = from r in db.naire_info
@@ -29,23 +32,44 @@ namespace QuesNaire.Controllers
                             r.update_time,
                             r.data
                         };
+            statistic.title = naires.FirstOrDefault().title;
+            statistic.update_time = naires.FirstOrDefault().update_time;
+            statistic.data = naires.FirstOrDefault().data;
 
             //  然后找问题表拿 问题id，flag，题目，选项
             var questions = from r in db.question_info
-                           where r.naire_id == int.Parse(naire_id)
-                           select new
-                           {
-                               r.id,
-                               r.title,
-                               r.flag,
-                               r.items
-                           };
+                            where r.naire_id == int.Parse(naire_id)
+                            select r;
 
-            //  最后找数据表拿数据
+            foreach (question_info question in questions)
+            {
+                questions q = new questions();
+                q.title = question.title;
+                q.flag = question.flag;
+                var n = JsonConvert.DeserializeObject<List<string>>(question.items);
+                if (n!=null)
+                    for (var i = 0; i < n.Count; i++)
+                    {
+                        q.options.Add(n[i]);
+                    }
+                else
+                    q.options = null;
+                var reply = from r in db.data_info
+                            where r.question_id == question.id
+                            select r;
+                
+                foreach (data_info data_Info in reply)
+                {
+                    q.replys.Add(data_Info.data);
+                }
+                statistic.questions.Add(q);
+            }
+            
+
+
 
             //  不会连表查询。。先拿个json看一下
-            //string naires_json = JsonConvert.SerializeObject(naires);
-            //string questions_json = JsonConvert.SerializeObject(questions);
+            string statistic_info = JsonConvert.SerializeObject(statistic);
 
 
             return View();

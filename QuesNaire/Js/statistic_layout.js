@@ -14,31 +14,6 @@ for (let i = 0; i < questions.length; i++) {
             naire_item.innerHTML = '<div class="naire_title_wrap">'
                 //< !--问卷标题-->
                 + '<span class="naire_item_title">' + (i + 1) + '.' + questions[i].title + '</span>'
-                //<!--问卷类型-->
-                + '<div class="naire_chart_type">'
-                + '<div class="btn-group">'
-                + '<button type="button" class="btn btn-default dropdown-toggle"'
-                + 'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
-                + '图表类型 <span class="caret"></span>'
-                + '</button>'
-                + '<ul class="dropdown-menu">'
-                + '<li><a href="#">饼图</a></li>'
-                + '<li><a href="#">圆环图</a></li>'
-                + '</ul>'
-                + '</div>'
-
-                + '<div class="btn-group" style="margin-left: 4px;">'
-                + '<button type="button" class="btn btn-default dropdown-toggle"'
-                + 'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
-                + '显示设置 <span class="caret"></span>'
-                + '</button>'
-                + '<ul class="dropdown-menu">'
-                + '<li><a href="#">隐藏图表</a></li>'
-                + '<li><a href="#">隐藏数据</a></li>'
-                + '</ul>'
-                + '</div>'
-                + '</div>'
-
                 + '<div class="clearfix"></div>'
 
                 + '</div >'
@@ -102,23 +77,10 @@ for (let i = 0; i < questions.length; i++) {
         case 1:
             naire_item.innerHTML = '<div class="naire_title_wrap">'
                 //< !--问卷标题-->
-                + '<span class="naire_item_title">' + (i + 1)+'.'+ questions[i].title + '</span>'
-                //<!--问卷类型-->
-                + '<div class="naire_chart_type">'
-                + '<div class="btn-group" style="margin-left: 4px;">'
-                + '<button type="button" class="btn btn-default dropdown-toggle"'
-                + 'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
-                + '显示设置 <span class="caret"></span>'
-                + '</button>'
-                + '<ul class="dropdown-menu">'
-                + '<li><a href="#">隐藏图表</a></li>'
-                + '</ul>'
-                + '</div>'
-                + '</div>'
-
+                + '<span class="naire_item_title">' + (i + 1) + '.' + questions[i].title + '</span>'
                 + '<div class="clearfix"></div>'
-
                 + '</div >'
+
                 +   '<div class="naire_data">'
                 + '<table id="question_table_' + i + '" class="table table-hover table-borderless"></table>'
                 + '</div>';
@@ -156,22 +118,9 @@ for (let i = 0; i < questions.length; i++) {
             naire_item.innerHTML = '<div class="naire_title_wrap">'
                 //< !--问卷标题-->
                 + '<span class="naire_item_title">' + (i + 1) + '.此题为多项填空题，具体题目请看表格标题</span>'
-                //<!--问卷类型-->
-                + '<div class="naire_chart_type">'
-                + '<div class="btn-group" style="margin-left: 4px;">'
-                + '<button type="button" class="btn btn-default dropdown-toggle"'
-                + 'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
-                + '显示设置 <span class="caret"></span>'
-                + '</button>'
-                + '<ul class="dropdown-menu">'
-                + '<li><a href="#">隐藏图表</a></li>'
-                + '</ul>'
-                + '</div>'
-                + '</div>'
-
                 + '<div class="clearfix"></div>'
-
                 + '</div >'
+
                 + '<div class="naire_data">'
 
                 + createTable();

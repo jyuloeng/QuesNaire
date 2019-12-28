@@ -32,22 +32,6 @@ function publishProject() {
     var id = naire[0].id;
     var state1 = state;
 
-    //$.ajax({
-    //    url: '../PublishProject/changeState',
-        //data: {
-        //    id: id,
-        //    state: state
-        //},
-    //    type: 'POST',
-    //    contentType: 'application/json;charset=utf-8',
-    //    success: function (data) {
-
-    //        console.log(data);
-    //        isPublished = !isPublished;
-    //        changeState();
-
-    //    }
-    //});
     axios.post('../PublishProject/changeState', {
         id: id,
         state: state1
@@ -86,5 +70,6 @@ var edit_check = document.querySelector('.edit_check');
 edit_check.addEventListener('click', toPreview, false);
 
 function toPreview() {
-    window.location.href = "http://localhost:61507/Project/Index?naire_id=" + naire[0].id + "&isPreview=1";
+    window.location.href = "../Project/Index?naire_id="
+        + naire[0].id + "&isPreview=1";
 }

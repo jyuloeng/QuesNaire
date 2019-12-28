@@ -61,7 +61,6 @@ namespace QuesNaire.Controllers
                 }
             }
             db.SubmitChanges();
-
         }
 
         public class NaireStateJsonObject

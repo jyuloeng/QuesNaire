@@ -36,7 +36,9 @@ namespace QuesNaire.Controllers
                 Response.Redirect("~/Login/Index");
                 return View();
             }
+            //  获得用户信息
             getUserInfo();
+            //  获得问卷信息
             getUserNaire();
             return View();
         }
@@ -203,7 +205,7 @@ namespace QuesNaire.Controllers
                 for(int j = 0; j < question_results.Count; j++)
                 {
                     var data_results = from r in db.data_info
-                                       where r.question_id == question_results[i].id
+                                       where r.question_id == question_results[j].id
                                        select r;
                     db.data_info.DeleteAllOnSubmit(data_results);
                 }

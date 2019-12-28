@@ -101,7 +101,6 @@ namespace QuesNaire.Controllers
         [HttpPost]
         public void getQuestionData(QuestionDataList questionDataList)
         {
-
             NaireWebDataContext db = new NaireWebDataContext();
             List<QuestionDataItem> question_data_items = questionDataList.list;
             
@@ -122,6 +121,18 @@ namespace QuesNaire.Controllers
                 db.data_info.InsertOnSubmit(data);
                 db.SubmitChanges();
             }
+            //  获得问题id->获得问卷id->问卷收到数据数+1
+            int question_id = question_data_items[0].id;
+            question_info question_result = (from r in db.question_info
+                                   where r.id == question_id
+                                   select r).FirstOrDefault();
+
+            naire_info naire = (from r in db.naire_info
+                                where r.id == question_result.naire_id
+                                select r).FirstOrDefault();
+
+            naire.data += 1;
+            db.SubmitChanges();
         }   
     }
 

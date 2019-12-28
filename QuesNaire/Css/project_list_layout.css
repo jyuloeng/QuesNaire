@@ -703,3 +703,11 @@
 .nav_avatar:hover .user_info{
     display:block;
 }
+.error_lable {
+    display: none;
+    margin-top: 10px;
+    margin-left: 100px;
+    color: red;
+    line-height: 25px;
+    font-size: 12px;
+}

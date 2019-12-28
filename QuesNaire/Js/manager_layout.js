@@ -289,7 +289,7 @@ function InitNaireNew() {
 
 function operateFormatter_DFB(value, row, index) {
     return [
-        '<button class="btn btn-default" id="look_DFB" >查看</button>',
+        '<button class="btn btn-default" id="look_DFB" ><i class="glyphicon glyphicon-stats"></i></button>',
         '<button id="change_DFB" class="btn btn-default" data-toggle="modal" data-target="#change_DFB" >编辑</button >',
         '<button class="btn btn-default" id="delate_DFB" >删除</button>',
        

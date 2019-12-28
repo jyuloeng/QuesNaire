@@ -43,7 +43,7 @@
                     <!--    弹出层-->
                     <div class="user_info">
                         <div class="user_name" id="name">odd</div>
-                        <div class="user-exit" id="quit">
+                        <div class="user-exit" id="exit">
                             <i class="glyphicon glyphicon-log-out" style="margin-right:10px;"></i>退出登录
                         </div>
                     </div>
@@ -192,15 +192,17 @@
                     <div class="base_info_item">
                         <span class="item_name">用户昵称：</span>
                         <span>
-                            <input type="text" class="form-control input_edit"  id="upName"/>
+                            <input type="text" class="form-control input_edit" id="upName" />
                         </span>
                     </div>
                     <div class="base_info_item">
                         <span class="item_name">密码：</span>
                         <span>
-                            <input type="password" class="form-control input_edit" id="upPassword"/>
+                            <input type="password" class="form-control input_edit" id="upPassword" />
                         </span>
                     </div>
+                    <label class="error_lable" id="error_message"></label>
+
 
                     <button class="btn_change_info btn-primary btn" id="btn_change_info">完成修改</button>
                 </div>
@@ -336,16 +338,69 @@
             if (cval != null)
                 document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
         }
+        var upName = document.getElementById("upName");
+        var upPassword = document.getElementById("upPassword");
+
+
+        upName.addEventListener('focus', ClearMessage, false);
+        upPassword.addEventListener('focus', ClearMessage, false);
+
+        //点击输入框删除提示
+        function ClearMessage() {
+            error_message.innerText = "";
+            error_message.style.display = "none";
+        }
+
+        //退出登录
+        var exit = document.getElementById("exit");
+        exit.addEventListener('click', ExitLogin, false);
+        //退出登录转到登录界面
+        function ExitLogin() {
+            deleteCookie("user_name");
+            deleteCookie("user_account");
+            deleteCookie("user_password");
+            deleteCookie("user_id");
+            window.location.href = "../Login/Index";
+        }
+
+        //删除cookies
+        function deleteCookie(name) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval = getCookie(name);
+            if (cval != null)
+                document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+        }
+
+
 
         $("#btn_change_info").click(function () {
 
+            var error_message = document.getElementById("error_message");
             var name = $("#upName").val();
             var password = $("#upPassword").val();
             
 
             if (name == "" && password == "") {
+                error_message.innerText = "请输入信息完成修改！";
+                error_message.style.display = "block";
                 return;
             }
+
+
+            //用户名和修改前重复
+            if (name == getCookie("manage_name")) {
+                error_message.innerText = "输入的用户名和修改前一致！";
+                error_message.style.display = "block";
+                return;
+            }
+            //密码和修改前重复
+            if (password == getCookie("manage_password")) {
+                error_message.innerText = "输入的密码和修改前一致！";
+                error_message.style.display = "block";
+                return;
+            }
+
             //用户名为空
             if (name == "" && password != "") {
                 name = getCookie("user_name");

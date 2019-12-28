@@ -343,6 +343,7 @@ function submit() {
     if (JudgeNull() > 0) {
         var isNull = document.getElementsByClassName("IsNull");
         var type = isNull[0].getAttribute("data-type")
+        //将焦点放到未填写的题目那里
         if (type == "radio") {
             isNull[0].lastElementChild.children[0].children[0].focus();
         }

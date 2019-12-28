@@ -486,6 +486,7 @@ function deleteCookie(name) {
         document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 }
 
+//获取cookies
 function getCookie(name) {
     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
     if (arr = document.cookie.match(reg))
@@ -499,13 +500,22 @@ function getCookie(name) {
 function InitUserInfo() {
     var user_name = document.getElementById("user_name");
     user_name.innerText = getCookie("user_name");
+    var avatar=getCookie("user_avatar");
     var user_avatar = document.getElementById("user_avatar");
-    user_avatar.src = getCookie("user_avatar");
+    
+    if (avatar == "") {
+        return;
+    }
+    else
+    {
+        user_avatar.src = avatar;
+    }
 }
 InitUserInfo();
 
 //退出登录
 var exit = document.getElementById("exit");
+//返回登录
 var back= document.getElementById("back");
 exit.addEventListener('click', ExitLogin, false);
 back.addEventListener('click', BackProject, false);

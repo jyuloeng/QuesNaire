@@ -172,20 +172,6 @@ console.log(naire);
             list_table_list.appendChild(table_tab);
         } else if (naire[i].recycle == 1) {
             //  渲染进回收站
-            //var input = document.createElement('input');
-            //input.setAttribute('data-naire-id', naire[i].id);
-            //input.setAttribute('type', 'checkbox');
-            //input.classList.add('checkbox');
-            //input.style.margin = "0 auto";
-
-            //var td_input = document.createElement('td');
-            //td_input.classList.add('checkbox_wrap')
-            //td_input.appendChild(input);
-
-            //var td_naire_title = document.createElement('td');
-            //td_naire_title.classList.add('table_recycle_td_title');
-            //td_naire_title.innerText = naire[i].title;
-
             var tr = document.createElement('tr');
             tr.innerHTML = '<td class="checkbox_wrap">'
                 + '  <input data-naire-id="' + naire[i].id + '" class="checkbox" type = "checkbox" style = "margin: 0 auto;" > </td >'
@@ -317,7 +303,8 @@ function toRecycleBin(i,id) {
 
             var tr = document.createElement('tr');
             tr.innerHTML = '<td class="checkbox_wrap">'
-                + '  <input data-naire-id="' + naire[index].id + '" class="checkbox" type = "checkbox" style = "margin: 0 auto;" > </td >'
+                + '  <input data-naire-id="' + naire[index].id
+                + '" class="checkbox" type = "checkbox" style = "margin: 0 auto;" > </td >'
                 + '  <td class="table_recycle_td_title">' + naire[index].title + '</td>'
                 + '  <td>' + naire[index].data + '</td>'
                 + '  <td>' + naire[index].start_time + '</td>'

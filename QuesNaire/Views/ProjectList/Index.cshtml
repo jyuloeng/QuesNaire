@@ -284,7 +284,7 @@
                 return unescape(arr[2]);
             else
                 return null;
-        }
+        }   
         document.getElementById('name').innerText = getCookie("user_name");
         document.getElementById('user_account').innerText = getCookie("user_account")
         document.getElementById('user_name').innerText = getCookie("user_name")
@@ -295,8 +295,9 @@
         //$(".card_li")[1].childNodes[4].childNodes[0].onclick = function () {
         //    console.log("hsdkfsgf")
         //}
+        var user_id = getCookie("user_id");
         $(".card_li")[0].onclick = function () {
-            window.location.href = "../EditProject/Index"
+            window.location.href = "../EditProject/Index?=" + user_id;
         }
         for (let i = 1; i < $(".card_li").length; i++) {
 

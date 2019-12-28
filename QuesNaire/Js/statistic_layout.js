@@ -15,13 +15,10 @@ for (let i = 0; i < questions.length; i++) {
                 //< !--问卷标题-->
                 + '<span class="naire_item_title">' + (i + 1) + '.' + questions[i].title + '</span>'
                 + '<div class="clearfix"></div>'
-
                 + '</div >'
-
                 + '<div class="naire_chart">'
                 + '<canvas id="question_chart_' + i + '" width="450" height="350"></canvas>'
                 + '</div>'
-
                 + '<div class="naire_data">'
                 + '<table id="question_table_' + i + '" class="table table-hover table-borderless"></table>'
                 + '</div>';
@@ -135,22 +132,6 @@ for (let i = 0; i < questions.length; i++) {
 
                 let table_data = new Array();
 
-                //for (let reply = 0; reply < questions[i].replys.length; reply++) {
-                //    for (let k = 0; k < questions[i].options.length; k++) {
-                //        table_data.push({
-                //            replys: questions[i].replys[k]
-                //        })
-                //    }
-                //}
-
-                //for (let o = 0; o < questions[i].options.length; o++) {
-                //    for (let reply = 0; reply < questions[i].replys.length; reply++) {
-                //        table_data.push({
-                //            replys: questions[i].replys[reply]
-                //        })
-                //    }
-                //}
-
                 //  多项填空有BUG 待修复
                 for (let reply = 0; reply < questions[i].replys.length; reply++) {
                     let str = questions[i].replys[reply].substr(0, questions[i].replys[reply].length - 1);
@@ -179,8 +160,6 @@ for (let i = 0; i < questions.length; i++) {
                     }]
                 });
             }
-
-           
             break;
     }
 

@@ -68,6 +68,8 @@ namespace QuesNaire.Controllers
         /// </summary>
         private void createProject(NaireJsonObject naireJson)
         {
+            user_id = Request.Cookies["user_id"].Value;
+
             //  开始时间与最后修改时间
             string start_time = Request.Cookies["start_time"].Value;
             string edit_time = DateTime.Now.ToShortDateString().ToString();

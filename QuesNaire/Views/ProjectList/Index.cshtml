@@ -309,6 +309,10 @@
                 let v = $(".card_li")[i].attributes[1].value
                 window.location.href = "../PublishProject/Index?naire_id="+v;
             }
+            $(".card_li")[i].childNodes[4].childNodes[3].onclick = function () {
+                let v = $(".card_li")[i].attributes[1].value
+                window.location.href = "../StatisticProject/Index?naire_id=" + v;
+            }
 
         }
         //console.log($(".table_tab")[0].childNodes[5].childNodes[0])
@@ -321,6 +325,10 @@
             $(".table_tab")[i].childNodes[5].childNodes[1].onclick = function () {
                 let v = $(".table_tab")[i].attributes[1].value
                 window.location.href = "../PublishProject/Index?naire_id="+v;
+            }
+            $(".table_tab")[i].childNodes[5].childNodes[2].onclick = function () {
+                let v = $(".table_tab")[i].attributes[1].value
+                window.location.href = "../StatisticProject/Index?naire_id=" + v;
             }
 
         }

@@ -170,7 +170,7 @@ var naireId = document.getElementById('naire_id').value;
 edit_check.addEventListener('click', toPreview, false);
 
 function toPreview() {
-    window.location.href = "http://localhost:61507/Project/Index?naire_id=" + naireId + "&isPreview=1";
+    window.location.href = "../Project/Index?naire_id=" + naireId + "&isPreview=1";
 }
 
 
